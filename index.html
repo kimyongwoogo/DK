@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>동국제약 vs 경쟁사 10곳 TVCF 광고 분석</title>
+<link rel="stylesheet" href="src/theme.css">
+<link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+<noscript><p class="tv-load-error">대시보드를 보려면 자바스크립트를 켜 주세요.</p></noscript>
+<p class="tv-load-error" id="dashboard-load-error" role="alert" hidden></p>
+<div class="tv-page" data-active-pane="creatives">
+  <span class="tv-fontload" data-draw="fonts" data-source="fonts" aria-hidden="true"></span>
+
+  <header id="top">
+    <p class="tv-eyebrow">TVCF · 국내 영상 광고 · 온에어 <span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후 분석, <span data-draw="v" data-source="period" data-field="first_onair" data-row="0" data-fmt="md">—</span>~<span data-draw="v" data-source="period" data-field="last_onair" data-row="0" data-fmt="md">—</span> 2026년 누적과 비교 · <span data-draw="v" data-source="period" data-field="collected" data-row="0" data-fmt="fulldate">—</span> 수집</p>
+    <h1>동국제약과 경쟁사 TVCF 광고 분석</h1>
+    <p class="tv-take"><span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후 온에어된 소재는 동국제약과 경쟁사 <b data-draw="v" data-source="kpi" data-field="competitors" data-row="0" data-fmt="int">—</b>곳을 합쳐 <b data-draw="v" data-source="kpi" data-field="oct_ads" data-row="0" data-fmt="int">—</b>편이고, 동국제약이 <b data-draw="v" data-source="kpi" data-field="dk_oct" data-row="0" data-fmt="int">—</b>편(<b data-draw="v" data-source="kpi" data-field="dk_oct_share" data-row="0" data-fmt="pct">—</b>)으로 2026년 누적 비중 <b data-draw="v" data-source="kpi" data-field="dk_ytd_share" data-row="0" data-fmt="pct">—</b>보다 높습니다. 잇몸에서는 인사돌 신작(<span data-draw="v" data-source="brand_rows" data-field="last_onair" data-where="company=동국제약&amp;brand=인사돌" data-fmt="md">—</span>) 직후 명인제약 이가탄이 새 소재 <b data-draw="v" data-source="brand_rows" data-field="oct_ads" data-where="company=명인제약&amp;brand=이가탄" data-fmt="int">—</b>편으로 맞붙었고, 탈모 광고는 판시딜뿐이었습니다.</p>
+  </header>
+
+  <section id="filter" class="tv-card tv-filter" aria-label="회사·브랜드 입력">
+    <label class="tv-filter-label" for="brand-input">회사·브랜드 입력</label>
+    <div class="tv-filter-row">
+      <input id="brand-input" class="tv-brand-input" type="search" list="brand-options" placeholder="예: 동국제약, 인사돌, 이가탄, 탈모, 잇몸·구강" autocomplete="off">
+      <button class="tv-btn tv-brand-clear" type="button" hidden>지우기</button>
+    </div>
+    <datalist id="brand-options" data-draw="brand-options" data-source="brand_options"></datalist>
+    <div class="tv-chips" data-draw="brand-chips" data-source="brand_options"></div>
+    <p class="tv-filter-note">회사명, 브랜드, 제품군, 카피, 모델 이름으로 찾습니다. 입력하면 아래 요약, 온에어 소재 목록, 브랜드별 캠페인, 광고 소재 탭이 걸러지고, 전체를 비교하는 표와 차트는 그대로 둡니다.</p>
+  </section>
+
+  <section id="selection" class="tv-card tv-sel" aria-live="polite" hidden>
+    <span class="tv-ghost" data-draw="sel-state" data-source="ads"></span>
+    <div class="tv-sel-has">
+      <p class="tv-sel-title">‘<b data-draw="sel" data-k="term">—</b>’ 2026년 소재 <b data-draw="sel" data-k="n">—</b>편</p>
+      <dl class="tv-sel-grid">
+        <div><dt><span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후</dt><dd><span data-draw="sel" data-k="oct">—</span>편</dd></div>
+        <div><dt>회사</dt><dd><span data-draw="sel" data-k="companies">—</span></dd></div>
+        <div><dt>브랜드</dt><dd><span data-draw="sel" data-k="brands">—</span></dd></div>
+        <div><dt>최근 온에어</dt><dd><span data-draw="sel" data-k="last">—</span></dd></div>
+        <div><dt>TV 비중</dt><dd><span data-draw="sel" data-k="tv">—</span></dd></div>
+        <div><dt>평균 길이</dt><dd><span data-draw="sel" data-k="avg">—</span>초</dd></div>
+        <div><dt>모델</dt><dd><span data-draw="sel" data-k="models">—</span></dd></div>
+      </dl>
+      <button class="tv-btn tv-sel-go" type="button">광고 소재 보기</button>
+    </div>
+    <p class="tv-sel-none" hidden>‘<b data-draw="sel" data-k="term">—</b>’와 맞는 소재가 없습니다. 회사명이나 브랜드명의 일부만 입력해 보세요.</p>
+  </section>
+
+  <nav class="tv-tabs" role="tablist" aria-label="보기">
+    <button class="tv-tab" id="tab-creatives" type="button" role="tab" data-tab="creatives" aria-controls="creatives" aria-selected="true">광고 소재<span class="tv-tab-n" data-draw="tab-count" data-source="ads">—</span></button>
+    <button class="tv-tab" id="tab-analysis" type="button" role="tab" data-tab="analysis" aria-controls="analysis" aria-selected="false" tabindex="-1">TVCF 현황</button>
+    <button class="tv-tab" id="tab-sns" type="button" role="tab" data-tab="sns" aria-controls="sns" aria-selected="false" tabindex="-1">유튜브 수치</button>
+    <button class="tv-tab" id="tab-news" type="button" role="tab" data-tab="news" aria-controls="news" aria-selected="false" tabindex="-1">브랜드·제품 뉴스</button>
+    <button class="tv-tab" id="tab-ig" type="button" role="tab" data-tab="ig" aria-controls="ig" aria-selected="false" tabindex="-1">인스타그램 반응</button>
+  </nav>
+  <div class="tv-daily-overview" data-draw="daily-overview" data-source="daily_checks"></div>
+
+  <div id="analysis" class="tv-pane" data-pane="analysis" role="tabpanel" aria-labelledby="tab-analysis" hidden>
+
+  <section class="tv-sec tv-monitor" data-draw="daily-source" data-channel="tvcf" data-source="daily_checks ads">
+    <div class="tv-monitor-heading">
+      <h2>TVCF 일일 점검</h2>
+      <label class="tv-monitor-date">점검 기록 <select class="tv-select" aria-label="TVCF 점검 기록"></select></label>
+    </div>
+    <div class="tv-monitor-result"></div>
+  </section>
+
+  <section id="kpis" class="tv-kpis" aria-label="핵심 지표">
+    <div class="tv-card">
+      <p class="tv-lbl"><span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후 온에어 소재</p>
+      <p class="tv-big"><span data-draw="v" data-source="kpi" data-field="oct_ads" data-row="0" data-fmt="int">—</span><span class="tv-unit">편</span></p>
+      <p class="tv-sub">2026년 누적 <span data-draw="v" data-source="kpi" data-field="ytd_ads" data-row="0" data-fmt="int">—</span>편</p>
+    </div>
+    <div class="tv-card">
+      <p class="tv-lbl">동국제약 비중</p>
+      <p class="tv-big"><span data-draw="v" data-source="kpi" data-field="dk_oct_share" data-row="0" data-fmt="pct">—</span></p>
+      <p class="tv-sub"><span data-draw="v" data-source="kpi" data-field="dk_oct" data-row="0" data-fmt="int">—</span>편 · 2026년 누적 <span data-draw="v" data-source="kpi" data-field="dk_ytd_share" data-row="0" data-fmt="pct">—</span>(<span data-draw="v" data-source="kpi" data-field="dk_ytd" data-row="0" data-fmt="int">—</span>편)</p>
+    </div>
+    <div class="tv-card">
+      <p class="tv-lbl">광고를 낸 회사</p>
+      <p class="tv-big"><span data-draw="v" data-source="kpi" data-field="oct_companies" data-row="0" data-fmt="int">—</span><span class="tv-unit"> / <span data-draw="v" data-source="kpi" data-field="total_companies" data-row="0" data-fmt="int">—</span>곳</span></p>
+      <p class="tv-sub">새 소재 없음: <span data-draw="v" data-source="kpi" data-field="no_oct_companies" data-row="0" data-fmt="text">—</span></p>
+    </div>
+    <div class="tv-card">
+      <p class="tv-lbl">브랜드</p>
+      <p class="tv-big"><span data-draw="v" data-source="kpi" data-field="oct_brands" data-row="0" data-fmt="int">—</span><span class="tv-unit">개</span></p>
+      <p class="tv-sub">2026년 누적 <span data-draw="v" data-source="kpi" data-field="ytd_brands" data-row="0" data-fmt="int">—</span>개</p>
+    </div>
+    <div class="tv-card">
+      <p class="tv-lbl">TV(공중파·케이블) 비중</p>
+      <p class="tv-big"><span data-draw="v" data-source="kpi" data-field="oct_tv_share" data-row="0" data-fmt="pct">—</span></p>
+      <p class="tv-sub">2026년 누적 <span data-draw="v" data-source="kpi" data-field="ytd_tv_share" data-row="0" data-fmt="pct">—</span></p>
+    </div>
+    <div class="tv-card">
+      <p class="tv-lbl">평균 길이</p>
+      <p class="tv-big"><span data-draw="v" data-source="kpi" data-field="oct_avg_sec" data-row="0" data-fmt="dec1">—</span><span class="tv-unit">초</span></p>
+      <p class="tv-sub">2026년 누적 <span data-draw="v" data-source="kpi" data-field="ytd_avg_sec" data-row="0" data-fmt="dec1">—</span>초</p>
+    </div>
+  </section>
+
+  <section id="insights" class="tv-sec">
+    <h2>핵심 인사이트</h2>
+    <div class="tv-insights">
+      <article id="insight-dongkook" class="tv-card tv-insight">
+        <p class="tv-who"><span class="tv-sw" data-role="동국제약"></span>동국제약</p>
+        <h3>판시딜·카리토포텐·인사돌을 다시 TV에 올렸다</h3>
+        <p><span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후 동국제약 소재는 <b data-draw="v" data-source="kpi" data-field="dk_oct" data-row="0" data-fmt="int">—</b>편(<span data-draw="v" data-source="by_company" data-field="oct_brands" data-where="company=동국제약" data-fmt="text">—</span>)입니다. 판시딜은 하석진 모델의 가상광고, 카리토포텐은 이경규·강호동, 인사돌은 윤종신을 내세운 공중파 소재입니다.</p>
+        <p>반면 2026년 누적으로 가장 많이 돌린 센시아(<b data-draw="v" data-source="brand_rows" data-field="ytd_ads" data-where="company=동국제약&amp;brand=센시아" data-fmt="int">—</b>편)는 <span data-draw="v" data-source="brand_rows" data-field="last_onair" data-where="company=동국제약&amp;brand=센시아" data-fmt="md">—</span>, 마데카솔은 <span data-draw="v" data-source="brand_rows" data-field="last_onair" data-where="company=동국제약&amp;brand=마데카솔" data-fmt="md">—</span> 이후 새 소재가 없습니다.</p>
+      </article>
+      <article id="insight-gum" class="tv-card tv-insight">
+        <p class="tv-who"><span class="tv-sw"></span>잇몸·구강</p>
+        <h3>인사돌 신작 전후로 경쟁 소재가 몰렸다</h3>
+        <p><span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후 잇몸·구강 소재는 인사돌 <b data-draw="v" data-source="category_map" data-field="dk_oct" data-where="category=잇몸·구강" data-fmt="int">—</b>편 대 경쟁 <b data-draw="v" data-source="category_map" data-field="comp_oct" data-where="category=잇몸·구강" data-fmt="int">—</b>편입니다. 경쟁 소재는 <span data-draw="v" data-source="category_map" data-field="comp_oct_brands" data-where="category=잇몸·구강" data-fmt="text">—</span>편이고, 이가탄은 배종옥·지진희 버전을 연달아 냈습니다.</p>
+        <p>2026년 누적으로 넓히면 인사돌 <b data-draw="v" data-source="category_map" data-field="dk_ytd" data-where="category=잇몸·구강" data-fmt="int">—</b>편 대 경쟁 <b data-draw="v" data-source="category_map" data-field="comp_ytd" data-where="category=잇몸·구강" data-fmt="int">—</b>편이고, 구강청결제 리스테린 한 브랜드가 <b data-draw="v" data-source="brand_rows" data-field="ytd_ads" data-where="company=한국존슨앤드존슨&amp;brand=리스테린" data-fmt="int">—</b>편을 차지합니다.</p>
+      </article>
+      <article id="insight-hair" class="tv-card tv-insight">
+        <p class="tv-who"><span class="tv-sw"></span>탈모</p>
+        <h3>분석 기간 탈모 광고는 판시딜뿐</h3>
+        <p><span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후 탈모 소재는 판시딜 <b data-draw="v" data-source="category_map" data-field="dk_oct" data-where="category=탈모" data-fmt="int">—</b>편, 경쟁 <b data-draw="v" data-source="category_map" data-field="comp_oct" data-where="category=탈모" data-fmt="int">—</b>편입니다. 로게인폼은 <span data-draw="v" data-source="brand_rows" data-field="last_onair" data-where="company=한국존슨앤드존슨&amp;brand=로게인폼" data-fmt="md">—</span>, 마이녹실은 <span data-draw="v" data-source="brand_rows" data-field="last_onair" data-where="company=현대약품&amp;brand=마이녹실" data-fmt="md">—</span>이 마지막 온에어입니다.</p>
+        <p>2026년 누적은 판시딜 <b data-draw="v" data-source="category_map" data-field="dk_ytd" data-where="category=탈모" data-fmt="int">—</b>편 대 경쟁 <b data-draw="v" data-source="category_map" data-field="comp_ytd" data-where="category=탈모" data-fmt="int">—</b>편으로 거의 맞섭니다. 판시딜은 하석진·김성주를 모델로 ‘타이밍’ 메시지를 이어 가고 있습니다.</p>
+      </article>
+      <article id="insight-season" class="tv-card tv-insight">
+        <p class="tv-who"><span class="tv-sw"></span>경쟁사 전체</p>
+        <h3>경쟁사 물량은 감기·피로 시즌으로 이동</h3>
+        <p><span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후 경쟁사 소재 <b data-draw="v" data-source="kpi" data-field="comp_oct" data-row="0" data-fmt="int">—</b>편 가운데 감기·해열진통이 <b data-draw="v" data-source="category_map" data-field="comp_oct" data-where="category=감기·해열진통" data-fmt="int">—</b>편, 피로·영양이 <b data-draw="v" data-source="category_map" data-field="comp_oct" data-where="category=피로·영양" data-fmt="int">—</b>편입니다. 감기약은 <span data-draw="v" data-source="category_map" data-field="comp_oct_brands" data-where="category=감기·해열진통" data-fmt="text">—</span>편입니다.</p>
+        <p>동국제약은 두 제품군 모두 2026년 소재가 없어(감기·해열진통 <b data-draw="v" data-source="category_map" data-field="dk_ytd" data-where="category=감기·해열진통" data-fmt="int">—</b>편, 피로·영양 <b data-draw="v" data-source="category_map" data-field="dk_ytd" data-where="category=피로·영양" data-fmt="int">—</b>편) 직접 겹치지는 않지만, 같은 시기 TV 광고 지면을 함께 씁니다.</p>
+      </article>
+      <article id="insight-format" class="tv-card tv-insight">
+        <p class="tv-who"><span class="tv-sw" data-role="동국제약"></span>소재 길이</p>
+        <h3>동국제약은 긴 디지털 소재가 많고 짧은 범퍼가 없다</h3>
+        <p>동국제약 소재의 평균 길이는 <b data-draw="v" data-source="by_company" data-field="avg_sec" data-where="company=동국제약" data-fmt="dec1">—</b>초로 <b data-draw="v" data-source="kpi" data-field="total_companies" data-row="0" data-fmt="int">—</b>개 회사 중 가장 길고, 31초 이상이 <b data-draw="v" data-source="by_company" data-field="long_share" data-where="company=동국제약" data-fmt="pct">—</b>입니다. 센시아 뮤직비디오, 카리토포텐 트롯 영상 같은 디지털 롱폼입니다.</p>
+        <p>6초 이하 소재는 동국제약 <b data-draw="v" data-source="length_mix" data-field="ads" data-where="company=동국제약&amp;length=6초 이하" data-fmt="int">—</b>편인데, 동아제약은 <b data-draw="v" data-source="length_mix" data-field="ads" data-where="company=동아제약&amp;length=6초 이하" data-fmt="int">—</b>편, 일동제약은 <b data-draw="v" data-source="length_mix" data-field="ads" data-where="company=일동제약&amp;length=6초 이하" data-fmt="int">—</b>편을 범퍼로 따로 만들었습니다.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="companies" class="tv-sec">
+    <h2>회사별 비교</h2>
+    <p class="tv-sec-note">경쟁 축은 동국제약 브랜드와 겹치는 제품군입니다. 매체·길이·모델 비중은 2026년 누적 소재 기준이고, 소재 수는 TVCF에 올라온 버전 수(길이별·모델별 버전을 각각 한 편)입니다.</p>
+    <div class="tv-card tv-tbl-card">
+      <div class="tv-tbl-wrap">
+        <table class="tv-tbl" id="company-table" data-source="by_company" data-row-key="company">
+          <thead><tr>
+            <th data-field="company">회사</th>
+            <th class="tv-col-sec" data-field="axis">경쟁 축</th>
+            <th data-field="oct_ads"><span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후</th>
+            <th class="tv-r" data-field="ytd_ads">2026년 누적</th>
+            <th class="tv-col-sec" data-field="oct_brands"><span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후 브랜드</th>
+            <th class="tv-col-sec" data-field="top_brands">2026년 주력 브랜드</th>
+            <th class="tv-r" data-field="tv_share">TV</th>
+            <th class="tv-r tv-col-sec" data-field="digital_share">디지털</th>
+            <th class="tv-r tv-col-sec" data-field="avg_sec">평균 길이(초)</th>
+            <th class="tv-r tv-col-sec" data-field="model_share">모델 기용</th>
+            <th class="tv-col-sec" data-field="top_models">주요 모델</th>
+            <th data-field="last_onair">최근 온에어</th>
+          </tr></thead>
+          <tbody data-draw="company-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="timing" class="tv-sec">
+    <h2>언제 광고했나</h2>
+    <div class="tv-card">
+      <h3 class="tv-card-title">월별 온에어 소재 수</h3>
+      <p class="tv-card-note">TVCF 온에어일 기준. 음영은 분석 기간이고, 막대에 마우스를 올리면 회사별 편수가 보입니다.</p>
+      <div class="tv-legend"><span><span class="tv-sw" data-role="동국제약"></span>동국제약</span><span><span class="tv-sw"></span>경쟁사</span><span><span class="tv-band"></span>분석 기간</span></div>
+      <div class="tv-chart dash-skeleton" id="monthly-chart" data-draw="monthly" data-source="monthly period"></div>
+    </div>
+  </section>
+
+  <section id="categories" class="tv-sec">
+    <h2>제품군별 경쟁 구도</h2>
+    <p class="tv-sec-note">음영 줄이 동국제약 브랜드가 있는 제품군입니다. 브랜드를 기준으로 제품군을 나눴고, 괄호 안은 회사입니다.</p>
+    <div class="tv-card tv-tbl-card">
+      <div class="tv-tbl-wrap">
+        <table class="tv-tbl" id="category-table" data-source="category_map" data-row-key="category">
+          <thead><tr>
+            <th data-field="category">제품군</th>
+            <th data-field="dk_brands">동국제약 브랜드</th>
+            <th class="tv-r" data-field="dk_oct">동국 · <span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후</th>
+            <th class="tv-r" data-field="comp_oct">경쟁 · <span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후</th>
+            <th class="tv-col-sec" data-field="comp_oct_brands"><span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후 경쟁 브랜드</th>
+            <th class="tv-r tv-col-sec" data-field="dk_ytd">동국 · 누적</th>
+            <th class="tv-r tv-col-sec" data-field="comp_ytd">경쟁 · 누적</th>
+            <th data-field="dk_share">동국제약 점유(누적)</th>
+            <th class="tv-col-sec" data-field="comp_brands">2026년 경쟁 브랜드</th>
+          </tr></thead>
+          <tbody data-draw="category-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="mix" class="tv-sec">
+    <h2>매체와 길이</h2>
+    <div class="tv-grid2">
+      <div class="tv-card">
+        <h3 class="tv-card-title">회사별 매체 비중</h3>
+        <p class="tv-card-note">2026년 누적. TV는 공중파·케이블, 디지털은 인터넷·범퍼·바이럴</p>
+        <div class="tv-legend"><span><span class="tv-sw" data-mg="TV"></span>TV</span><span><span class="tv-sw" data-mg="가상·시보"></span>가상·시보광고</span><span><span class="tv-sw" data-mg="디지털"></span>디지털</span></div>
+        <div class="tv-chart dash-skeleton" id="media-chart" data-draw="media-chart" data-source="media_mix"></div>
+      </div>
+      <div class="tv-card">
+        <h3 class="tv-card-title">회사별 소재 길이 비중</h3>
+        <p class="tv-card-note">2026년 누적, TVCF에 기록된 영상 길이</p>
+        <div class="tv-legend"><span><span class="tv-sw" data-len="6초 이하"></span>6초 이하</span><span><span class="tv-sw" data-len="7~15초"></span>7~15초</span><span><span class="tv-sw" data-len="16~30초"></span>16~30초</span><span><span class="tv-sw" data-len="31초 이상"></span>31초 이상</span></div>
+        <div class="tv-chart dash-skeleton" id="length-chart" data-draw="length-chart" data-source="length_mix"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="recent" class="tv-sec">
+    <h2><span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후 온에어 소재</h2>
+    <p class="tv-sec-note">TVCF에 기록된 소재를 최근 온에어 순으로 봅니다. 위에서 회사·브랜드를 입력하면 해당 소재로 좁혀집니다.</p>
+    <div class="tv-card tv-tbl-card">
+      <div class="tv-tbl-wrap">
+        <table class="tv-tbl" id="recent-table" data-source="ads" data-row-key="idx">
+          <thead><tr>
+            <th data-field="onair">온에어</th>
+            <th data-field="company">회사</th>
+            <th data-field="brand">브랜드</th>
+            <th data-field="copy">카피·버전</th>
+            <th class="tv-col-sec" data-field="media">매체</th>
+            <th class="tv-r tv-col-sec" data-field="seconds">길이(초)</th>
+            <th class="tv-col-sec" data-field="models">모델</th>
+            <th>TVCF</th>
+          </tr></thead>
+          <tbody data-draw="recent-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="brands" class="tv-sec">
+    <h2>브랜드별 캠페인</h2>
+    <p class="tv-sec-note">2026년에 소재가 있는 브랜드 전체입니다. 머리글을 누르면 정렬되고, 검색창으로 브랜드·회사·모델·카피를 찾을 수 있습니다. 대행사·제작사는 TVCF에 이름이 공개된 경우만 적었습니다.</p>
+    <div class="tv-card tv-tbl-card">
+      <input class="tv-search" type="search" placeholder="브랜드 · 회사 · 모델 · 카피 검색" aria-label="브랜드 검색">
+      <div class="tv-tbl-wrap">
+        <table class="tv-tbl" id="brand-table" data-source="brand_rows" data-row-key="company,brand">
+          <thead><tr>
+            <th data-field="brand" aria-sort="none"><button class="tv-sort" data-key="brand" type="button">브랜드</button></th>
+            <th data-field="company" aria-sort="none"><button class="tv-sort" data-key="company" type="button">회사</button></th>
+            <th class="tv-col-sec" data-field="category" aria-sort="none"><button class="tv-sort" data-key="category" type="button">제품군</button></th>
+            <th class="tv-r" data-field="oct_ads" aria-sort="descending"><button class="tv-sort" data-key="oct_ads" type="button"><span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후</button></th>
+            <th data-field="ytd_ads" aria-sort="none"><button class="tv-sort" data-key="ytd_ads" type="button">2026년 누적</button></th>
+            <th data-field="last_onair" aria-sort="none"><button class="tv-sort" data-key="last_onair" type="button">최근 온에어</button></th>
+            <th class="tv-r tv-col-sec" data-field="tv_share" aria-sort="none"><button class="tv-sort" data-key="tv_share" type="button">TV</button></th>
+            <th class="tv-col-sec" data-field="models" aria-sort="none"><button class="tv-sort" data-key="models" type="button">모델</button></th>
+            <th class="tv-col-sec" data-field="agency" aria-sort="none"><button class="tv-sort" data-key="agency" type="button">대행사</button></th>
+            <th class="tv-col-sec" data-field="production" aria-sort="none"><button class="tv-sort" data-key="production" type="button">제작사</button></th>
+            <th class="tv-col-sec" data-field="latest_copy" aria-sort="none"><button class="tv-sort" data-key="latest_copy" type="button">최근 카피</button></th>
+          </tr></thead>
+          <tbody data-draw="brand-rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="takeaways" class="tv-sec">
+    <h2>동국제약이 볼 점</h2>
+    <div class="tv-card">
+      <ol class="tv-points">
+        <li><b>인사돌은 버전 수로 밀리고 있다.</b> 이가탄은 같은 메시지를 모델별 버전으로 나눠 연달아 내보냈습니다. 인사돌도 윤종신 단일 버전 외에 대상층별 버전을 더하면 같은 기간 노출 빈도를 맞출 수 있습니다.</li>
+        <li><b>탈모는 지금이 비어 있는 자리다.</b> 로게인폼과 마이녹실이 분석 기간에 새 소재를 내지 않아, 판시딜 가상광고가 이 시기 유일한 탈모 광고입니다. 본편 TV 버전을 다시 걸면 경쟁 없이 메시지를 쌓을 수 있습니다.</li>
+        <li><b>센시아·마데카솔은 상반기에 멈췄다.</b> 두 브랜드 모두 하반기 들어 새 소재가 없습니다. 혈행을 내세운 종근당 프로메가는 하반기에도 소재를 이어 갔고, 피부·상처에서는 동아제약 노스카나(원희)·멜라토닝(전지현)과 종근당 더마그램이 마데카솔과 같은 상반기에 몰렸습니다.</li>
+        <li><b>짧은 컷이 없다.</b> 경쟁사는 본편을 짧은 범퍼·가상광고로 잘라 디지털과 스포츠 중계에 함께 붙이는데, 동국제약은 6초 이하 소재가 없고 짧은 컷은 판시딜 가상광고뿐입니다. 기존 본편을 짧게 줄인 범퍼가 가장 적은 비용으로 빈도를 늘리는 방법입니다.</li>
+        <li><b>치질·남성 건강은 경쟁 광고가 없다.</b> 치센과 카리토포텐은 2026년 경쟁사 가운데 같은 제품군 광고 소재가 하나도 없어, 소재를 낼 때마다 사실상 단독 노출입니다.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="method" class="tv-sec">
+    <details class="tv-card tv-method">
+      <summary>분석 범위와 방법</summary>
+      <ul>
+        <li>출처: TVCF(tvcf.co.kr) 국내 영상 광고. 회사명으로 검색한 결과 중 광고주가 그 회사인 소재만 남겼고, CJ올리브영·하나금융그룹처럼 다른 회사가 광고주인 공동 광고와 2026년 이전 온에어 소재는 뺐습니다. 수집일은 <span data-draw="v" data-source="period" data-field="collected" data-row="0" data-fmt="fulldate">—</span>입니다.</li>
+        <li>경쟁사 선정: 동국제약 브랜드와 제품군이 겹치는 회사(명인제약·동화약품·GSK·한국존슨앤드존슨·현대약품·동아제약·종근당)와 일반의약품 TV 광고를 꾸준히 하는 회사(일동제약·대웅제약·대원제약)입니다. 회사별 경쟁 축은 회사별 비교 표에 있습니다.</li>
+        <li>기간: 온에어일이 <span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="fulldate">—</span> 이후인 소재가 분석 기간이고, <span data-draw="v" data-source="period" data-field="year_from" data-row="0" data-fmt="fulldate">—</span> 이후 전체를 2026년 누적으로 함께 봅니다. 분석 기간 소재가 <span data-draw="v" data-source="kpi" data-field="oct_ads" data-row="0" data-fmt="int">—</span>편으로 적어, 비중은 누적 값과 함께 읽는 편이 안전합니다.</li>
+        <li>소재 수: TVCF에 올라온 버전 수입니다. 길이별·모델별 버전을 각각 한 편으로 세며, 실제 집행량(GRP·광고비)은 아닙니다.</li>
+        <li>제품군·매체 묶음: 제품군은 브랜드를 기준으로 직접 나눴고, 매체는 TVCF 표기를 TV(공중파·케이블), 가상·시보광고, 디지털(인터넷·범퍼·바이럴)로 묶었습니다.</li>
+        <li>모델·대행사·제작사: TVCF 공개 정보이며, 별표로 가려진 이름은 뺐습니다.</li>
+        <li>이미지: TVCF 대표 이미지를 화면에서 캡처해 줄인 썸네일입니다. 영상은 카드 아래 링크에서 TVCF로 열 수 있습니다.</li>
+      </ul>
+    </details>
+  </section>
+
+  </div>
+
+  <div id="creatives" class="tv-pane tv-creative-pane" data-pane="creatives" role="tabpanel" aria-labelledby="tab-creatives">
+    <div class="tv-gallery-toolbar">
+      <div class="tv-gallery-toolbar-top">
+        <h2>광고 소재 갤러리</h2>
+        <div class="tv-gallery-layout" role="group" aria-label="갤러리 보기 방식">
+          <button type="button" data-gallery-layout="company" aria-pressed="true">회사별</button>
+          <button type="button" data-gallery-layout="all" aria-pressed="false">한 번에 보기</button>
+        </div>
+      </div>
+      <div class="tv-gallery-company-picker">
+        <span id="gallery-company-label">회사 선택</span>
+        <div id="gallery-company-tabs" class="tv-gallery-company-tabs" role="group" aria-labelledby="gallery-company-label"></div>
+      </div>
+      <div class="tv-gallery-periods" role="group" aria-label="온에어 기간">
+        <button type="button" data-gallery-period="1" aria-pressed="false">최근 1일</button>
+        <button type="button" data-gallery-period="3" aria-pressed="false">최근 3일</button>
+        <button type="button" data-gallery-period="7" aria-pressed="false">최근 7일</button>
+        <button type="button" data-gallery-period="14" aria-pressed="false">최근 14일</button>
+        <button type="button" data-gallery-period="30" aria-pressed="true">최근 30일</button>
+        <button type="button" data-gallery-period="from" aria-pressed="false">분석 기간</button>
+        <button type="button" data-gallery-period="h2" aria-pressed="false">하반기</button>
+        <button type="button" data-gallery-period="all" aria-pressed="false">2026년 전체</button>
+      </div>
+      <div class="tv-gallery-controls">
+        <select class="tv-select tv-gallery-media" aria-label="매체">
+          <option value="">전체 매체</option>
+          <option value="TV">TV</option>
+          <option value="가상·시보">가상·시보광고</option>
+          <option value="디지털">디지털</option>
+        </select>
+        <select class="tv-select tv-gallery-sort" aria-label="소재 정렬">
+          <option value="new">최근 온에어 순</option>
+          <option value="old">오래된 순</option>
+          <option value="long">길이 긴 순</option>
+          <option value="views">조회수 높은 순</option>
+          <option value="likes">좋아요 많은 순</option>
+          <option value="comments">댓글 많은 순</option>
+        </select>
+        <label class="tv-gallery-linked"><input type="checkbox" class="tv-gallery-matched"> 유튜브 연결만</label>
+        <div class="tv-gallery-search">
+          <input class="tv-brand-input" type="search" list="brand-options" placeholder="회사·브랜드·소재 검색" aria-label="광고 소재 검색" autocomplete="off">
+          <button class="tv-btn tv-brand-clear" type="button" hidden>지우기</button>
+        </div>
+      </div>
+      <details class="tv-comment-settings" id="tv-comment-settings">
+        <summary>댓글 원문 연결</summary>
+        <p class="tv-gallery-note">수록된 원문은 카드에서 바로 읽을 수 있습니다. 현재 공개 댓글을 유튜브에서 불러오거나, 보유한 댓글 JSON 파일을 영상 ID로 연결할 수 있습니다.</p>
+        <form id="tv-comment-connect" class="tv-comment-source">
+          <label for="tv-comment-key">YouTube Data API 키</label>
+          <input id="tv-comment-key" type="password" autocomplete="off" spellcheck="false" required aria-describedby="tv-comment-key-note">
+          <button class="tv-btn" type="submit">공개 댓글 연결</button>
+          <button class="tv-btn" id="tv-comment-disconnect" type="button" hidden>연결 해제</button>
+        </form>
+        <p id="tv-comment-key-note" class="tv-gallery-note">키는 이 페이지를 연 동안 Google의 댓글 조회에 사용됩니다. <a href="https://developers.google.com/youtube/data/getting-started" target="_blank" rel="noopener noreferrer">키 발급 안내</a></p>
+        <p id="tv-comment-connection-status" class="tv-gallery-note" role="status"></p>
+        <div class="tv-comment-source">
+          <label for="tv-comment-file">댓글 JSON 파일</label>
+          <input id="tv-comment-file" type="file" accept=".json,application/json" aria-describedby="tv-comment-file-note">
+          <button class="tv-btn" id="tv-comment-clear-file" type="button" hidden>가져온 댓글 지우기</button>
+        </div>
+        <p id="tv-comment-file-note" class="tv-gallery-note">파일은 <code>video_id</code>와 <code>text</code>가 있는 댓글 배열입니다. 작성자와 게시일은 선택 항목입니다.</p>
+        <p id="tv-comment-import-status" class="tv-gallery-note" role="status"></p>
+      </details>
+    </div>
+    <div class="tv-gallery-summary">
+      <div>
+        <p id="gallery-count" class="tv-gallery-count" role="status"></p>
+        <p id="gallery-range" class="tv-gallery-note"></p>
+        <p class="tv-gallery-note" data-draw="comment-snapshot-summary" data-source="youtube_comment_snapshot" hidden></p>
+      </div>
+      <p class="tv-gallery-note">공식 유튜브 누적 반응 · <span data-draw="v" data-source="period" data-field="collected" data-row="0" data-fmt="md">—</span> 수집<br>막대는 현재 목록의 지표별 최고치 대비</p>
+    </div>
+    <div class="tv-gallery dash-skeleton" id="gallery-grid" data-draw="gallery" data-source="ads companies creatives period ad_reactions youtube_comment_snapshot"></div>
+    <dialog id="tv-creative-detail" class="tv-creative-detail" aria-labelledby="tv-detail-title">
+      <div class="tv-detail-content">
+        <form method="dialog" class="tv-detail-close">
+          <button type="submit" class="tv-btn" autofocus>닫기</button>
+        </form>
+        <div id="tv-detail-body"></div>
+      </div>
+    </dialog>
+  </div>
+
+  <div id="sns" class="tv-pane" data-pane="sns" role="tabpanel" aria-labelledby="tab-sns" hidden>
+    <section class="tv-sec tv-monitor" data-draw="daily-source" data-channel="youtube" data-source="daily_checks youtube">
+      <div class="tv-monitor-heading">
+        <h2>유튜브 일일 점검</h2>
+        <label class="tv-monitor-date">점검 기록 <select class="tv-select" aria-label="유튜브 점검 기록"></select></label>
+      </div>
+      <div class="tv-monitor-result"></div>
+    </section>
+    <section id="sns-head" class="tv-sec">
+      <h2>유튜브 SOV와 인게이지먼트</h2>
+      <p class="tv-sec-note">회사·브랜드 공식 유튜브 채널 <b data-draw="v" data-source="yt_kpi" data-field="channels" data-row="0" data-fmt="int">—</b>곳에 2026년 올라온 영상 <b data-draw="v" data-source="yt_kpi" data-field="videos_ytd" data-row="0" data-fmt="int">—</b>편(쇼츠 포함)의 조회수·좋아요·댓글입니다. SOV는 조회수 점유율, 인게이지먼트율은 (좋아요+댓글)÷조회수입니다. 광고 집행으로 늘어난 조회수가 섞여 있고, 수치는 수집일까지 쌓인 값이라 오래된 영상일수록 쌓인 기간이 깁니다.</p>
+    </section>
+
+    <section id="sns-kpis" class="tv-kpis" aria-label="유튜브 핵심 지표">
+      <div class="tv-card">
+        <p class="tv-lbl"><span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후 게시 영상 조회수</p>
+        <p class="tv-big"><span data-draw="v" data-source="yt_kpi" data-field="views_oct" data-row="0" data-fmt="ko">—</span></p>
+        <p class="tv-sub">영상 <span data-draw="v" data-source="yt_kpi" data-field="videos_oct" data-row="0" data-fmt="int">—</span>편 · 2026년 누적 <span data-draw="v" data-source="yt_kpi" data-field="views_ytd" data-row="0" data-fmt="ko">—</span></p>
+      </div>
+      <div class="tv-card">
+        <p class="tv-lbl">동국제약 조회수 SOV</p>
+        <p class="tv-big"><span data-draw="v" data-source="yt_kpi" data-field="dk_sov_oct" data-row="0" data-fmt="pct1">—</span></p>
+        <p class="tv-sub">2026년 누적 <span data-draw="v" data-source="yt_kpi" data-field="dk_sov_ytd" data-row="0" data-fmt="pct1">—</span> · TVCF 소재 비중 <span data-draw="v" data-source="kpi" data-field="dk_oct_share" data-row="0" data-fmt="pct">—</span></p>
+      </div>
+      <div class="tv-card">
+        <p class="tv-lbl">인게이지먼트율</p>
+        <p class="tv-big"><span data-draw="v" data-source="yt_kpi" data-field="eng_oct" data-row="0" data-fmt="pct2">—</span></p>
+        <p class="tv-sub">동국제약 <span data-draw="v" data-source="yt_kpi" data-field="dk_eng_oct" data-row="0" data-fmt="pct2">—</span> · 2026년 누적 전체 <span data-draw="v" data-source="yt_kpi" data-field="eng_ytd" data-row="0" data-fmt="pct2">—</span></p>
+      </div>
+      <div class="tv-card">
+        <p class="tv-lbl">좋아요</p>
+        <p class="tv-big"><span data-draw="v" data-source="yt_kpi" data-field="likes_oct" data-row="0" data-fmt="int">—</span></p>
+        <p class="tv-sub">2026년 누적 <span data-draw="v" data-source="yt_kpi" data-field="likes_ytd" data-row="0" data-fmt="int">—</span></p>
+      </div>
+      <div class="tv-card">
+        <p class="tv-lbl">댓글</p>
+        <p class="tv-big"><span data-draw="v" data-source="yt_kpi" data-field="comments_oct" data-row="0" data-fmt="int">—</span></p>
+        <p class="tv-sub">2026년 누적 <span data-draw="v" data-source="yt_kpi" data-field="comments_ytd" data-row="0" data-fmt="int">—</span> · 댓글을 막은 채널은 빠짐</p>
+      </div>
+      <div class="tv-card">
+        <p class="tv-lbl">TVCF 소재와 연결된 영상</p>
+        <p class="tv-big"><span data-draw="v" data-source="yt_kpi" data-field="matched_ads" data-row="0" data-fmt="int">—</span><span class="tv-unit">편</span></p>
+        <p class="tv-sub">TVCF 소재 <span data-draw="v" data-source="kpi" data-field="ytd_ads" data-row="0" data-fmt="int">—</span>편 중</p>
+      </div>
+    </section>
+
+    <section id="sns-insights" class="tv-sec">
+      <h2>유튜브에서 보이는 것</h2>
+      <div class="tv-insights">
+        <article id="insight-sov-gap" class="tv-card tv-insight">
+          <p class="tv-who"><span class="tv-sw" data-role="동국제약"></span>동국제약</p>
+          <h3>TV 소재 비중만큼 유튜브 조회수가 따라오지 않는다</h3>
+          <p><span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후 동국제약은 TVCF 소재의 <b data-draw="v" data-source="kpi" data-field="dk_oct_share" data-row="0" data-fmt="pct">—</b>를 차지했지만, 같은 기간 공식 유튜브 조회수 SOV는 <b data-draw="v" data-source="yt_kpi" data-field="dk_sov_oct" data-row="0" data-fmt="pct1">—</b>입니다. 2026년 누적으로도 소재 비중 <b data-draw="v" data-source="kpi" data-field="dk_ytd_share" data-row="0" data-fmt="pct">—</b> 대비 조회수 SOV <b data-draw="v" data-source="yt_kpi" data-field="dk_sov_ytd" data-row="0" data-fmt="pct1">—</b>입니다.</p>
+          <p>같은 기간 조회수는 한국존슨앤드존슨(<b data-draw="v" data-source="yt_company" data-field="sov_oct" data-where="company=한국존슨앤드존슨" data-fmt="pct1">—</b>, 아큐브·타이레놀 콜드), 동화약품(<b data-draw="v" data-source="yt_company" data-field="sov_oct" data-where="company=동화약품" data-fmt="pct1">—</b>, 알보칠), 종근당(<b data-draw="v" data-source="yt_company" data-field="sov_oct" data-where="company=종근당" data-fmt="pct1">—</b>, 아이클리어)이 가져갔습니다.</p>
+        </article>
+        <article id="insight-sns-gum" class="tv-card tv-insight">
+          <p class="tv-who"><span class="tv-sw"></span>잇몸·구강</p>
+          <h3>잇몸·구강 유튜브는 구강용품 브랜드 판이다</h3>
+          <p>2026년 잇몸·구강 공식 영상 조회수는 인사돌 <b data-draw="v" data-source="yt_category" data-field="dk_views" data-where="category=잇몸·구강" data-fmt="ko">—</b>회, 경쟁 <b data-draw="v" data-source="yt_category" data-field="comp_views" data-where="category=잇몸·구강" data-fmt="ko">—</b>회로 인사돌 SOV는 <b data-draw="v" data-source="yt_category" data-field="dk_sov" data-where="category=잇몸·구강" data-fmt="pct1">—</b>입니다.</p>
+          <p>경쟁 조회수는 리스테린·센소다인·파로돈탁스가 대부분이고, TV에서 직접 맞붙는 이가탄은 공식 채널 조회수가 <b data-draw="v" data-source="yt_company" data-field="views_ytd" data-where="company=명인제약" data-fmt="ko">—</b>회에 그쳐 유튜브에서는 인사돌과 마찬가지로 존재감이 작습니다.</p>
+        </article>
+        <article id="insight-sns-content" class="tv-card tv-insight">
+          <p class="tv-who"><span class="tv-sw" data-role="동국제약"></span>센시아·카리토포텐</p>
+          <h3>센시아는 본편, 카리토포텐은 트롯 콘텐츠로 조회수를 모았다</h3>
+          <p>정맥·혈행에서 센시아 조회수 SOV는 <b data-draw="v" data-source="yt_category" data-field="dk_sov" data-where="category=정맥·혈행" data-fmt="pct1">—</b>이고, 남성 건강의 카리토포텐은 조회수 <b data-draw="v" data-source="yt_category" data-field="dk_views" data-where="category=남성 건강" data-fmt="ko">—</b>회로 경쟁 영상이 없습니다. 센시아는 강지영 본편이, 카리토포텐은 TV 광고가 아닌 ‘전입선’ 트롯 영상이 조회수 대부분을 만들었습니다. 동국제약 영상 중 좋아요 상위는 ‘전입선’ 트롯 영상과 센시아 ‘센치남녀·Dari’ 무대 영상이 모두 차지합니다.</p>
+          <p>반면 탈모에서 판시딜 SOV는 <b data-draw="v" data-source="yt_category" data-field="dk_sov" data-where="category=탈모" data-fmt="pct1">—</b>로, TV에서는 혼자였던 분석 기간과 달리 연간으로는 로게인폼 영상에 크게 밀립니다.</p>
+        </article>
+        <article id="insight-sns-eng" class="tv-card tv-insight">
+          <p class="tv-who"><span class="tv-sw"></span>반응</p>
+          <h3>반응률은 팬덤이 붙은 소재에서 나온다</h3>
+          <p>공식 영상 전체 인게이지먼트율은 <b data-draw="v" data-source="yt_kpi" data-field="eng_ytd" data-row="0" data-fmt="pct2">—</b>로 광고 조회수가 섞여 낮습니다. 그 가운데 마데카솔(태연) 본편은 조회수 <b data-draw="v" data-source="youtube" data-field="views" data-where="video_id=0XvC4JNiXyw" data-fmt="ko">—</b>회에 좋아요 <b data-draw="v" data-source="youtube" data-field="likes" data-where="video_id=0XvC4JNiXyw" data-fmt="int">—</b>·댓글 <b data-draw="v" data-source="youtube" data-field="comments" data-where="video_id=0XvC4JNiXyw" data-fmt="int">—</b>개로 반응률 <b data-draw="v" data-source="yt_video_eng" data-field="eng" data-where="video_id=0XvC4JNiXyw" data-fmt="pct2">—</b>를 기록했습니다.</p>
+          <p>회사 중에서는 T1 협업 콘텐츠를 올린 대웅제약이 <b data-draw="v" data-source="yt_company" data-field="eng_ytd" data-where="company=대웅제약" data-fmt="pct2">—</b>로 가장 높습니다. 콜대원·종근당건강·리스테린·타이레놀·헤일리온 브랜드 채널은 댓글을 막아 두어 반응이 좋아요로만 잡힙니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="sns-charts" class="tv-sec">
+      <h2>회사별 SOV와 반응률</h2>
+      <div class="tv-grid2">
+        <div class="tv-card">
+          <h3 class="tv-card-title">유튜브 조회수 SOV</h3>
+          <p class="tv-card-note">공식 채널 영상 조회수 점유율, 게시일 기준. 막대에 마우스를 올리면 조회수가 보입니다.</p>
+          <div class="tv-legend"><span><span class="tv-sw" data-role="동국제약"></span><span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후</span><span><span class="tv-sw tv-sw-light" data-role="동국제약"></span>2026년 누적</span></div>
+          <div class="tv-chart dash-skeleton" id="sov-chart" data-draw="sov-chart" data-source="yt_company"></div>
+        </div>
+        <div class="tv-card">
+          <h3 class="tv-card-title">인게이지먼트율</h3>
+          <p class="tv-card-note">2026년 누적 (좋아요+댓글)÷조회수. 점선은 전체 평균입니다.</p>
+          <div class="tv-chart dash-skeleton" id="eng-chart" data-draw="eng-chart" data-source="yt_company yt_kpi"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sns-companies" class="tv-sec">
+      <h2>회사별 유튜브 반응</h2>
+      <p class="tv-sec-note">공식 채널로 본 회사·브랜드 채널입니다. 명인제약은 이가탄 채널 외에 광고를 올리는 공식 채널을 찾지 못했습니다.</p>
+      <div class="tv-card tv-tbl-card">
+        <div class="tv-tbl-wrap">
+          <table class="tv-tbl" id="yt-company-table" data-source="yt_company" data-row-key="company">
+            <thead><tr>
+              <th data-field="company">회사</th>
+              <th class="tv-col-sec" data-field="channels">채널</th>
+              <th class="tv-r" data-field="videos_oct">영상 · <span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후</th>
+              <th class="tv-r" data-field="views_oct">조회수 · <span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후</th>
+              <th class="tv-r" data-field="sov_oct">SOV · <span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후</th>
+              <th class="tv-r tv-col-sec" data-field="videos_ytd">영상 · 누적</th>
+              <th data-field="views_ytd">조회수 · 누적</th>
+              <th class="tv-r" data-field="sov_ytd">SOV · 누적</th>
+              <th class="tv-r tv-col-sec" data-field="likes_ytd">좋아요</th>
+              <th class="tv-r tv-col-sec" data-field="comments_ytd">댓글</th>
+              <th class="tv-r" data-field="eng_ytd">인게이지먼트율</th>
+              <th class="tv-r tv-col-sec" data-field="avg_views_ytd">영상당 조회수</th>
+              <th class="tv-col-sec" data-field="top_title">최다 조회 영상</th>
+            </tr></thead>
+            <tbody data-draw="yt-company-rows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="sns-categories" class="tv-sec">
+      <h2>제품군별 유튜브 SOV</h2>
+      <p class="tv-sec-note">제목이나 채널로 브랜드를 알 수 있는 영상만 제품군에 넣었습니다. 음영 줄이 동국제약 브랜드가 있는 제품군입니다.</p>
+      <div class="tv-card tv-tbl-card">
+        <div class="tv-tbl-wrap">
+          <table class="tv-tbl" id="yt-category-table" data-source="yt_category" data-row-key="category">
+            <thead><tr>
+              <th data-field="category">제품군</th>
+              <th data-field="dk_brands">동국제약 브랜드</th>
+              <th class="tv-r" data-field="dk_views">동국 조회수</th>
+              <th class="tv-r" data-field="comp_views">경쟁 조회수</th>
+              <th data-field="dk_sov">동국 SOV(누적)</th>
+              <th class="tv-r tv-col-sec" data-field="dk_sov_oct">동국 SOV · <span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후</th>
+              <th class="tv-r tv-col-sec" data-field="dk_eng">동국 반응률</th>
+              <th class="tv-r tv-col-sec" data-field="comp_eng">경쟁 반응률</th>
+              <th class="tv-col-sec" data-field="comp_top">조회수 상위 경쟁 브랜드</th>
+            </tr></thead>
+            <tbody data-draw="yt-category-rows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="sns-videos" class="tv-sec">
+      <h2>영상별 조회수·좋아요·댓글</h2>
+      <p class="tv-sec-note">조회수 상위 순, 최대 300편. 머리글을 누르면 정렬되고, 위에서 입력한 회사·브랜드로도 걸러집니다. 댓글이 비어 있으면 그 채널이 댓글을 막아 둔 영상입니다.</p>
+      <div class="tv-card tv-tbl-card">
+        <div class="tv-filter-row">
+          <select class="tv-select tv-yt-period" aria-label="게시 기간" data-draw="yt-period-select" data-source="period"></select>
+          <input class="tv-search tv-yt-search" type="search" placeholder="제목 · 회사 · 브랜드 검색" aria-label="영상 검색">
+        </div>
+        <div class="tv-tbl-wrap">
+          <table class="tv-tbl" id="yt-video-table" data-source="youtube" data-row-key="video_id">
+            <thead><tr>
+              <th data-field="published" aria-sort="none"><button class="tv-sort" data-key="published" type="button">게시일</button></th>
+              <th data-field="company" aria-sort="none"><button class="tv-sort" data-key="company" type="button">회사</button></th>
+              <th class="tv-col-sec" data-field="brand" aria-sort="none"><button class="tv-sort" data-key="brand" type="button">브랜드</button></th>
+              <th data-field="title" aria-sort="none"><button class="tv-sort" data-key="title" type="button">제목</button></th>
+              <th data-field="views" aria-sort="descending"><button class="tv-sort" data-key="views" type="button">조회수</button></th>
+              <th class="tv-r" data-field="likes" aria-sort="none"><button class="tv-sort" data-key="likes" type="button">좋아요</button></th>
+              <th class="tv-r" data-field="comments" aria-sort="none"><button class="tv-sort" data-key="comments" type="button">댓글</button></th>
+              <th class="tv-r" data-source="yt_video_eng" data-field="eng" aria-sort="none"><button class="tv-sort" data-key="eng" type="button">반응률</button></th>
+              <th class="tv-col-sec" data-field="short">형식</th>
+              <th>유튜브</th>
+            </tr></thead>
+            <tbody data-draw="yt-video-rows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="sns-method" class="tv-sec">
+      <details class="tv-card tv-method">
+        <summary>유튜브 수집 범위와 방법</summary>
+        <ul>
+          <li>출처: 회사·브랜드 공식 유튜브 채널의 일반 영상과 쇼츠 중 게시일이 <span data-draw="v" data-source="period" data-field="year_from" data-row="0" data-fmt="fulldate">—</span> 이후인 영상입니다. 조회수·좋아요·댓글은 <span data-draw="v" data-source="period" data-field="collected" data-row="0" data-fmt="fulldate">—</span>에 유튜브 공개 화면에서 읽은 값입니다.</li>
+          <li>채널: 이름과 영상 내용으로 공식 채널을 골랐고, 팬·재업로드 채널은 뺐습니다. GSK는 헤일리온 브랜드(센소다인·파로돈탁스·폴리덴트)와 대상포진 캠페인 채널을 함께 셌습니다.</li>
+          <li>SOV: 회사 조회수 ÷ 분석 대상 회사 전체 조회수. 광고로 집행한 조회수가 함께 들어 있어, 순수 관심도라기보다 유튜브에서의 노출 점유율로 읽어야 합니다.</li>
+          <li>인게이지먼트율: (좋아요+댓글)÷조회수. 좋아요 수를 숨긴 영상과 댓글을 막은 채널은 그 값을 0으로 셉니다.</li>
+          <li>TVCF 소재 연결: 같은 회사·브랜드에서 게시일이 온에어일과 가깝고 제목·길이가 비슷한 영상을 한 편씩 짝지었습니다. 길이 버전을 한 영상으로 올린 경우 등은 연결되지 않습니다.</li>
+          <li>인스타그램은 로그인 없이 보이는 범위로 따로 모아 ‘인스타그램 반응’ 탭에 넣었습니다. 틱톡은 넣지 않았습니다.</li>
+        </ul>
+      </details>
+    </section>
+  </div>
+  <div id="news" class="tv-pane tv-news-pane" data-pane="news" role="tabpanel" aria-labelledby="tab-news" hidden>
+    <section class="tv-sec" aria-labelledby="tv-news-heading">
+      <div class="tv-monitor-heading">
+        <h2 id="tv-news-heading">브랜드·제품 뉴스</h2>
+        <p id="tv-news-coverage" class="tv-monitor-note"></p>
+      </div>
+      <div class="tv-card tv-news-controls">
+        <div class="tv-news-selects">
+          <label>회사 <select id="tv-news-company" class="tv-select"></select></label>
+          <label>브랜드 <select id="tv-news-brand" class="tv-select"></select></label>
+          <label>제품 <select id="tv-news-product" class="tv-select"></select></label>
+        </div>
+        <div class="tv-news-actions">
+          <div class="tv-news-providers" role="group" aria-label="기사 확인 경로">
+            <button class="tv-chip" type="button" data-news-provider="all" aria-pressed="true">전체 기사</button>
+            <button class="tv-chip" type="button" data-news-provider="naver" aria-pressed="false">네이버</button>
+            <button class="tv-chip" type="button" data-news-provider="google" aria-pressed="false">구글</button>
+          </div>
+          <div id="tv-news-search-links" class="tv-news-search-links" aria-label="포털에서 최신 기사 검색"></div>
+        </div>
+      </div>
+      <p id="tv-news-count" class="tv-monitor-note" role="status"></p>
+      <div class="tv-news-list" id="tv-news-list" data-draw="monitor-news" data-source="ads companies daily_checks"></div>
+    </section>
+  </div>
+
+  <div id="ig" class="tv-pane" data-pane="ig" role="tabpanel" aria-labelledby="tab-ig" hidden>
+    <section id="ig-head" class="tv-sec">
+      <h2>인스타그램 SOV와 인게이지먼트</h2>
+      <p class="tv-sec-note">회사·브랜드 공식 인스타그램 계정 <b data-draw="v" data-source="ig_kpi" data-field="accounts" data-row="0" data-fmt="int">—</b>곳의 팔로워와 게시물 좋아요·댓글입니다. 로그인 없이 볼 수 있는 범위만 모아, 계정마다 최근 게시물 12개(맨 앞 고정 게시물 포함)의 수치만 들어 있습니다. 릴스 조회수는 로그인해야 보여 빠졌고, SOV는 팔로워 점유율과 <span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후 게시물의 반응(좋아요+댓글) 점유율로 봅니다. 수집일 <span data-draw="v" data-source="ig_kpi" data-field="collected" data-row="0" data-fmt="fulldate">—</span>.</p>
+    </section>
+
+    <section id="ig-kpis" class="tv-kpis" aria-label="인스타그램 핵심 지표">
+      <div class="tv-card">
+        <p class="tv-lbl">공식 계정</p>
+        <p class="tv-big"><span data-draw="v" data-source="ig_kpi" data-field="accounts" data-row="0" data-fmt="int">—</span><span class="tv-unit">곳</span></p>
+        <p class="tv-sub"><span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후 게시 <span data-draw="v" data-source="ig_kpi" data-field="active" data-row="0" data-fmt="int">—</span>곳 · 명인제약은 계정 없음</p>
+      </div>
+      <div class="tv-card">
+        <p class="tv-lbl">팔로워 합계</p>
+        <p class="tv-big"><span data-draw="v" data-source="ig_kpi" data-field="followers" data-row="0" data-fmt="ko">—</span></p>
+        <p class="tv-sub">동국제약 <span data-draw="v" data-source="ig_kpi" data-field="dk_followers" data-row="0" data-fmt="ko">—</span> · 점유율 <span data-draw="v" data-source="ig_kpi" data-field="dk_follower_share" data-row="0" data-fmt="pct1">—</span></p>
+      </div>
+      <div class="tv-card">
+        <p class="tv-lbl"><span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후 반응</p>
+        <p class="tv-big"><span data-draw="v" data-source="ig_kpi" data-field="inter_oct" data-row="0" data-fmt="ko">—</span></p>
+        <p class="tv-sub">게시물 <span data-draw="v" data-source="ig_kpi" data-field="posts_oct" data-row="0" data-fmt="int">—</span>개 · 좋아요 <span data-draw="v" data-source="ig_kpi" data-field="likes_oct" data-row="0" data-fmt="int">—</span> · 댓글 <span data-draw="v" data-source="ig_kpi" data-field="comments_oct" data-row="0" data-fmt="int">—</span></p>
+      </div>
+      <div class="tv-card">
+        <p class="tv-lbl">동국제약 반응 점유율</p>
+        <p class="tv-big"><span data-draw="v" data-source="ig_kpi" data-field="dk_inter_share" data-row="0" data-fmt="pct1">—</span></p>
+        <p class="tv-sub">팔로워 점유율 <span data-draw="v" data-source="ig_kpi" data-field="dk_follower_share" data-row="0" data-fmt="pct1">—</span> · 유튜브 SOV <span data-draw="v" data-source="yt_kpi" data-field="dk_sov_oct" data-row="0" data-fmt="pct1">—</span></p>
+      </div>
+      <div class="tv-card">
+        <p class="tv-lbl">참여율 · 2026년 게시물</p>
+        <p class="tv-big"><span data-draw="v" data-source="ig_kpi" data-field="er_2026" data-row="0" data-fmt="pct2">—</span></p>
+        <p class="tv-sub">동국제약 <span data-draw="v" data-source="ig_kpi" data-field="dk_er_2026" data-row="0" data-fmt="pct2">—</span> · (좋아요+댓글)÷게시물÷팔로워</p>
+      </div>
+      <div class="tv-card">
+        <p class="tv-lbl">이벤트 게시물 반응 비중</p>
+        <p class="tv-big"><span data-draw="v" data-source="ig_kpi" data-field="event_share" data-row="0" data-fmt="pct">—</span></p>
+        <p class="tv-sub"><span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후 반응 중 #EVENT·댓글 참여 게시물 몫</p>
+      </div>
+    </section>
+
+    <section id="ig-insights" class="tv-sec">
+      <h2>인스타그램에서 보이는 것</h2>
+      <div class="tv-insights">
+        <article id="insight-ig-dk" class="tv-card tv-insight">
+          <p class="tv-who"><span class="tv-sw" data-role="동국제약"></span>동국제약</p>
+          <h3>팔로워는 세 번째로 많지만 반응은 그만큼 나오지 않는다</h3>
+          <p>동국제약 계정 두 곳의 팔로워는 <b data-draw="v" data-source="ig_kpi" data-field="dk_followers" data-row="0" data-fmt="int">—</b>명으로 분석 대상의 <b data-draw="v" data-source="ig_kpi" data-field="dk_follower_share" data-row="0" data-fmt="pct1">—</b>입니다. 하지만 <span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후 게시물 반응은 <b data-draw="v" data-source="ig_kpi" data-field="dk_inter_share" data-row="0" data-fmt="pct1">—</b>에 그치고, 2026년 게시물 참여율도 <b data-draw="v" data-source="ig_kpi" data-field="dk_er_2026" data-row="0" data-fmt="pct2">—</b>로 전체 <b data-draw="v" data-source="ig_kpi" data-field="er_2026" data-row="0" data-fmt="pct2">—</b>보다 낮습니다.</p>
+          <p>기업 계정 @dongkook_official은 <b data-draw="v" data-source="ig_view" data-field="latest_post" data-where="account=dongkook_official" data-fmt="fulldate">—</b> 이후 새 게시물이 없어, 기준일 이후 반응은 모두 헬스케어 계정에서 나왔습니다. 같은 기간 TVCF 소재 비중 <b data-draw="v" data-source="kpi" data-field="dk_oct_share" data-row="0" data-fmt="pct">—</b>, 유튜브 조회수 SOV <b data-draw="v" data-source="yt_kpi" data-field="dk_sov_oct" data-row="0" data-fmt="pct1">—</b>와 비교해 보세요.</p>
+        </article>
+        <article id="insight-ig-fandom" class="tv-card tv-insight">
+          <p class="tv-who"><span class="tv-sw"></span>반응</p>
+          <h3>반응은 아이돌 모델 게시물로 몰린다</h3>
+          <p><span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후 반응의 <b data-draw="v" data-source="ig_company" data-field="inter_share" data-where="company=현대약품" data-fmt="pct1">—</b>가 현대약품 몫이고, 대부분 TWS가 나온 미에로화이바 게시물입니다. 수험생 응원 게시물 하나가 좋아요 <b data-draw="v" data-source="instagram" data-field="likes" data-where="post_id=De_YQEzlE6w" data-fmt="int">—</b>개를 받았습니다.</p>
+          <p>동화약품(활명수1897 KOD)과 아큐브도 CORTIS가 나온 게시물에 댓글이 몰려, 많게는 게시물 하나에 천 개를 넘습니다. 두 계정은 좋아요 수를 숨겨 반응이 댓글로만 잡히므로 실제 반응은 더 큽니다.</p>
+        </article>
+        <article id="insight-ig-event" class="tv-card tv-insight">
+          <p class="tv-who"><span class="tv-sw"></span>이벤트</p>
+          <h3>반응의 상당 부분은 경품 이벤트가 만든다</h3>
+          <p><span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후 반응의 <b data-draw="v" data-source="ig_kpi" data-field="event_share" data-row="0" data-fmt="pct">—</b>가 #EVENT·댓글 참여 이벤트 게시물에서 나왔습니다. 종근당 <b data-draw="v" data-source="ig_company" data-field="event_share" data-where="company=종근당" data-fmt="pct">—</b>, 동아제약 <b data-draw="v" data-source="ig_company" data-field="event_share" data-where="company=동아제약" data-fmt="pct">—</b>, GSK <b data-draw="v" data-source="ig_company" data-field="event_share" data-where="company=GSK" data-fmt="pct">—</b>는 반응 대부분이 이벤트 게시물이고, 동국제약도 <b data-draw="v" data-source="ig_company" data-field="event_share" data-where="company=동국제약" data-fmt="pct">—</b>입니다.</p>
+          <p>이벤트를 빼면 평소 게시물 반응이 수십 개 수준인 계정이 많아, 반응 점유율은 이벤트를 얼마나 자주 여느냐에 크게 좌우됩니다.</p>
+        </article>
+        <article id="insight-ig-dormant" class="tv-card tv-insight">
+          <p class="tv-who"><span class="tv-sw"></span>계정 운영</p>
+          <h3>TV 광고 브랜드 계정 상당수가 멈춰 있다</h3>
+          <p>찾은 공식 계정 <b data-draw="v" data-source="ig_kpi" data-field="accounts" data-row="0" data-fmt="int">—</b>곳 중 <b data-draw="v" data-source="ig_kpi" data-field="dormant" data-row="0" data-fmt="int">—</b>곳은 <span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후 새 게시물이 없습니다. 가그린·판피린·로게인폼·콜대원·락토핏·활명수 브랜드 계정과 대웅제약 계정은 2026년 게시물이 없고, 프로메가는 <b data-draw="v" data-source="ig_view" data-field="latest_post" data-where="account=promega_official" data-fmt="md">—</b>, 동국제약 기업 계정은 <b data-draw="v" data-source="ig_view" data-field="latest_post" data-where="account=dongkook_official" data-fmt="md">—</b>이 마지막입니다.</p>
+          <p>명인제약(이가탄)은 공식 인스타그램 계정을 찾지 못했습니다. TV에서 맞붙는 브랜드끼리도 인스타그램에서는 비어 있는 자리가 많습니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="ig-charts" class="tv-sec">
+      <h2>회사별 점유율과 참여율</h2>
+      <div class="tv-grid2">
+        <div class="tv-card">
+          <h3 class="tv-card-title">반응 점유율과 팔로워 점유율</h3>
+          <p class="tv-card-note">막대에 마우스를 올리면 수치가 보입니다. ‘이상’이 붙은 회사는 기준일 이후 게시물이 일부만 보여 실제 반응이 더 많습니다.</p>
+          <div class="tv-legend"><span><span class="tv-sw" data-role="동국제약"></span><span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후 반응</span><span><span class="tv-sw tv-sw-light" data-role="동국제약"></span>팔로워</span></div>
+          <div class="tv-chart dash-skeleton" id="ig-share-chart" data-draw="ig-share-chart" data-source="ig_company ig_kpi"></div>
+        </div>
+        <div class="tv-card">
+          <h3 class="tv-card-title">참여율</h3>
+          <p class="tv-card-note">2026년 게시물의 (좋아요+댓글)÷게시물 수÷팔로워. 점선은 전체 평균입니다. 좋아요를 숨긴 계정은 댓글만 셉니다.</p>
+          <div class="tv-chart dash-skeleton" id="ig-er-chart" data-draw="ig-er-chart" data-source="ig_company ig_kpi"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ig-companies" class="tv-sec">
+      <h2>회사별 인스타그램 반응</h2>
+      <p class="tv-sec-note">반응 점유율 뒤에 ‘이상’이 붙은 회사는 계정 하나 이상에서 기준일 이후 게시물이 12개를 넘어 일부만 셌습니다.</p>
+      <div class="tv-card tv-tbl-card">
+        <div class="tv-tbl-wrap">
+          <table class="tv-tbl" id="ig-company-table" data-source="ig_company" data-row-key="company">
+            <thead><tr>
+              <th data-field="company">회사</th>
+              <th class="tv-col-sec" data-field="accounts">계정</th>
+              <th data-field="followers">팔로워</th>
+              <th class="tv-r" data-field="follower_share">팔로워 점유율</th>
+              <th class="tv-r" data-field="posts_oct">게시물 · <span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후</th>
+              <th class="tv-r tv-col-sec" data-field="likes_oct">좋아요</th>
+              <th class="tv-r tv-col-sec" data-field="comments_oct">댓글</th>
+              <th class="tv-r" data-field="inter_share">반응 점유율</th>
+              <th class="tv-r" data-field="er_2026">참여율</th>
+              <th class="tv-r tv-col-sec" data-field="event_share">이벤트 비중</th>
+              <th class="tv-col-sec" data-field="top_caption">반응 최다 게시물</th>
+            </tr></thead>
+            <tbody data-draw="ig-company-rows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="ig-accounts" class="tv-sec">
+      <h2>계정별 현황</h2>
+      <p class="tv-sec-note">활동 중인 계정부터, 팔로워 많은 순입니다. 계정 이름을 누르면 인스타그램에서 열립니다.</p>
+      <div class="tv-card tv-tbl-card">
+        <div class="tv-tbl-wrap">
+          <table class="tv-tbl" id="ig-account-table" data-source="ig_view" data-row-key="account">
+            <thead><tr>
+              <th data-field="account">계정</th>
+              <th data-field="company">회사</th>
+              <th class="tv-col-sec" data-field="account_label">성격</th>
+              <th data-field="followers">팔로워</th>
+              <th class="tv-r tv-col-sec" data-field="total_posts">전체 게시물</th>
+              <th data-field="latest_post">마지막 게시</th>
+              <th class="tv-r" data-field="posts_oct">게시물 · <span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후</th>
+              <th class="tv-r" data-field="inter_oct">좋아요+댓글 · <span data-draw="v" data-source="period" data-field="from" data-row="0" data-fmt="md">—</span> 이후</th>
+              <th class="tv-r tv-col-sec" data-field="avg_2026">게시물당 반응</th>
+              <th class="tv-r" data-field="er_2026">참여율</th>
+              <th data-field="status">상태</th>
+            </tr></thead>
+            <tbody data-draw="ig-account-rows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="ig-posts" class="tv-sec">
+      <h2>게시물별 좋아요·댓글</h2>
+      <p class="tv-sec-note">머리글을 누르면 정렬되고, 위에서 입력한 회사·브랜드로도 걸러집니다. 좋아요가 ‘숨김’이면 계정이 좋아요 수를 가려 둔 게시물입니다.</p>
+      <div class="tv-card tv-tbl-card">
+        <div class="tv-filter-row">
+          <select class="tv-select tv-ig-period" aria-label="게시 기간" data-draw="ig-period-select" data-source="period"></select>
+          <input class="tv-search tv-ig-search" type="search" placeholder="내용 · 회사 · 계정 검색" aria-label="게시물 검색">
+        </div>
+        <div class="tv-tbl-wrap">
+          <table class="tv-tbl" id="ig-post-table" data-source="instagram" data-row-key="post_id">
+            <thead><tr>
+              <th data-field="published" aria-sort="descending"><button class="tv-sort" data-key="published" type="button">게시일</button></th>
+              <th data-field="company" aria-sort="none"><button class="tv-sort" data-key="company" type="button">회사</button></th>
+              <th class="tv-col-sec" data-field="account" aria-sort="none"><button class="tv-sort" data-key="account" type="button">계정</button></th>
+              <th data-field="caption">내용</th>
+              <th class="tv-r" data-field="likes" aria-sort="none"><button class="tv-sort" data-key="likes" type="button">좋아요</button></th>
+              <th class="tv-r" data-field="comments" aria-sort="none"><button class="tv-sort" data-key="comments" type="button">댓글</button></th>
+              <th data-field="interactions" aria-sort="none"><button class="tv-sort" data-key="interactions" type="button">좋아요+댓글</button></th>
+              <th class="tv-col-sec" data-field="is_event">이벤트</th>
+              <th class="tv-col-sec" data-field="kind">형식</th>
+              <th>인스타그램</th>
+            </tr></thead>
+            <tbody data-draw="ig-post-rows"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="ig-method" class="tv-sec">
+      <details class="tv-card tv-method">
+        <summary>인스타그램 수집 범위와 방법</summary>
+        <ul>
+          <li>출처: 인스타그램 공개 화면을 로그인 없이 열어 <span data-draw="v" data-source="ig_kpi" data-field="collected" data-row="0" data-fmt="fulldate">—</span>에 읽은 계정 팔로워 수와 게시물별 좋아요·댓글·게시일입니다. 로그인하지 않으면 계정마다 최근 게시물 12개(맨 앞 고정 게시물 포함)만 보여, 그보다 오래된 게시물은 빠져 있습니다.</li>
+          <li>계정: 회사 홈페이지와 검색으로 찾은 회사·브랜드 공식 계정 중 회사 전체나 TV 광고 브랜드를 다루는 계정입니다. 화장품(센텔리안24)·반려동물(벳플)·다이어트 식품·쇼핑몰·대리점 계정은 뺐습니다. 리스테린·이가탄·아로나민·우루사 등은 국내 공식 계정을 찾지 못했습니다.</li>
+          <li>반응 점유율: 회사의 기준일 이후 게시물 좋아요+댓글 ÷ 분석 대상 전체. 최근 12개가 모두 기준일 이후인 계정(<span data-draw="v" data-source="ig_kpi" data-field="partial_accounts" data-row="0">—</span>)은 그보다 앞선 기준일 이후 게시물이 빠져 실제보다 작게 잡힙니다.</li>
+          <li>팔로워 점유율: 계정 팔로워 합계 ÷ 전체. 같은 사람이 여러 계정을 팔로우해도 따로 셉니다.</li>
+          <li>참여율: 2026년 게시물의 (좋아요+댓글)÷게시물 수÷팔로워. 좋아요 수를 숨긴 계정(<span data-draw="v" data-source="ig_kpi" data-field="hidden_like_accounts" data-row="0">—</span>)은 댓글만 셉니다.</li>
+          <li>이벤트 게시물: 내용에 #EVENT·이벤트·추첨·당첨·댓글 참여 문구가 있는 게시물입니다.</li>
+          <li>릴스 조회수, 스토리, 광고로만 집행한 게시물은 로그인 없이 보이지 않아 넣지 않았습니다. 틱톡도 넣지 않았습니다.</li>
+        </ul>
+      </details>
+    </section>
+  </div>
+
+</div>
+<script src="src/d3.min.js"></script>
+<script src="src/runtime.js"></script>
+<script src="src/calcs.js"></script>
+<script src="src/app.js"></script>
+<script src="src/daily.js"></script>
+<script>window.__dashStart();</script>
+</body>
+</html>

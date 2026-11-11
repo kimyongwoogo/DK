@@ -1,0 +1,296 @@
+{
+  "runs": [
+    {
+      "checked_at": "2026-11-10T12:21:52+09:00",
+      "tvcf": {
+        "status": "partial",
+        "scope": "기존 소재 8편의 TVCF 원본에서 온에어일을 확인했습니다. 등록일은 공개 화면에서 확인한 경우 표시합니다.",
+        "records": [
+          {
+            "idx": "1031413",
+            "company": "동국제약",
+            "brand": "인사돌",
+            "product": "인사돌",
+            "title": "잇몸에 좋은 선택, 인사돌",
+            "url": "https://tvcf.co.kr/play/bi1138-1031413",
+            "onair": "2026-10-20",
+            "registered": null
+          },
+          {
+            "idx": "1031414",
+            "company": "동국제약",
+            "brand": "카리토포텐",
+            "product": "카리토포텐",
+            "title": "남자들의 자신감, 카리토포텐!",
+            "url": "https://tvcf.co.kr/play/ai1149-1031414",
+            "onair": "2026-10-20",
+            "registered": null
+          },
+          {
+            "idx": "1032001",
+            "company": "대웅제약",
+            "brand": "우루사",
+            "product": "우루사",
+            "title": "시대가 변해도 당신 곁엔 우루사",
+            "url": "https://tvcf.co.kr/play/bi311-1032001",
+            "onair": "2026-10-26",
+            "registered": null
+          },
+          {
+            "idx": "1032031",
+            "company": "동화약품",
+            "brand": "알보칠",
+            "product": "알보칠",
+            "title": "구내염 칠트키 칠칠칠 알보칠_여기어때(Full)",
+            "url": "https://tvcf.co.kr/play/bi2314-1032031",
+            "onair": "2026-10-27",
+            "registered": null
+          },
+          {
+            "idx": "1032032",
+            "company": "동화약품",
+            "brand": "알보칠",
+            "product": "알보칠",
+            "title": "구내염 칠트키 칠칠칠 알보칠_라면(Full)",
+            "url": "https://tvcf.co.kr/play/ai2325-1032032",
+            "onair": "2026-10-27",
+            "registered": null
+          },
+          {
+            "idx": "1032116",
+            "company": "대웅제약",
+            "brand": "우루사",
+            "product": "우루사",
+            "title": "시대가 변해도 당신 곁엔 우루사",
+            "url": "https://tvcf.co.kr/play/ai1168-1032116",
+            "onair": "2026-10-26",
+            "registered": null
+          },
+          {
+            "idx": "1032402",
+            "company": "동아제약",
+            "brand": "판피린",
+            "product": "판피린 타임",
+            "title": "나의 판타스틱 감기약_이부펜 스틱(15s)",
+            "url": "https://tvcf.co.kr/play/ai226-1032402",
+            "onair": "2026-10-23",
+            "registered": null
+          },
+          {
+            "idx": "1032508",
+            "company": "한국존슨앤드존슨",
+            "brand": "타이레놀",
+            "product": "타이레놀 콜드",
+            "title": "타이레놀에서 나오는 감기약 주세요",
+            "url": "https://tvcf.co.kr/play/ai284-1032508",
+            "onair": "2026-11-01",
+            "registered": null
+          }
+        ]
+      },
+      "youtube": {
+        "status": "partial",
+        "scope": "최근 광고 8편의 공개 댓글 수와 이 중 4편의 공개 조회수·좋아요를 확인했습니다.",
+        "records": [
+          {
+            "video_id": "hbt0f_wzKfY",
+            "company": "동국제약",
+            "brand": "카리토포텐",
+            "product": "카리토포텐",
+            "title": "[카리토포텐 2026 신규 TV-CF] 남자들의 자신감, 카리토포텐! (강호동&이경규)",
+            "url": "https://www.youtube.com/watch?v=hbt0f_wzKfY",
+            "views": null,
+            "likes": 6,
+            "comments": 1,
+            "views_label": "1.6K"
+          },
+          {
+            "video_id": "rCboq5Z_mTk",
+            "company": "동아제약",
+            "brand": "판피린",
+            "product": "판피린 타임",
+            "title": "[판피린 타임] 나의 판타스틱 감기약_이부펜 스틱 편(15s)",
+            "url": "https://www.youtube.com/watch?v=rCboq5Z_mTk",
+            "views": null,
+            "likes": 18,
+            "comments": 6,
+            "views_label": "4.6K"
+          },
+          {
+            "video_id": "DMrg5xElA4E",
+            "company": "동아제약",
+            "brand": "판피린",
+            "product": "판피린 타임",
+            "title": "[판피린 타임] 나의 판타스틱 감기약_건조시럽 편(15s)",
+            "url": "https://www.youtube.com/watch?v=DMrg5xElA4E",
+            "views": null,
+            "likes": 35,
+            "comments": 2,
+            "views_label": "4.7K"
+          },
+          {
+            "video_id": "hVQ3HdjRWDA",
+            "company": "대웅제약",
+            "brand": "우루사",
+            "product": "우루사",
+            "title": "[우루사] 대웅제약 X 최대훈 2026 TV-CF 시대가 변해도 당신 곁엔 우루사 15S",
+            "url": "https://www.youtube.com/watch?v=hVQ3HdjRWDA",
+            "views": null,
+            "likes": null,
+            "comments": 25
+          },
+          {
+            "video_id": "FxKkU9RwoBg",
+            "company": "동화약품",
+            "brand": "알보칠",
+            "product": "알보칠",
+            "title": "알보칠_구내염칠트키 칠칠칠 알보칠_라면편(Full)",
+            "url": "https://www.youtube.com/watch?v=FxKkU9RwoBg",
+            "views": null,
+            "likes": 120,
+            "comments": 42,
+            "views_label": "12M"
+          },
+          {
+            "video_id": "nTZgxq1Igfg",
+            "company": "동화약품",
+            "brand": "알보칠",
+            "product": "알보칠",
+            "title": "알보칠_구내염칠트키 칠칠칠 알보칠_여기어때편(Full)",
+            "url": "https://www.youtube.com/watch?v=nTZgxq1Igfg",
+            "views": null,
+            "likes": null,
+            "comments": 54
+          },
+          {
+            "video_id": "A-jW76bc9X8",
+            "company": "대웅제약",
+            "brand": "우루사",
+            "product": "우루사",
+            "title": "[우루사] 대웅제약 X 최대훈 2026 TV-CF 시대가 변해도 당신 곁엔 우루사 FULL 30S",
+            "url": "https://www.youtube.com/watch?v=A-jW76bc9X8",
+            "views": null,
+            "likes": null,
+            "comments": 11
+          },
+          {
+            "video_id": "DMUTm2tvS08",
+            "company": "동아제약",
+            "brand": "판피린",
+            "product": "판피린 타임",
+            "title": "[판피린] 이찬원과 함께한 TVCF와 촬영콘티 비교",
+            "url": "https://www.youtube.com/shorts/DMUTm2tvS08",
+            "views": null,
+            "likes": null,
+            "comments": 89
+          }
+        ]
+      },
+      "news": {
+        "status": "partial",
+        "scope": "네이버·구글 뉴스에서 확인한 카리토포텐·판시딜·인사돌·우루사 기사",
+        "records": [
+          {
+            "company": "동국제약",
+            "brand": "카리토포텐",
+            "product": "카리토포텐",
+            "outlet": "뉴스1",
+            "published_on": "2026-11-09",
+            "title": "동국제약, '카리토포텐' 새 광고 공개…이경규·강호동 모델 발탁",
+            "url": "https://www.news1.kr/bio/pharmaceutical-bio/6347802",
+            "providers": [
+              "naver",
+              "google"
+            ]
+          },
+          {
+            "company": "동국제약",
+            "brand": "카리토포텐",
+            "product": "카리토포텐",
+            "outlet": "뉴시스",
+            "published_on": "2026-11-09",
+            "title": "\"달라진 일상\"…동국제약, 전립선비대증약 새광고",
+            "url": "https://www.newsis.com/view/NISX20261109_0003860163",
+            "providers": [
+              "naver"
+            ]
+          },
+          {
+            "company": "동국제약",
+            "brand": "카리토포텐",
+            "product": "카리토포텐",
+            "outlet": "녹색경제신문",
+            "published_on": "2026-11-09",
+            "title": "동국제약 카리토포텐, 이경규·강호동 투톱으로 중년 남성 공략",
+            "url": "https://www.greened.kr/news/articleView.html?idxno=354129",
+            "providers": [
+              "google"
+            ]
+          },
+          {
+            "company": "대웅제약",
+            "brand": "우루사",
+            "product": "우루사",
+            "outlet": "뉴스1",
+            "published_on": "2026-10-26",
+            "title": "대웅제약 우루사, 6년 만에 TV 광고…배우 최대훈 출연",
+            "url": "https://www.news1.kr/bio/pharmaceutical-bio/6331560",
+            "providers": [
+              "naver",
+              "google"
+            ]
+          },
+          {
+            "company": "대웅제약",
+            "brand": "우루사",
+            "product": "우루사",
+            "outlet": "데일리팜",
+            "published_on": "2026-10-26",
+            "title": "대웅 우루사, 최대훈 배우와 6년 만 신규 TV 광고 공개",
+            "url": "https://www.dailypharm.com/user/news/343801",
+            "providers": [
+              "google"
+            ]
+          },
+          {
+            "company": "동국제약",
+            "brand": "판시딜",
+            "product": "판시딜",
+            "outlet": "CNB뉴스",
+            "published_on": "2026-09-17",
+            "title": "동국제약 판시딜, 배우 하석진과 함께한 신규 TV-CF 온에어",
+            "url": "https://www.cnbnews.com/news/articleView.html?idxno=1016190",
+            "providers": [
+              "naver",
+              "google"
+            ]
+          },
+          {
+            "company": "동국제약",
+            "brand": "판시딜",
+            "product": "판시딜",
+            "outlet": "뉴스핌",
+            "published_on": "2026-09-16",
+            "title": "동국제약 탈모 치료제 '판시딜', 새 모델에 배우 하석진 발탁",
+            "url": "https://mobile2.newspim.com/news/view/20260916000581",
+            "providers": [
+              "google"
+            ]
+          },
+          {
+            "company": "동국제약",
+            "brand": "인사돌",
+            "product": "인사돌",
+            "outlet": "아시아경제",
+            "published_on": "2026-02-04",
+            "title": "동국제약, 가수 윤종신 모델 합류한 '인사돌' 신규 TV 광고",
+            "url": "https://view.asiae.co.kr/article/2026020416372852429",
+            "providers": [
+              "google"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

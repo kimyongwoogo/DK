@@ -1,0 +1,39 @@
+/* 대시보드 플랫폼이 제공하던 색·간격 변수를 파일로 열 때 쓰도록 옮긴 값 */
+:root {
+  --color-bg: #f7f6f2;
+  --color-panel: #ffffff;
+  --color-fg: #1f1e1b;
+  --color-fg-muted: #6b6963;
+  --color-border-line: #e3e1da;
+  --color-bad: #c2410c;
+  --cds-text-secondary: #6b6963;
+  --cds-surface-popover: #ffffff;
+  --cds-border: #e3e1da;
+  --cds-shadow-popover: 0 6px 20px rgba(0, 0, 0, .12);
+  --cds-chart-muted: #c3c0b8;
+  --cds-chart-grid: #ecebe5;
+  --cds-chart-axis: #a6a39b;
+  --cds-chart-reference: #57554f;
+  --cds-font-size-caption: .8125rem;
+  --cds-font-size-body: .9375rem;
+  --cds-font-size-heading: 1rem;
+  --cds-font-size-title: 1.375rem;
+  --cds-font-weight-medium: 500;
+  --cds-gap-xs: .25rem;
+  --cds-gap-sm: .5rem;
+  --cds-gap-md: 1rem;
+  --cds-gap-xl: 2.5rem;
+  --cds-pad-xs: .375rem;
+  --cds-pad-sm: .625rem;
+  --cds-pad-md: 1rem;
+  --cds-pad-lg: 1.25rem;
+  --cds-radius: .5rem;
+  --cds-dur-slow: .3s;
+  --font-anthropic-sans: system-ui, -apple-system, 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  --font-anthropic-serif: 'Nanum Myeongjo', Georgia, serif;
+}
+html { background: var(--color-bg); }
+body { margin: 0; padding: 2rem 1.25rem 4rem; background: var(--color-bg); color: var(--color-fg); }
+a { color: #1d5fd1; }
+.dash-skeleton { min-height: 6rem; border-radius: var(--cds-radius); background: linear-gradient(90deg, var(--cds-chart-grid), var(--color-panel), var(--cds-chart-grid)); }
+.tv-standalone-note { max-width: 78rem; margin: 0 auto 1rem; font: .8125rem/1.5 'Noto Sans KR', var(--font-anthropic-sans); color: var(--color-fg-muted); }
