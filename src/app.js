@@ -496,15 +496,19 @@ dash.onData(() => {
 });
 
 const tabBar = document.querySelector('.tv-tabs');
-const tabs = [...tabBar.querySelectorAll('.tv-tab')];
+const tabs = [...tabBar.querySelectorAll('.tv-tab:not([hidden])')];
 const showTab = (name, link) => {
   tabBar.closest('.tv-page').dataset.activePane = name;
-  document.querySelectorAll('.tv-pane').forEach((p) => { p.hidden = p.dataset.pane !== name; });
+  const activeTab = tabs.find((b) => b.dataset.tab === name);
+  const panel = activeTab.getAttribute('aria-controls');
+  document.querySelectorAll('.tv-pane').forEach((p) => { p.hidden = p.id !== panel; });
+  document.getElementById(panel).setAttribute('aria-labelledby', activeTab.id);
   tabs.forEach((b) => {
     const active = b.dataset.tab === name;
     b.setAttribute('aria-selected', String(active));
     b.tabIndex = active ? 0 : -1;
   });
+  activateGallery(name);
   if (link) dash.setLink(name);
 };
 tabs.forEach((b) => b.addEventListener('click', () => showTab(b.dataset.tab, true)));
@@ -523,7 +527,6 @@ document.querySelectorAll('.tv-sel-go').forEach((b) => b.addEventListener('click
   galleryTab.focus();
 }));
 const initialTab = location.hash.slice(1);
-if (tabs.some((b) => b.dataset.tab === initialTab)) showTab(initialTab, false);
 
 dash.draw('brand-options', (dl) => {
   const rows = okData('brand_options') || [];
@@ -591,22 +594,34 @@ dash.draw('sel-state', () => {
   document.querySelectorAll('.tv-sel-none').forEach((x) => { x.hidden = has || !s; });
 });
 dash.draw('tab-count', (el) => {
-  const rows = okData('ads');
-  el.textContent = rows ? fmtInt(rows.filter((a) => adMatches(a, currentTerm())).length) : '—';
+  const rows = okData(el.dataset.source);
+  el.textContent = rows ? fmtInt(rows.length) : '—';
 });
 
-const galleryState = { period: '30', company: '', media: '', sort: 'new', linked: false, layout: 'company' };
+dash.calc('competition_ads', {
+  inputs: ['ads', 'competition'],
+  fn: (ads, competition) => [
+    ...ads.filter((ad) => ad.company === DK && ad.brand === '카리토포텐'),
+    ...competition.ads,
+  ],
+});
+const galleryStates = {
+  creatives: { period: '30', selection: '', media: '', sort: 'new', linked: false, layout: 'company', term: '' },
+  caritopoten: { period: 'all', selection: '', media: '', sort: 'new', linked: false, layout: 'company', term: '' },
+};
+let galleryMode = 'creatives';
+let galleryState = galleryStates[galleryMode];
 const galleryCount = document.getElementById('gallery-count');
 const galleryRange = document.getElementById('gallery-range');
+const galleryCoverage = document.getElementById('gallery-coverage');
+const galleryReactionNote = document.getElementById('gallery-reaction-note');
+const galleryProduct = document.getElementById('gallery-product');
 const galleryCompanyTabs = document.getElementById('gallery-company-tabs');
+const gallerySearch = document.getElementById('gallery-search');
 const creativeDialog = document.getElementById('tv-creative-detail');
 const creativeDialogBody = document.getElementById('tv-detail-body');
 const GALLERY_METRICS = { views: '조회수', likes: '좋아요', comments: '댓글' };
-const GALLERY_SORTS = {
-  new: (a, b) => String(b.onair).localeCompare(String(a.onair)) || String(a.idx).localeCompare(String(b.idx)),
-  old: (a, b) => String(a.onair).localeCompare(String(b.onair)) || String(a.idx).localeCompare(String(b.idx)),
-  long: (a, b) => Number(b.seconds) - Number(a.seconds) || String(b.onair).localeCompare(String(a.onair)),
-};
+const TVCF_METRICS = { ...GALLERY_METRICS, views: '재생수' };
 const GALLERY_ICONS = {
   views: 'M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Zm13 0a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z',
   likes: 'M12 20s-8-4.7-8-10a4.2 4.2 0 0 1 8-1.8A4.2 4.2 0 0 1 20 10c0 5.3-8 10-8 10Z',
@@ -637,6 +652,44 @@ const recentStart = (end, days) => {
 };
 const adTitle = (ad) => ad.copy || ad.product || ad.brand || '제목 없는 소재';
 const adLength = (ad) => ad.seconds ? `${fmtDec1(Number(ad.seconds))}초` : '';
+const adDate = (ad) => ad.onair || ad.published || ad.registered;
+const adDateLabel = (ad) => ad.onair ? '온에어' : ad.published ? '게시' : '등록';
+const compareDates = (a, b) => adDate(a).localeCompare(adDate(b));
+const compareIds = (a, b) => String(a.idx).localeCompare(String(b.idx));
+const newestFirst = (a, b) => compareDates(b, a) || compareIds(a, b);
+const GALLERY_SORTS = {
+  new: newestFirst,
+  old: (a, b) => compareDates(a, b) || compareIds(a, b),
+  long: (a, b) => (Number(b.seconds) || 0) - (Number(a.seconds) || 0) || newestFirst(a, b),
+};
+const comparisonMode = () => galleryMode === 'caritopoten';
+const galleryGroup = (ad) => comparisonMode() ? ad.brand : ad.company;
+
+const activateGallery = (mode) => {
+  if (galleryMode === mode) return;
+  clearTimeout(termTimer);
+  galleryState.term = gallerySearch.value.trim();
+  galleryMode = mode;
+  galleryState = galleryStates[mode];
+  const comparison = comparisonMode();
+  document.getElementById('gallery-title').textContent = comparison ? '카리토포텐+경쟁사' : '동국제약+경쟁사';
+  document.getElementById('gallery-company-label').textContent = comparison ? '제품 선택' : '회사 선택';
+  document.querySelector('[data-gallery-layout="company"]').textContent = comparison ? '제품별' : '회사별';
+  document.querySelector('[data-gallery-period="all"]').textContent = comparison ? '확인된 전체 기간' : '2026년 전체';
+  document.querySelector('[data-gallery-period="from"]').hidden = comparison;
+  document.querySelector('[data-gallery-period="h2"]').hidden = comparison;
+  ['period', 'layout'].forEach((key) => {
+    document.querySelectorAll(`[data-gallery-${key}]`).forEach((button) => {
+      button.setAttribute('aria-pressed', String(button.getAttribute(`data-gallery-${key}`) === galleryState[key]));
+    });
+  });
+  ['media', 'sort'].forEach((key) => { document.querySelector(`.tv-gallery-${key}`).value = galleryState[key]; });
+  document.querySelector('.tv-gallery-matched').checked = galleryState.linked;
+  gallerySearch.value = galleryState.term;
+  if (comparison) gallerySearch.removeAttribute('list');
+  else gallerySearch.setAttribute('list', 'brand-options');
+  if (currentTerm() !== galleryState.term) commitTerm(galleryState.term);
+};
 
 ['period', 'layout'].forEach((key) => {
   const buttons = [...document.querySelectorAll(`[data-gallery-${key}]`)];
@@ -657,7 +710,7 @@ document.querySelector('.tv-gallery-matched').addEventListener('change', (event)
 galleryCompanyTabs.addEventListener('click', (event) => {
   const button = event.target.closest('button[data-gallery-company]');
   if (!button) return;
-  galleryState.company = button.dataset.galleryCompany;
+  galleryState.selection = button.dataset.galleryCompany;
   dash.draw('gallery');
 });
 galleryCompanyTabs.addEventListener('keydown', (event) => {
@@ -669,25 +722,38 @@ galleryCompanyTabs.addEventListener('keydown', (event) => {
   buttons[next].focus();
   buttons[next].click();
 });
-const renderCompanyTabs = (rows, companies) => {
-  const counts = d3.rollup(rows, (list) => list.length, (ad) => ad.company);
-  const names = ['', ...new Set([...companies.map((row) => row.company), ...counts.keys()])];
+const renderCompanyTabs = (rows, groups, allLabel) => {
+  const counts = d3.rollup(rows, (list) => list.length, galleryGroup);
+  const names = ['', ...new Set([...groups, ...counts.keys()])];
   const existing = [...galleryCompanyTabs.children];
-  if (names.length !== existing.length || names.some((name, index) => existing[index]?.dataset.galleryCompany !== name)) {
+  if (galleryCompanyTabs.dataset.mode !== galleryMode || names.length !== existing.length
+    || names.some((name, index) => existing[index]?.dataset.galleryCompany !== name)) {
+    galleryCompanyTabs.dataset.mode = galleryMode;
     galleryCompanyTabs.replaceChildren(...names.map((company) => {
       const button = el$('button', 'tv-company-tab');
       button.type = 'button';
       button.dataset.galleryCompany = company;
       button.setAttribute('aria-controls', 'gallery-grid');
-      button.append(el$('span', null, company || '전체 회사'), el$('span', 'tv-company-tab-n'));
+      button.append(el$('span', null, company || allLabel), el$('span', 'tv-company-tab-n'));
       return button;
     }));
   }
   [...galleryCompanyTabs.children].forEach((button) => {
     const company = button.dataset.galleryCompany;
-    button.setAttribute('aria-pressed', String(galleryState.company === company));
+    button.setAttribute('aria-pressed', String(galleryState.selection === company));
     button.children[1].textContent = `${fmtInt(company ? counts.get(company) || 0 : rows.length)}편`;
   });
+};
+
+showTab(tabs.some((b) => b.dataset.tab === initialTab) ? initialTab : 'creatives', false);
+
+const publicHttps = (href) => {
+  try {
+    const url = new URL(href);
+    return url.protocol === 'https:' && !url.username && !url.password ? url.href : null;
+  } catch {
+    return null;
+  }
 };
 
 const adImage = (ad, src, lazy) => {
@@ -700,10 +766,11 @@ const adImage = (ad, src, lazy) => {
   return img;
 };
 const adLinks = (ad, reaction) => {
-  const tvcf = safeLink(ad.link);
+  const tvcf = safeLink(ad.tvcf_url || ad.link);
   const youtube = reaction?.video_id ? ytLink(reaction.video_id, reaction.short) : null;
+  const archive = publicHttps(ad.archive_url);
   const links = el$('div', 'tv-ad-links');
-  [[tvcf, 'TVCF 원본'], [youtube, '유튜브 원본']].forEach(([href, label]) => {
+  [[tvcf, 'TVCF 원본'], [youtube, '유튜브 원본'], [archive, ad.archive_label || '광고 원본']].forEach(([href, label]) => {
     if (!href) return;
     const link = extLink(href, label);
     link.appendChild(galleryIcon('external'));
@@ -711,15 +778,13 @@ const adLinks = (ad, reaction) => {
   });
   return links;
 };
-const adReaction = (reaction, maxima, exact = false) => {
-  const box = el$('div', 'tv-ad-reaction');
-  const linked = Boolean(reaction?.video_id);
-  const status = el$('p', 'tv-ad-status', linked ? '유튜브 반응' : '유튜브 미연결');
+const metricGrid = (reaction, labels, maxima, exact) => {
   const metrics = el$('dl', 'tv-ad-metrics');
-  Object.entries(GALLERY_METRICS).forEach(([key, label]) => {
-    const value = linked ? reaction[key] : null;
+  Object.entries(labels).forEach(([key, label]) => {
+    const value = reaction?.[key];
     const missing = value === null || value === undefined;
-    const unavailable = linked && key === 'comments' && reaction.comments_off ? '꺼짐' : linked && key === 'likes' ? '숨김' : '—';
+    const unavailable = key === 'comments' && reaction?.comments_off ? '꺼짐'
+      : key === 'likes' && reaction?.video_id && reaction.likes_hidden !== false ? '숨김' : '—';
     const cell = el$('div', 'tv-ad-metric' + (missing ? ' is-missing' : ''));
     cell.dataset.metric = key;
     const name = el$('dt', 'tv-metric-label');
@@ -730,7 +795,7 @@ const adReaction = (reaction, maxima, exact = false) => {
     if (!exact) {
       const bar = el$('span', 'tv-metric-bar');
       bar.setAttribute('aria-hidden', 'true');
-      if (!missing && maxima[key]) {
+      if (!missing && maxima?.[key]) {
         const fill = el$('span');
         fill.style.width = (100 * value / maxima[key]) + '%';
         bar.appendChild(fill);
@@ -739,7 +804,13 @@ const adReaction = (reaction, maxima, exact = false) => {
     }
     metrics.appendChild(cell);
   });
-  box.append(status, metrics);
+  return metrics;
+};
+const adReaction = (reaction, maxima, exact = false) => {
+  const box = el$('div', 'tv-ad-reaction');
+  const label = reaction?.video_id ? '유튜브 반응' : '유튜브 미연결';
+  const date = reaction?.captured_on ? ` · ${fmtMd(reaction.captured_on)} 확인` : '';
+  box.append(el$('p', 'tv-ad-status', label + date), metricGrid(reaction, GALLERY_METRICS, maxima, exact));
   return box;
 };
 
@@ -755,13 +826,6 @@ let commentSession = null;
 let importedComments = new Map();
 let commentImportVersion = 0;
 
-dash.draw('comment-snapshot-summary', (el) => {
-  const snapshots = okData('youtube_comment_snapshot') || [];
-  el.hidden = !snapshots.length;
-  if (!snapshots.length) return;
-  const count = d3.sum(snapshots, (video) => video.comments.length);
-  el.textContent = `유튜브 공개 화면 ${fmtMd(snapshots[0].captured_on)} 확인 · 원문 수록 ${fmtInt(snapshots.length)}편 ${fmtInt(count)}건`;
-});
 const commentItem = (row) => {
   const item = el$('li');
   const date = typeof row.published_at === 'string' && /^\d{4}-\d{2}-\d{2}/.test(row.published_at)
@@ -785,7 +849,7 @@ const renderCommentPanel = (panel) => {
   const rows = imported || (captured ? captured.comments : state?.rows);
   const length = rows?.length || 0;
   count.textContent = captured
-    ? `원문 ${fmtInt(length)}/${fmtInt(captured.public_count)}건`
+    ? `원문 ${fmtInt(length)}${Number.isInteger(captured.public_count) ? '/' + fmtInt(captured.public_count) : ''}건`
     : length ? `${imported ? '파일 · ' : ''}${fmtInt(length)}건 표시` : '';
   scroll.hidden = !length;
   if (view.renderedRows !== rows) {
@@ -918,7 +982,7 @@ const openCommentSettings = () => {
 const adComments = (ad, reaction) => {
   const panel = el$('section', 'tv-ad-comments');
   const title = el$('span', 'tv-comment-title');
-  title.append(galleryIcon('comments'), document.createTextNode('공개 댓글'));
+  title.append(galleryIcon('comments'), document.createTextNode('유튜브 댓글 원문'));
   const count = el$('span', 'tv-comment-count');
   const heading = el$('div', 'tv-comment-head');
   heading.append(title, count);
@@ -932,7 +996,8 @@ const adComments = (ad, reaction) => {
   const action = el$('button', 'tv-comment-action');
   action.type = 'button';
   const videoId = ytLink(reaction?.video_id) ? String(reaction.video_id) : '';
-  const snapshot = videoId ? (okData('youtube_comment_snapshot') || []).find((row) => row.video_id === videoId) : null;
+  const snapshots = [...(okData('competition')?.youtube_comments || []), ...(okData('youtube_comment_snapshot') || [])];
+  const snapshot = videoId ? snapshots.find((row) => row.video_id === videoId) : null;
   if (videoId) panel.dataset.commentVideo = videoId;
   action.addEventListener('click', () => {
     if (commentSession && !commentSession.error) loadCommentPage(videoId);
@@ -942,6 +1007,40 @@ const adComments = (ad, reaction) => {
   panel.append(heading, scroll, message, action);
   renderCommentPanel(panel);
   return panel;
+};
+
+const adTvcfReaction = (ad, reaction, maxima, exact = false) => {
+  const box = el$('section', 'tv-ad-tvcf');
+  const linked = safeLink(ad.tvcf_url || ad.link);
+  const date = reaction?.captured_on ? ` · ${fmtMd(reaction.captured_on)} 확인` : '';
+  const comments = el$('div', 'tv-ad-comments');
+  const heading = el$('div', 'tv-comment-head');
+  const title = el$('span', 'tv-comment-title');
+  title.append(galleryIcon('comments'), document.createTextNode('TVCF 댓글 원문'));
+  heading.appendChild(title);
+  comments.appendChild(heading);
+  const rows = reaction?.comment_rows || [];
+  if (rows.length) {
+    const label = reaction.comment_visibility === 'preview' ? '미리보기' : '원문';
+    heading.appendChild(el$('span', 'tv-comment-count', `${label} ${fmtInt(rows.length)}건`));
+    const scroll = el$('div', 'tv-comment-scroll');
+    scroll.tabIndex = 0;
+    scroll.setAttribute('role', 'region');
+    scroll.setAttribute('aria-label', `${adTitle(ad)} TVCF 댓글 ${label}`);
+    const list = el$('ol', 'tv-comment-list');
+    list.append(...rows.map(commentItem));
+    scroll.appendChild(list);
+    comments.appendChild(scroll);
+  }
+  let note = '';
+  if (!linked) note = '연결된 TVCF 소재 없음';
+  else if (reaction?.status === 'login') note = 'TVCF 로그인 후 수치와 원문 확인';
+  else if (reaction?.comments === 0) note = '공개 댓글 0건';
+  else if (reaction?.comment_visibility === 'preview') note = '전체 원문은 TVCF 로그인 후 확인';
+  else if (!rows.length) note = '공개 원문 미확인';
+  if (note) comments.appendChild(el$('p', 'tv-comment-message', note));
+  box.append(el$('p', 'tv-ad-status', `TVCF 반응${date}`), metricGrid(reaction, TVCF_METRICS, maxima, exact), comments);
+  return box;
 };
 
 document.getElementById('tv-comment-connect').addEventListener('submit', (event) => {
@@ -975,7 +1074,8 @@ commentFile.addEventListener('change', async () => {
     if (version !== commentImportVersion) return;
     const rows = Array.isArray(decoded) ? decoded : decoded?.comments;
     if (!Array.isArray(rows)) throw new Error('Expected an array');
-    const ids = new Set((okData('ad_reactions') || []).map((row) => row.video_id).filter(Boolean));
+    const ids = new Set([...(okData('ad_reactions') || []), ...(okData('competition')?.youtube || [])]
+      .map((row) => row.video_id).filter(Boolean));
     const valid = rows
       .filter((row) => ids.has(row?.video_id) && typeof row.text === 'string' && row.text.trim())
       .map((row) => ({
@@ -1010,7 +1110,7 @@ commentClearFile.addEventListener('click', () => {
   observeCommentPanels();
 });
 
-const showCreativeDetail = (ad, src, reaction) => {
+const showCreativeDetail = (ad, src, { youtube, tvcf }) => {
   const media = el$('div', 'tv-detail-media');
   media.appendChild(adImage(ad, src, false));
   const info = el$('div', 'tv-detail-info');
@@ -1018,13 +1118,15 @@ const showCreativeDetail = (ad, src, reaction) => {
   title.id = 'tv-detail-title';
   const meta = el$('dl', 'tv-detail-meta');
   [
-    ['온에어', fmtFull(ad.onair)], ['제품', ad.product], ['제품군', ad.category],
-    ['매체', ad.media], ['길이', adLength(ad)], ['형식', Number(ad.vertical) ? '세로형' : '가로형'],
-    ['모델', ad.models], ['반응률', show(reaction?.eng, fmtPct2)],
+    [adDateLabel(ad), adDate(ad) && fmtFull(adDate(ad))], ['제품', ad.product], ['제품군', ad.category],
+    ['매체', ad.media], ['길이', adLength(ad)], ['광고주', ad.advertiser],
+    ['형식', ad.vertical === undefined ? '' : Number(ad.vertical) ? '세로형' : '가로형'],
+    ['모델', ad.models], ['유튜브 채널', youtube?.channel], ['유튜브 반응률', show(youtube?.eng, fmtPct2)],
   ].forEach(([label, value]) => {
     if (value && value !== '—') meta.append(el$('dt', null, label), el$('dd', null, value));
   });
-  info.append(el$('p', 'tv-ad-co', `${ad.company} · ${ad.brand}`), title, adReaction(reaction, null, true), adComments(ad, reaction), meta, adLinks(ad, reaction));
+  info.append(el$('p', 'tv-ad-co', `${ad.company} · ${ad.brand}`), title,
+    adReaction(youtube, null, true), adComments(ad, youtube), adTvcfReaction(ad, tvcf, null, true), meta, adLinks(ad, youtube));
   creativeDialogBody.replaceChildren(media, info);
   creativeDialog.showModal();
   observeCommentPanels();
@@ -1033,92 +1135,141 @@ creativeDialog.addEventListener('click', (event) => {
   if (event.target === creativeDialog) creativeDialog.close();
 });
 
-const adCard = (ad, src, reaction, maxima, grouped, isNew) => {
+const adCard = (ad, src, reactions, maxima, grouped, isNew) => {
+  const { youtube, tvcf } = reactions;
   const card = el$('article', 'tv-ad' + (ad.company === DK ? ' tv-ad-dk' : ''));
   card.dataset.creative = String(ad.idx);
   const thumb = el$('button', 'tv-thumb');
   thumb.type = 'button';
   thumb.setAttribute('aria-haspopup', 'dialog');
-  thumb.setAttribute('aria-label', `${adTitle(ad)} 소재 상세${isNew ? ' · 신규 온에어' : ''}`);
+  thumb.setAttribute('aria-label', `${adTitle(ad)} 소재 상세${isNew ? ' · 신규 소재' : ''}`);
   thumb.appendChild(adImage(ad, src, true));
   if (isNew) thumb.appendChild(el$('span', 'tv-thumb-new', 'NEW'));
   const zoom = el$('span', 'tv-thumb-zoom');
   zoom.appendChild(galleryIcon('zoom'));
   thumb.appendChild(zoom);
   if (adLength(ad)) thumb.appendChild(el$('span', 'tv-thumb-duration', adLength(ad)));
-  thumb.addEventListener('click', () => showCreativeDetail(ad, src, reaction));
+  thumb.addEventListener('click', () => showCreativeDetail(ad, src, reactions));
 
   const body = el$('div', 'tv-ad-body');
   const title = el$(grouped ? 'h4' : 'h3', 'tv-ad-head', adTitle(ad));
   title.title = adTitle(ad);
-  const who = el$('p', 'tv-ad-co', grouped && ad.brand ? ad.brand : [ad.company, ad.brand].filter(Boolean).join(' · '));
+  const who = el$('p', 'tv-ad-co', grouped ? (comparisonMode() ? ad.advertiser || ad.company : ad.brand || ad.company)
+    : [ad.company, ad.brand].filter(Boolean).join(' · '));
   const tags = el$('div', 'tv-tags');
-  tags.appendChild(el$('span', 'tv-tag tv-tag-date', `${fmtMd(ad.onair)} 온에어`));
+  const date = adDate(ad);
+  if (date) {
+    const label = comparisonMode() ? fmtFull(date) : fmtMd(date);
+    tags.appendChild(el$('span', 'tv-tag tv-tag-date', `${label} ${adDateLabel(ad)}`));
+  }
   [ad.media, ad.category, Number(ad.vertical) ? '세로형' : ''].filter(Boolean).forEach((tag) => { tags.appendChild(el$('span', 'tv-tag', tag)); });
-  body.append(who, title, tags, adReaction(reaction, maxima), adComments(ad, reaction), adLinks(ad, reaction));
+  body.append(who, title, tags, adReaction(youtube, maxima.youtube), adComments(ad, youtube),
+    adTvcfReaction(ad, tvcf, maxima.tvcf), adLinks(ad, youtube));
   card.append(thumb, body);
   return card;
 };
 
+const renderGalleryProduct = (products) => {
+  const product = products.find((item) => item.brand === galleryState.selection);
+  galleryProduct.hidden = !product;
+  if (!product) return;
+  galleryProduct.replaceChildren(el$('strong', null, `${product.brand} · ${product.company}`),
+    el$('span', null, product.type));
+  const source = publicHttps(product.url);
+  if (source) galleryProduct.appendChild(extLink(source, product.source_label || '제품 정보'));
+};
+
 const drawGallery = (el) => {
-  const rows = okData('ads');
+  const comparison = comparisonMode();
+  const source = comparison ? 'competition_ads' : 'ads';
+  const rows = okData(source);
+  const competition = okData('competition');
   const period = okData('period')?.[0];
-  if (!rows || !period) {
+  const tvcfSnapshot = okData('tvcf_reactions');
+  if (!rows || !period || !competition || !tvcfSnapshot) {
     galleryCount.textContent = '';
     galleryRange.textContent = '';
-    if (failed('ads') || failed('period')) { el.classList.remove('dash-skeleton'); failLine(el); } else el.replaceChildren();
+    if (failed(source) || failed('period')) { el.classList.remove('dash-skeleton'); failLine(el); } else el.replaceChildren();
     return;
   }
   el.classList.remove('dash-skeleton');
-  const reacts = new Map((okData('ad_reactions') || []).map((r) => [String(r.idx), r]));
+  const youtube = new Map((okData('ad_reactions') || []).map((r) => [String(r.idx), r]));
+  if (comparison) competition.youtube.forEach((reaction) => { youtube.set(String(reaction.idx), reaction); });
+  const tvcf = new Map(tvcfSnapshot.rows.map((r) => [String(r.idx), r]));
   const term = currentTerm();
-  const until = period.collected;
-  const periods = { from: period.from, h2: GALLERY_H2_FROM, all: period.year_from };
+  const until = comparison ? competition.captured_on : period.collected;
+  const first = comparison ? d3.min(rows, adDate) : period.year_from;
+  const periods = { from: period.from, h2: GALLERY_H2_FROM, all: first };
   const since = periods[galleryState.period] || recentStart(until, Number(galleryState.period));
   const newSince = recentStart(until, 7);
   const sort = galleryState.sort;
-  const sortValue = (a) => reacts.get(String(a.idx))?.[sort] ?? -1;
+  const sortValue = (ad) => (sort.startsWith('tvcf_') ? tvcf.get(String(ad.idx))?.[sort.slice(5)]
+    : youtube.get(String(ad.idx))?.[sort]) ?? -1;
   const companies = (okData('companies') || []).slice().sort((a, b) => Number(a.order) - Number(b.order));
+  const groupNames = comparison ? competition.products.map((r) => r.brand) : companies.map((r) => r.company);
+  const sorter = GALLERY_SORTS[sort] || ((a, b) => sortValue(b) - sortValue(a) || newestFirst(a, b));
   const eligible = rows
     .filter((a) => adMatches(a, term))
-    .filter((a) => a.onair >= since && a.onair <= until)
+    .filter((a) => adDate(a) >= since && adDate(a) <= until)
     .filter((a) => !galleryState.media || a.media_group === galleryState.media)
-    .filter((a) => !galleryState.linked || reacts.get(String(a.idx))?.video_id);
-  renderCompanyTabs(eligible, companies);
+    .filter((a) => !galleryState.linked || youtube.get(String(a.idx))?.video_id);
+  renderCompanyTabs(eligible, groupNames, comparison ? '전체 제품' : '전체 회사');
   const list = eligible
-    .filter((a) => !galleryState.company || a.company === galleryState.company)
-    .sort(GALLERY_SORTS[sort] || ((a, b) => sortValue(b) - sortValue(a) || GALLERY_SORTS.new(a, b)));
-  const groups = d3.group(list, (a) => a.company);
-  const linked = list.filter((a) => reacts.get(String(a.idx))?.video_id).length;
-  const summary = `${galleryState.company || `${fmtInt(groups.size)}개 회사`} · 소재 ${fmtInt(list.length)}편 · 유튜브 연결 ${fmtInt(linked)}편`;
+    .filter((a) => !galleryState.selection || galleryGroup(a) === galleryState.selection)
+    .sort(sorter);
+  const groups = d3.group(list, galleryGroup);
+  const youtubeCount = list.filter((a) => youtube.get(String(a.idx))?.video_id).length;
+  const tvcfCount = list.filter((a) => Number.isFinite(tvcf.get(String(a.idx))?.views)).length;
+  const selection = galleryState.selection || `${fmtInt(groups.size)}개 ${comparison ? '제품' : '회사'}`;
+  const summary = `${selection} · 소재 ${fmtInt(list.length)}편 · 유튜브 연결 ${fmtInt(youtubeCount)}편 · TVCF 수치 ${fmtInt(tvcfCount)}편`;
   if (galleryCount.textContent !== summary) galleryCount.textContent = summary;
-  galleryRange.textContent = `온에어 ${fmtMd(since)}–${fmtMd(until)}${!list.length && period.last_onair ? ` · 전체 데이터 최신 온에어 ${fmtMd(period.last_onair)}` : ''}`;
+  const formatDate = comparison ? fmtFull : fmtMd;
+  galleryRange.textContent = `${comparison ? '온에어·게시·등록' : '온에어'} ${formatDate(since)}–${formatDate(until)}`;
+  galleryCoverage.hidden = !comparison;
+  if (comparison) {
+    const confirmed = new Set(rows.map((a) => a.brand)).size;
+    galleryCoverage.textContent = `조사 대상 ${competition.products.length}개 제품 · 공개 영상 소재 확인 ${confirmed}개`;
+  }
+  galleryReactionNote.textContent = comparison
+    ? `TVCF ${fmtMd(tvcfSnapshot.captured_on)} 확인 · 유튜브는 카드별 확인일 표시`
+    : `유튜브 ${fmtMd(period.collected)} 수집 · TVCF ${fmtMd(tvcfSnapshot.captured_on)} 확인`;
+  galleryReactionNote.title = '막대는 매체별로 현재 목록에서 해당 지표의 최고치에 대비한 값입니다.';
+  renderGalleryProduct(comparison ? competition.products : []);
   if (!list.length) {
-    el.replaceChildren(el$('p', 'tv-empty', '조건에 맞는 소재가 없습니다.'));
+    const noCreative = comparison && galleryState.selection && !rows.some((ad) => ad.brand === galleryState.selection);
+    el.replaceChildren(el$('p', 'tv-empty', noCreative ? '조사한 공개 채널에서 광고 영상을 확인하지 못했습니다.' : '조건에 맞는 소재가 없습니다.'));
     return;
   }
   const srcOf = new Map((okData('creatives') || [])
     .filter((c) => typeof c.src === 'string' && c.src.startsWith(IMG_PREFIX) && /^[A-Za-z0-9+/=]+$/.test(c.src.slice(IMG_PREFIX.length)))
     .map((c) => [String(c.idx), c.src]));
-  const maxima = Object.fromEntries(Object.keys(GALLERY_METRICS).map((key) => [key, d3.max(list, (a) => reacts.get(String(a.idx))?.[key]) || 0]));
+  const maximum = (reactions) => Object.fromEntries(Object.keys(GALLERY_METRICS)
+    .map((key) => [key, d3.max(list, (ad) => reactions.get(String(ad.idx))?.[key]) || 0]));
+  const maxima = { youtube: maximum(youtube), tvcf: maximum(tvcf) };
   const grouped = galleryState.layout === 'company';
-  const renderCard = (ad) => adCard(ad, srcOf.get(String(ad.idx)), reacts.get(String(ad.idx)), maxima, grouped, ad.onair >= newSince);
+  const renderCard = (ad) => {
+    const idx = String(ad.idx);
+    const tvcfReaction = tvcf.get(idx);
+    const sourceAd = tvcfReaction?.url ? { ...ad, tvcf_url: tvcfReaction.url } : ad;
+    return adCard(sourceAd, srcOf.get(idx) || publicHttps(ad.image), { youtube: youtube.get(idx), tvcf: tvcfReaction },
+      maxima, grouped, adDate(ad) >= newSince);
+  };
   if (!grouped) {
     el.replaceChildren(...list.map(renderCard));
     return;
   }
-  const companyOrder = new Map(companies.map((r) => [r.company, Number(r.order)]));
-  const ordered = [...groups].map(([company, ads]) => ({ company, ads, latest: d3.max(ads, (a) => a.onair) }))
-    .sort((a, b) => Number(b.company === DK) - Number(a.company === DK)
-      || b.latest.localeCompare(a.latest) || (companyOrder.get(a.company) ?? Infinity) - (companyOrder.get(b.company) ?? Infinity)
-      || a.company.localeCompare(b.company, 'ko'));
-  el.replaceChildren(...ordered.map(({ company, ads }) => {
-    const group = el$('section', 'tv-gallery-group' + (company === DK ? ' tv-gallery-group-dk' : ''));
+  const groupOrder = new Map(groupNames.map((name, i) => [name, i]));
+  const ordered = [...groups].map(([name, ads]) => ({ name, ads, latest: d3.max(ads, adDate) }))
+    .sort((a, b) => Number(b.ads[0].company === DK) - Number(a.ads[0].company === DK)
+      || b.latest.localeCompare(a.latest) || (groupOrder.get(a.name) ?? Infinity) - (groupOrder.get(b.name) ?? Infinity)
+      || a.name.localeCompare(b.name, 'ko'));
+  el.replaceChildren(...ordered.map(({ name, ads }) => {
+    const group = el$('section', 'tv-gallery-group' + (ads[0].company === DK ? ' tv-gallery-group-dk' : ''));
     group.style.setProperty('--tv-group-size', ads.length);
     const heading = el$('header', 'tv-gallery-group-head');
     const dot = el$('span', 'tv-company-dot');
     dot.setAttribute('aria-hidden', 'true');
-    heading.append(dot, el$('h3', null, company), el$('span', 'tv-gallery-group-n', `${fmtInt(ads.length)}편`));
+    heading.append(dot, el$('h3', null, name), el$('span', 'tv-gallery-group-n', `${fmtInt(ads.length)}편`));
     const grid = el$('div', 'tv-gallery-grid');
     grid.append(...ads.map(renderCard));
     group.append(heading, grid);

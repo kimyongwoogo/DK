@@ -1,0 +1,691 @@
+{
+  "captured_on": "2026-11-12",
+  "products": [
+    {
+      "brand": "카리토포텐",
+      "company": "동국제약",
+      "type": "일반의약품",
+      "url": "https://dkbrand.co.kr/brand/caritopoten.php",
+      "source_label": "브랜드 공식 페이지"
+    },
+    {
+      "brand": "유린타민",
+      "company": "현대약품",
+      "type": "일반의약품",
+      "url": "https://health.kr/drug/2020111900006",
+      "source_label": "약학정보원 제품 정보"
+    },
+    {
+      "brand": "카리포맨",
+      "company": "유한양행",
+      "type": "일반의약품",
+      "url": "https://www.yuhan.co.kr/Products/List/?YPRD_IDX=2895&mode=view",
+      "source_label": "유한양행 제품 정보"
+    },
+    {
+      "brand": "알리코포맨",
+      "company": "알리코제약",
+      "type": "일반의약품",
+      "url": "https://health.kr/searchDrug/result_take.asp?drug_cd=2025082000001",
+      "source_label": "약학정보원 제품 정보"
+    },
+    {
+      "brand": "쿠비트",
+      "company": "CMG제약",
+      "type": "일반의약품",
+      "url": "https://health.kr/searchDrug/result_take.asp?drug_cd=2025061900002",
+      "source_label": "약학정보원 제품 정보"
+    },
+    {
+      "brand": "카포텐",
+      "company": "에이프로젠",
+      "type": "일반의약품",
+      "url": "https://www.kpanews.co.kr/news/articleView.html?idxno=544221",
+      "source_label": "카포텐 품목허가 보도"
+    },
+    {
+      "brand": "전립소",
+      "company": "CJ웰케어",
+      "type": "건강기능식품",
+      "url": "https://m.cjwellcare.com/company/brand_julipso.html",
+      "source_label": "CJ웰케어 브랜드 정보"
+    },
+    {
+      "brand": "비아노스",
+      "company": "트루포뮬러",
+      "type": "건강기능식품",
+      "url": "https://trueformula.co.kr/product/detail.html?product_no=40",
+      "source_label": "브랜드 공식 페이지"
+    },
+    {
+      "brand": "전립선 사군자",
+      "company": "휴온스엔",
+      "type": "건강기능식품",
+      "url": "https://www.huons.com/kor/home.php?go=movie",
+      "source_label": "휴온스 공식 홍보영상"
+    },
+    {
+      "brand": "쏘팔코사놀",
+      "company": "애드크로스",
+      "type": "건강기능식품",
+      "url": "https://aisac.kobaco.co.kr/site/main/advideo/view?advId=f423290d-50f6-4561-bf55-888f8c329503",
+      "source_label": "KOBACO 광고 기록 · 광고주 인포벨"
+    },
+    {
+      "brand": "쏘팔리토 포텐",
+      "company": "일동제약",
+      "type": "건강기능식품",
+      "url": "https://ildong.com/kor/bbs/news/ildong/view.id?bbsSeq=4318&menuSeq=57",
+      "source_label": "일동제약 출시 자료"
+    }
+  ],
+  "ads": [
+    {
+      "idx": "1002090",
+      "company": "동국제약",
+      "brand": "카리토포텐",
+      "product": "카리토포텐",
+      "copy": "아침이 정말 다릅니다",
+      "category": "일반의약품",
+      "media": "공중파",
+      "media_group": "TV",
+      "seconds": 15,
+      "link": "https://tvcf.co.kr/play/ai4909-1002090",
+      "onair": "2025-12-01",
+      "registered": "2025-12-02",
+      "image": "https://nmedia.tvcf.co.kr/media/print/0000579/A0005790128CDC.jpg"
+    },
+    {
+      "idx": "995306",
+      "company": "동국제약",
+      "brand": "카리토포텐",
+      "product": "카리토포텐",
+      "copy": "안 깨고. 덜 가고. 시원하게!",
+      "category": "일반의약품",
+      "media": "공중파",
+      "media_group": "TV",
+      "seconds": 15,
+      "link": "https://tvcf.co.kr/play/ah1549-995306",
+      "onair": "2025-09-20",
+      "registered": "2025-09-22",
+      "image": "https://nmedia.tvcf.co.kr/media/print/0000573/A000573526CBC4.jpg"
+    },
+    {
+      "idx": "938972",
+      "company": "동국제약",
+      "brand": "카리토포텐",
+      "product": "카리토포텐",
+      "copy": "야뇨 잔뇨 빈뇨엔 카리토포텐",
+      "category": "일반의약품",
+      "media": "가상광고",
+      "media_group": "가상·시보",
+      "seconds": 13,
+      "link": "https://tvcf.co.kr/play/ah06489-938972",
+      "onair": "2024-03-16",
+      "registered": "2024-03-18",
+      "image": "https://nmedia.tvcf.co.kr/media/print/0000527/A0005279274db4.jpg"
+    },
+    {
+      "idx": "935343",
+      "company": "동국제약",
+      "brand": "카리토포텐",
+      "product": "카리토포텐",
+      "copy": "야뇨 잔뇨 빈뇨엔 카리토포텐",
+      "category": "일반의약품",
+      "media": "공중파",
+      "media_group": "TV",
+      "seconds": 15,
+      "link": "https://tvcf.co.kr/play/bh03871-935343",
+      "onair": "2024-02-17",
+      "registered": "2024-02-19",
+      "image": "https://nmedia.tvcf.co.kr/media/print/0000525/A00052504657a9.jpg"
+    },
+    {
+      "idx": "892331",
+      "company": "동국제약",
+      "brand": "카리토포텐",
+      "product": "카리토포텐",
+      "copy": "전립선비대증 배뇨장애 개선",
+      "category": "일반의약품",
+      "media": "가상광고",
+      "media_group": "가상·시보",
+      "seconds": 7,
+      "link": "https://tvcf.co.kr/play/bh02487-892331",
+      "onair": "2022-11-22",
+      "registered": "2022-11-23",
+      "image": "https://nmedia.tvcf.co.kr/media/print/0000491/A00049145758c9.jpg"
+    },
+    {
+      "idx": "886213",
+      "company": "동국제약",
+      "brand": "카리토포텐",
+      "product": "카리토포텐",
+      "copy": "전립선비대증 배뇨장애 개선",
+      "category": "일반의약품",
+      "media": "공중파",
+      "media_group": "TV",
+      "seconds": 15,
+      "link": "https://tvcf.co.kr/play/bh01046-886213",
+      "onair": "2022-09-17",
+      "registered": "2022-09-19",
+      "image": "https://nmedia.tvcf.co.kr/media/print/0000486/A00048658419e5.jpg"
+    },
+    {
+      "idx": "940295",
+      "company": "현대약품",
+      "brand": "유린타민",
+      "product": "유린타민",
+      "copy": "유린타민으로 개선",
+      "category": "일반의약품",
+      "media": "케이블",
+      "media_group": "TV",
+      "seconds": 15,
+      "link": "https://tvcf.co.kr/play/bh18557-940295",
+      "onair": "2024-04-01",
+      "registered": "2024-04-01",
+      "image": "https://nmedia.tvcf.co.kr/media/print/0000529/A0005290004041.jpg"
+    },
+    {
+      "idx": "888707",
+      "company": "현대약품",
+      "brand": "유린타민",
+      "product": "유린타민",
+      "copy": "허재",
+      "category": "일반의약품",
+      "media": "케이블",
+      "media_group": "TV",
+      "seconds": 15,
+      "link": "https://tvcf.co.kr/play/bh1565-888707",
+      "onair": "2022-10-17",
+      "registered": "2022-10-19",
+      "image": "https://nmedia.tvcf.co.kr/media/print/0000488/A00048846147C9.jpg"
+    },
+    {
+      "idx": "998112",
+      "company": "애드크로스",
+      "brand": "쏘팔코사놀",
+      "product": "쏘팔코사놀",
+      "copy": "남자의 고민 전립선! 지구력! +활력",
+      "category": "건강기능식품",
+      "media": "공중파",
+      "media_group": "TV",
+      "seconds": 60,
+      "link": "https://tvcf.co.kr/play/ah01084-998112",
+      "onair": "2025-10-25",
+      "registered": "2025-10-27",
+      "image": "https://nmedia.tvcf.co.kr/media/print/0000575/A00057556177A9.jpg",
+      "advertiser": "인포벨"
+    },
+    {
+      "idx": "966172",
+      "company": "애드크로스",
+      "brand": "쏘팔코사놀",
+      "product": "쏘팔코사놀",
+      "copy": "남자를 위한 좋은 빨간색",
+      "category": "건강기능식품",
+      "media": "공중파",
+      "media_group": "TV",
+      "seconds": 30,
+      "link": "https://tvcf.co.kr/play/ah06481-966172",
+      "onair": "2024-11-27",
+      "registered": "2025-01-01",
+      "image": "https://nmedia.tvcf.co.kr/media/print/0000550/A0005501201A5A.jpg",
+      "advertiser": "인포벨"
+    },
+    {
+      "idx": "968982",
+      "company": "애드크로스",
+      "brand": "쏘팔코사놀",
+      "product": "쏘팔코사놀",
+      "copy": "남자를 위한 좋은 빨간색",
+      "category": "건강기능식품",
+      "media": "가상광고",
+      "media_group": "가상·시보",
+      "seconds": 8,
+      "link": "https://tvcf.co.kr/play/ah07381-968982",
+      "onair": "2024-12-28",
+      "registered": "2024-12-30",
+      "image": "https://nmedia.tvcf.co.kr/media/print/0000552/A000552107F17F.jpg",
+      "advertiser": "인포벨"
+    },
+    {
+      "idx": "958865",
+      "company": "애드크로스",
+      "brand": "쏘팔코사놀",
+      "product": "쏘팔코사놀",
+      "copy": "남자의 고민! 전립선! 지구력! 활력!",
+      "category": "건강기능식품",
+      "media": "공중파",
+      "media_group": "TV",
+      "seconds": 14,
+      "link": "https://tvcf.co.kr/play/bh05851-958865",
+      "onair": "2024-09-16",
+      "registered": "2024-09-19",
+      "image": "https://nmedia.tvcf.co.kr/media/print/0000544/A0005440421CF8.jpg",
+      "advertiser": "인포벨"
+    },
+    {
+      "idx": "785969",
+      "company": "애드크로스",
+      "brand": "쏘팔코사놀",
+      "product": "쏘팔코사놀",
+      "copy": "남자의 전립선 지구력",
+      "category": "건강기능식품",
+      "media": "공중파",
+      "media_group": "TV",
+      "seconds": 59,
+      "link": "https://tvcf.co.kr/play/bh04836-785969",
+      "onair": "2020-05-09",
+      "registered": "2020-05-22",
+      "image": "https://nmedia.tvcf.co.kr/media/print/0000406/A0004062759991.jpg",
+      "advertiser": "인포벨"
+    },
+    {
+      "idx": "adic-2303246",
+      "company": "CJ웰케어",
+      "brand": "전립소",
+      "product": "전립소",
+      "copy": "전립선 건강 전립소 프리미엄으로",
+      "category": "건강기능식품",
+      "media": "TV",
+      "media_group": "TV",
+      "registered": "2023-12-21",
+      "archive_url": "https://www.ad.co.kr/ad/tv/show.do?oid=%40104253%7C22%7C21&ukey=2303246",
+      "archive_label": "광고정보센터 원본",
+      "image": "https://thumb.ad.co.kr/ad/t/54/2f/09/0e/t/l/2303246.jpg",
+      "advertiser": "CJ웰케어"
+    },
+    {
+      "idx": "adic-2362273",
+      "company": "휴온스엔",
+      "brand": "전립선 사군자",
+      "product": "전립선 사군자",
+      "copy": "전립선 사군자 프리미엄",
+      "category": "건강기능식품",
+      "media": "TV",
+      "media_group": "TV",
+      "seconds": 30,
+      "registered": "2024-03-22",
+      "archive_url": "https://www.ad.co.kr/ad/tv/show.do?oid=%40141224%7C17%7C21&ukey=2362273",
+      "archive_label": "광고정보센터 원본",
+      "image": "https://thumb.ad.co.kr/ad/t/54/2f/ef/a1/t/l/2362273.jpg",
+      "advertiser": "지앤지365",
+      "models": "진성"
+    },
+    {
+      "idx": "yt-qY5NshXGXng",
+      "company": "현대약품",
+      "brand": "유린타민",
+      "product": "유린타민",
+      "copy": "허재 편 ver.2",
+      "category": "일반의약품",
+      "media": "디지털(유튜브)",
+      "media_group": "디지털",
+      "seconds": 15,
+      "published": "2022-10-28",
+      "image": "https://i.ytimg.com/vi/qY5NshXGXng/hqdefault.jpg"
+    },
+    {
+      "idx": "yt-MIp-kYKyqcs",
+      "company": "CJ웰케어",
+      "brand": "전립소",
+      "product": "전립소",
+      "copy": "전립소 참당귀황기 프리미엄",
+      "category": "건강기능식품",
+      "media": "디지털(유튜브)",
+      "media_group": "디지털",
+      "seconds": 120,
+      "published": "2026-08-18",
+      "image": "https://i.ytimg.com/vi/MIp-kYKyqcs/hqdefault.jpg"
+    },
+    {
+      "idx": "yt-70Z4sFsuDpA",
+      "company": "휴온스엔",
+      "brand": "전립선 사군자",
+      "product": "전립선 사군자",
+      "copy": "진성이 소개하는 전립선 사군자",
+      "category": "건강기능식품",
+      "media": "디지털(유튜브)",
+      "media_group": "디지털",
+      "seconds": 120,
+      "published": "2022-12-02",
+      "image": "https://i.ytimg.com/vi/70Z4sFsuDpA/hqdefault.jpg"
+    },
+    {
+      "idx": "yt-uat1rPT_fSc",
+      "company": "휴온스엔",
+      "brand": "전립선 사군자",
+      "product": "전립선 사군자",
+      "copy": "전립선 사군자 프리미엄 30초",
+      "category": "건강기능식품",
+      "media": "디지털(유튜브)",
+      "media_group": "디지털",
+      "seconds": 30,
+      "published": "2025-03-28",
+      "image": "https://i.ytimg.com/vi/uat1rPT_fSc/hqdefault.jpg"
+    },
+    {
+      "idx": "yt-ZJGx_SxU3fo",
+      "company": "애드크로스",
+      "brand": "쏘팔코사놀",
+      "product": "쏘팔코사놀",
+      "copy": "행복한 남자들 곁엔 쏘팔코사놀 레드",
+      "category": "건강기능식품",
+      "media": "디지털(유튜브)",
+      "media_group": "디지털",
+      "seconds": 60,
+      "published": "2024-02-26",
+      "image": "https://i.ytimg.com/vi/ZJGx_SxU3fo/hqdefault.jpg",
+      "advertiser": "인포벨"
+    },
+    {
+      "idx": "yt-88n3Amteckc",
+      "company": "애드크로스",
+      "brand": "쏘팔코사놀",
+      "product": "쏘팔코사놀",
+      "copy": "쏘팔코사놀 남진·이용식 편",
+      "category": "건강기능식품",
+      "media": "디지털(유튜브)",
+      "media_group": "디지털",
+      "seconds": 20,
+      "published": "2024-11-14",
+      "image": "https://i.ytimg.com/vi/88n3Amteckc/hqdefault.jpg",
+      "advertiser": "인포벨"
+    },
+    {
+      "idx": "yt-Sgi-PxrbrnI",
+      "company": "애드크로스",
+      "brand": "쏘팔코사놀",
+      "product": "쏘팔코사놀",
+      "copy": "쏘팔코사놀 레드 30초 광고방송",
+      "category": "건강기능식품",
+      "media": "디지털(유튜브)",
+      "media_group": "디지털",
+      "seconds": 30,
+      "published": "2024-05-10",
+      "image": "https://i.ytimg.com/vi/Sgi-PxrbrnI/hqdefault.jpg",
+      "advertiser": "인포벨"
+    },
+    {
+      "idx": "yt-TOYjuzyAcQw",
+      "company": "애드크로스",
+      "brand": "쏘팔코사놀",
+      "product": "쏘팔코사놀",
+      "copy": "쏘팔코사놀 레드 인포벨 홈쇼핑",
+      "category": "건강기능식품",
+      "media": "디지털(유튜브)",
+      "media_group": "디지털",
+      "seconds": 360,
+      "published": "2025-10-02",
+      "image": "https://i.ytimg.com/vi/TOYjuzyAcQw/hqdefault.jpg",
+      "advertiser": "인포벨"
+    }
+  ],
+  "youtube": [
+    {
+      "idx": "1031414",
+      "video_id": "hbt0f_wzKfY",
+      "views": 1883,
+      "likes": 7,
+      "comments": 1,
+      "comments_off": false,
+      "captured_on": "2026-11-12",
+      "likes_hidden": false,
+      "channel": "동국제약",
+      "eng": 0.004248539564524694
+    },
+    {
+      "idx": "1020930",
+      "video_id": "ZcKd2jf6_Yc",
+      "views": 1828513,
+      "likes": 2545,
+      "comments": 16,
+      "comments_off": false,
+      "captured_on": "2026-11-12",
+      "likes_hidden": false,
+      "channel": "동국제약",
+      "eng": 0.0014005916282793724
+    },
+    {
+      "idx": "1020928",
+      "video_id": "noUuUrJu4xc",
+      "views": 5446818,
+      "likes": 2082,
+      "comments": 42,
+      "comments_off": false,
+      "captured_on": "2026-11-12",
+      "likes_hidden": false,
+      "channel": "동국제약",
+      "eng": 0.00038995244562972366
+    },
+    {
+      "idx": "1002090",
+      "video_id": "Wq4UBeMwFDM",
+      "views": 14586,
+      "likes": 32,
+      "comments": 5,
+      "comments_off": false,
+      "captured_on": "2026-11-12",
+      "likes_hidden": false,
+      "channel": "동국제약",
+      "eng": 0.0025366790072672424
+    },
+    {
+      "idx": "995306",
+      "video_id": "pMvnJdRgyW0",
+      "views": 2825141,
+      "likes": 77,
+      "comments": 7,
+      "comments_off": false,
+      "captured_on": "2026-11-12",
+      "likes_hidden": false,
+      "channel": "동국제약",
+      "eng": 2.9733029254115103e-05
+    },
+    {
+      "idx": "935343",
+      "video_id": "HCpSnHPypbM",
+      "views": 60883,
+      "likes": 92,
+      "comments": 22,
+      "comments_off": false,
+      "captured_on": "2026-11-12",
+      "likes_hidden": false,
+      "channel": "동국제약",
+      "eng": 0.0018724438677463332
+    },
+    {
+      "idx": "886213",
+      "video_id": "8h8sdwHHDfg",
+      "views": 29281,
+      "likes": 43,
+      "comments": 3,
+      "comments_off": false,
+      "captured_on": "2026-11-12",
+      "likes_hidden": false,
+      "channel": "동국제약",
+      "eng": 0.0015709845975205765
+    },
+    {
+      "idx": "888707",
+      "video_id": "_RPDXVLzlRU",
+      "views": 7388,
+      "likes": 126,
+      "comments": 34,
+      "comments_off": false,
+      "captured_on": "2026-11-12",
+      "likes_hidden": false,
+      "channel": "현대약품 (주)",
+      "eng": 0.02165674066053059
+    },
+    {
+      "idx": "940295",
+      "video_id": "Iu2uB6Xl-PE",
+      "views": 1639197,
+      "likes": 69,
+      "comments": 4,
+      "comments_off": false,
+      "captured_on": "2026-11-12",
+      "likes_hidden": false,
+      "channel": "현대약품 (주)",
+      "eng": 4.453400048926395e-05
+    },
+    {
+      "idx": "yt-qY5NshXGXng",
+      "video_id": "qY5NshXGXng",
+      "views": 915930,
+      "likes": 35,
+      "comments": 13,
+      "comments_off": false,
+      "captured_on": "2026-11-12",
+      "likes_hidden": false,
+      "channel": "현대약품 (주)",
+      "eng": 5.2405751531230555e-05
+    },
+    {
+      "idx": "yt-MIp-kYKyqcs",
+      "video_id": "MIp-kYKyqcs",
+      "views": 210,
+      "likes": 0,
+      "comments": null,
+      "comments_off": false,
+      "captured_on": "2026-11-12",
+      "likes_hidden": false,
+      "channel": "CJ 웰케어 (CJ Wellcare)",
+      "eng": null
+    },
+    {
+      "idx": "yt-70Z4sFsuDpA",
+      "video_id": "70Z4sFsuDpA",
+      "views": 36282,
+      "likes": 91,
+      "comments": null,
+      "comments_off": true,
+      "captured_on": "2026-11-12",
+      "likes_hidden": false,
+      "channel": "휴온스글로벌 Huons Global",
+      "eng": null
+    },
+    {
+      "idx": "yt-uat1rPT_fSc",
+      "video_id": "uat1rPT_fSc",
+      "views": 1245,
+      "likes": 1,
+      "comments": 2,
+      "comments_off": false,
+      "captured_on": "2026-11-12",
+      "likes_hidden": false,
+      "channel": "제이엔프로광고대행사 TV,라디오 (유튜브광고문의)",
+      "eng": 0.0024096385542168677
+    },
+    {
+      "idx": "yt-ZJGx_SxU3fo",
+      "video_id": "ZJGx_SxU3fo",
+      "views": 7352,
+      "likes": 25,
+      "comments": 12,
+      "comments_off": false,
+      "captured_on": "2026-11-12",
+      "likes_hidden": false,
+      "channel": "인포벨INFOBELL",
+      "eng": 0.005032644178454842
+    },
+    {
+      "idx": "yt-88n3Amteckc",
+      "video_id": "88n3Amteckc",
+      "views": 297577,
+      "likes": null,
+      "comments": null,
+      "comments_off": true,
+      "captured_on": "2026-11-12",
+      "likes_hidden": true,
+      "channel": "인포벨INFOBELL",
+      "eng": null
+    },
+    {
+      "idx": "yt-Sgi-PxrbrnI",
+      "video_id": "Sgi-PxrbrnI",
+      "views": 46985,
+      "likes": null,
+      "comments": 1,
+      "comments_off": false,
+      "captured_on": "2026-11-12",
+      "likes_hidden": true,
+      "channel": "인포벨INFOBELL",
+      "eng": null
+    },
+    {
+      "idx": "yt-TOYjuzyAcQw",
+      "video_id": "TOYjuzyAcQw",
+      "views": 11743,
+      "likes": 12,
+      "comments": 6,
+      "comments_off": false,
+      "captured_on": "2026-11-12",
+      "likes_hidden": false,
+      "channel": "인포벨INFOBELL",
+      "eng": 0.0015328280677850633
+    }
+  ],
+  "youtube_comments": [
+    {
+      "video_id": "Iu2uB6Xl-PE",
+      "public_count": 4,
+      "url": "https://www.youtube.com/watch?v=Iu2uB6Xl-PE",
+      "comments": [
+        {
+          "text": "손현주씨 오랜만에 뵙네요 반갑습니다..."
+        },
+        {
+          "text": "2010년 SBS 주말극장 '이웃집 웬수' \n은서 아빠 역할 딸 은서와 함께!!"
+        }
+      ],
+      "captured_on": "2026-11-12"
+    },
+    {
+      "video_id": "_RPDXVLzlRU",
+      "public_count": 34,
+      "url": "https://www.youtube.com/watch?v=_RPDXVLzlRU",
+      "comments": [
+        {
+          "text": "대박나세요 허재님~~\n홧튕 ~~!!!"
+        },
+        {
+          "text": "귀여우세용 ~~ㅎㅎㅎ"
+        },
+        {
+          "text": "유린타민 화이팅!!!"
+        }
+      ],
+      "captured_on": "2026-11-12"
+    },
+    {
+      "video_id": "pMvnJdRgyW0",
+      "public_count": 7,
+      "url": "https://www.youtube.com/watch?v=pMvnJdRgyW0",
+      "comments": [
+        {
+          "text": "판시딜은 김성주 & 강호동\n카리토포텐은 김성주 & 안정환"
+        },
+        {
+          "text": "강호동 씨름선수때.."
+        }
+      ],
+      "captured_on": "2026-11-12"
+    },
+    {
+      "video_id": "Wq4UBeMwFDM",
+      "public_count": 5,
+      "url": "https://www.youtube.com/watch?v=Wq4UBeMwFDM",
+      "comments": [
+        {
+          "text": "잔뇨야 안녕~"
+        },
+        {
+          "text": "동국제약 \n메리크리스마스"
+        }
+      ],
+      "captured_on": "2026-11-12"
+    }
+  ]
+}
