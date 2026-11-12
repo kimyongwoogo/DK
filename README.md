@@ -11,7 +11,7 @@
 
 ## 열기
 
-GitHub Pages에서 `main` 브랜치의 루트 폴더를 게시하면 [`index.html`](index.html)이 표시됩니다. 게시 설정은 [Settings → Pages](https://github.com/kimyongwoogo/DK/settings/pages)에 있습니다.
+GitHub Pages 게시가 완료되면 [대시보드 웹 주소](https://kimyongwoogo.github.io/DK/)에서 열 수 있습니다. 게시 원본은 `main` 브랜치 루트의 [`index.html`](index.html)입니다. 게시 설정은 [Settings → Pages](https://github.com/kimyongwoogo/DK/settings/pages)에 있습니다.
 
 로컬에서는 저장소 루트에서 `python3 -m http.server 8000`을 실행한 뒤 `http://localhost:8000`을 엽니다.
 
