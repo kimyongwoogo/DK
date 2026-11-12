@@ -3,7 +3,7 @@
   const files = [
     'ads', 'companies', 'creatives', 'fonts', 'youtube', 'instagram',
     'ig_accounts', 'youtube_comment_snapshot', 'daily_checks', 'competition',
-    'tvcf_reactions',
+    'tvcf_reactions', 'metric_updates',
   ];
   const DATA = {};
   const calcs = {};
@@ -51,10 +51,15 @@
   window.__dashStart = async () => {
     try {
       const data = await Promise.all(files.map(async (name) => {
-        const options = ['daily_checks', 'competition', 'tvcf_reactions'].includes(name) ? { cache: 'no-cache' } : undefined;
-        const response = await fetch(new URL('data/' + name + '.json', document.baseURI), options);
-        if (!response.ok) throw new Error(name + ': HTTP ' + response.status);
-        return [name, await response.json()];
+        const options = ['daily_checks', 'competition', 'tvcf_reactions', 'metric_updates'].includes(name) ? { cache: 'no-cache' } : undefined;
+        try {
+          const response = await fetch(new URL('data/' + name + '.json', document.baseURI), options);
+          if (!response.ok) throw new Error(name + ': HTTP ' + response.status);
+          return [name, await response.json()];
+        } catch (error) {
+          if (name !== 'metric_updates') throw error;
+          return [name, null];
+        }
       }));
       Object.assign(DATA, Object.fromEntries(data));
       ready = true;

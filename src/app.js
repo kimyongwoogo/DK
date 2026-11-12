@@ -14,6 +14,11 @@ const fmtDec1 = d3.format('.1f');
 const toDate = (s) => new Date(String(s).slice(0, 10) + 'T00:00:00Z');
 const fmtMd = (s) => d3.utcFormat('%-m월 %-d일')(toDate(s));
 const fmtFull = (s) => d3.utcFormat('%Y년 %-m월 %-d일')(toDate(s));
+const metricTime = new Intl.DateTimeFormat('ko-KR', {
+  timeZone: 'Asia/Seoul', month: 'long', day: 'numeric',
+  hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
+});
+const fmtMetricTime = (value) => value.includes('T') ? metricTime.format(new Date(value)) : fmtMd(value);
 const fmtMonth = (s) => d3.utcFormat('%-m월')(toDate(String(s).slice(0, 7) + '-01'));
 const fmtPct1 = d3.format('.1%');
 const fmtPct2 = d3.format('.2%');
@@ -784,7 +789,7 @@ const metricGrid = (reaction, labels, maxima, exact) => {
     const value = reaction?.[key];
     const missing = value === null || value === undefined;
     const unavailable = key === 'comments' && reaction?.comments_off ? '꺼짐'
-      : key === 'likes' && reaction?.video_id && reaction.likes_hidden !== false ? '숨김' : '—';
+      : key === 'likes' && reaction?.likes_hidden === true ? '숨김' : '—';
     const cell = el$('div', 'tv-ad-metric' + (missing ? ' is-missing' : ''));
     cell.dataset.metric = key;
     const name = el$('dt', 'tv-metric-label');
@@ -792,6 +797,13 @@ const metricGrid = (reaction, labels, maxima, exact) => {
     const number = el$('dd', 'tv-metric-value', missing ? unavailable : exact ? fmtInt(value) : fmtKo(value));
     if (!missing) number.title = fmtInt(value);
     cell.append(name, number);
+    const earlier = reaction?.previousMetricTime?.[key];
+    if (earlier) {
+      const previous = el$('dd', 'tv-metric-previous', '이전 확인값');
+      previous.title = fmtMetricTime(earlier);
+      previous.setAttribute('aria-label', `${fmtMetricTime(earlier)} 이전 확인값`);
+      cell.appendChild(previous);
+    }
     if (!exact) {
       const bar = el$('span', 'tv-metric-bar');
       bar.setAttribute('aria-hidden', 'true');
@@ -809,7 +821,8 @@ const metricGrid = (reaction, labels, maxima, exact) => {
 const adReaction = (reaction, maxima, exact = false) => {
   const box = el$('div', 'tv-ad-reaction');
   const label = reaction?.video_id ? '유튜브 반응' : '유튜브 미연결';
-  const date = reaction?.captured_on ? ` · ${fmtMd(reaction.captured_on)} 확인` : '';
+  const captured = reaction?.checked_at || reaction?.captured_on;
+  const date = captured ? ` · ${fmtMetricTime(captured)} 확인` : '';
   box.append(el$('p', 'tv-ad-status', label + date), metricGrid(reaction, GALLERY_METRICS, maxima, exact));
   return box;
 };
@@ -1012,17 +1025,19 @@ const adComments = (ad, reaction) => {
 const adTvcfReaction = (ad, reaction, maxima, exact = false) => {
   const box = el$('section', 'tv-ad-tvcf');
   const linked = safeLink(ad.tvcf_url || ad.link);
-  const date = reaction?.captured_on ? ` · ${fmtMd(reaction.captured_on)} 확인` : '';
+  const captured = reaction?.checked_at || reaction?.captured_on;
+  const date = captured ? ` · ${fmtMetricTime(captured)} 확인` : '';
   const comments = el$('div', 'tv-ad-comments');
   const heading = el$('div', 'tv-comment-head');
   const title = el$('span', 'tv-comment-title');
   title.append(galleryIcon('comments'), document.createTextNode('TVCF 댓글 원문'));
   heading.appendChild(title);
   comments.appendChild(heading);
-  const rows = reaction?.comment_rows || [];
+  const rows = reaction?.comments === 0 ? [] : reaction?.comment_rows || [];
   if (rows.length) {
     const label = reaction.comment_visibility === 'preview' ? '미리보기' : '원문';
-    heading.appendChild(el$('span', 'tv-comment-count', `${label} ${fmtInt(rows.length)}건`));
+    const capturedComments = reaction.checked_at && reaction.captured_on ? ` · ${fmtMd(reaction.captured_on)} 수록` : '';
+    heading.appendChild(el$('span', 'tv-comment-count', `${label} ${fmtInt(rows.length)}건${capturedComments}`));
     const scroll = el$('div', 'tv-comment-scroll');
     scroll.tabIndex = 0;
     scroll.setAttribute('role', 'region');
@@ -1179,6 +1194,28 @@ const renderGalleryProduct = (products) => {
   if (source) galleryProduct.appendChild(extLink(source, product.source_label || '제품 정보'));
 };
 
+const updatedVideoReaction = (reaction, records, initialDate) => {
+  if (!reaction.video_id) return reaction;
+  if (!Object.hasOwn(records, reaction.video_id)) return { ...reaction, captured_on: reaction.captured_on || initialDate };
+  const observed = records[reaction.video_id];
+  const combined = { ...reaction, ...observed };
+  const previousMetricTime = {};
+  [['likes', 'likes_hidden'], ['comments', 'comments_off']].forEach(([key, flag]) => {
+    const time = observed[`${key}_checked_at`] || reaction.captured_on || initialDate;
+    if ((Number.isFinite(combined[key]) || combined[flag]) && time !== observed.checked_at) previousMetricTime[key] = time;
+  });
+  const { views, likes, comments } = combined;
+  const eng = views && Number.isFinite(likes) && Number.isFinite(comments) && !Object.keys(previousMetricTime).length
+    ? (likes + comments) / views : null;
+  return { ...combined, previousMetricTime, eng };
+};
+
+const metricSummary = (name, action, section = {}, initialDate) => {
+  const latest = fmtMetricTime(section.updated_at || initialDate);
+  const coverage = section.checked_at ? ` · 최근 점검 ${fmtInt(section.confirmed)}/${fmtInt(section.total)}편 확인` : '';
+  return `${name} ${latest} ${action}${coverage}`;
+};
+
 const drawGallery = (el) => {
   const comparison = comparisonMode();
   const source = comparison ? 'competition_ads' : 'ads';
@@ -1186,6 +1223,7 @@ const drawGallery = (el) => {
   const competition = okData('competition');
   const period = okData('period')?.[0];
   const tvcfSnapshot = okData('tvcf_reactions');
+  const metrics = okData('metric_updates') || {};
   if (!rows || !period || !competition || !tvcfSnapshot) {
     galleryCount.textContent = '';
     galleryRange.textContent = '';
@@ -1193,9 +1231,14 @@ const drawGallery = (el) => {
     return;
   }
   el.classList.remove('dash-skeleton');
-  const youtube = new Map((okData('ad_reactions') || []).map((r) => [String(r.idx), r]));
-  if (comparison) competition.youtube.forEach((reaction) => { youtube.set(String(reaction.idx), reaction); });
-  const tvcf = new Map(tvcfSnapshot.rows.map((r) => [String(r.idx), r]));
+  const videoReactions = okData('ad_reactions') || [];
+  const videoUpdates = metrics.youtube?.records || {};
+  const youtube = new Map((comparison ? [...videoReactions, ...competition.youtube] : videoReactions)
+    .map((reaction) => [String(reaction.idx), updatedVideoReaction(reaction, videoUpdates, period.collected)]));
+  const tvcf = new Map(tvcfSnapshot.rows.map((reaction) => [String(reaction.idx), reaction]));
+  Object.entries(metrics.tvcf?.records || {}).forEach(([idx, observed]) => {
+    tvcf.set(idx, { ...tvcf.get(idx), ...observed, status: 'checked' });
+  });
   const term = currentTerm();
   const until = comparison ? competition.captured_on : period.collected;
   const first = comparison ? d3.min(rows, adDate) : period.year_from;
@@ -1230,9 +1273,12 @@ const drawGallery = (el) => {
     const confirmed = new Set(rows.map((a) => a.brand)).size;
     galleryCoverage.textContent = `조사 대상 ${competition.products.length}개 제품 · 공개 영상 소재 확인 ${confirmed}개`;
   }
-  galleryReactionNote.textContent = comparison
-    ? `TVCF ${fmtMd(tvcfSnapshot.captured_on)} 확인 · 유튜브는 카드별 확인일 표시`
-    : `유튜브 ${fmtMd(period.collected)} 수집 · TVCF ${fmtMd(tvcfSnapshot.captured_on)} 확인`;
+  galleryReactionNote.replaceChildren(
+    el$('span', 'tv-gallery-refresh-schedule', '매일 오전 9시(한국시간) 갱신 예약'),
+    el$('span', null, metricSummary('유튜브', '수집', metrics.youtube, comparison ? competition.captured_on : period.collected)),
+    el$('span', null, metricSummary('TVCF', '확인', metrics.tvcf, tvcfSnapshot.captured_on)),
+  );
+  if (!metrics.youtube || !metrics.tvcf) galleryReactionNote.appendChild(el$('span', null, '최근 갱신 데이터 불러오기 실패'));
   galleryReactionNote.title = '막대는 매체별로 현재 목록에서 해당 지표의 최고치에 대비한 값입니다.';
   renderGalleryProduct(comparison ? competition.products : []);
   if (!list.length) {

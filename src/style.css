@@ -203,6 +203,8 @@ body:has(.tv-page:is([data-active-pane="creatives"], [data-active-pane="caritopo
 .tv-gallery-count { color: #26374f; font-size: .88rem; font-weight: 700; }
 .tv-gallery-note { color: var(--tv-gallery-muted); font-size: .75rem; line-height: 1.55; }
 .tv-gallery-summary > .tv-gallery-note { text-align: end; }
+#gallery-reaction-note > span { display: block; }
+.tv-gallery-refresh-schedule { color: #26374f; font-weight: 700; }
 
 .tv-gallery {
   --tv-cols: 1;
@@ -273,6 +275,7 @@ body:has(.tv-page:is([data-active-pane="creatives"], [data-active-pane="caritopo
 .tv-metric-label { display: flex; align-items: center; gap: .18rem; font-size: .69rem; font-weight: 500; color: var(--tv-metric-ink); white-space: nowrap; }
 .tv-gallery-icon { width: .85rem; height: .85rem; flex: none; }
 .tv-metric-value { margin: .14rem 0 0; color: #192a42; font-size: 1.11rem; font-weight: 700; letter-spacing: -.045em; line-height: 1.25; font-variant-numeric: tabular-nums; }
+.tv-metric-previous { margin: .1rem 0 0; color: var(--tv-gallery-muted); font-size: .66rem; line-height: 1.2; }
 .tv-ad-metric.is-missing .tv-metric-value { color: var(--tv-gallery-muted); font-size: .79rem; line-height: 1.76; letter-spacing: 0; }
 .tv-metric-bar { display: block; height: .18rem; margin-top: .34rem; border-radius: 999px; overflow: hidden; background: color-mix(in srgb, var(--tv-metric-ink) 15%, transparent); }
 .tv-metric-bar span { display: block; height: 100%; border-radius: inherit; background: var(--tv-metric-ink); }

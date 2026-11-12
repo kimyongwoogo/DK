@@ -17,7 +17,13 @@ GitHub Pages 게시가 완료되면 [대시보드 웹 주소](https://kimyongwoo
 
 ## 일일 점검 데이터
 
-한국시간 오전 9시 점검의 반영 파일은 [`data/daily_checks.json`](data/daily_checks.json)입니다. 화면 상단에 마지막 확인 일시가 표시됩니다. 조회수 등 축약 표시에는 증감을 계산하지 않으며, 출처에서 확인하지 못한 값은 `—`로 표시합니다.
+한국시간 오전 9시에 예약된 유튜브·TVCF 수치 갱신은 [`data/metric_updates.json`](data/metric_updates.json)에 반영됩니다. 두 갤러리에 매체별 수치의 실제 확인 시각과 최근 점검에서 확인한 편수가 표시됩니다.
+
+`python3 refresh_metrics.py --targets`로 현재 소재에 연결된 공개 원본을 찾습니다. `python3 refresh_metrics.py --update observed_metrics.json`은 매체별 `checked_at`과 `records`를 검증해 확인된 수치를 반영합니다. 원본에서 확인한 정확한 값만 기록하고, 확인에 실패한 영상의 마지막 수치는 보존합니다.
+
+공식 API 연결이 없는 환경에서는 `python3 collect_youtube.py > observed_youtube.json`으로 공개 원본 페이지에서 확인 가능한 유튜브 수치의 점검 데이터를 만듭니다.
+
+광고·뉴스 일일 점검의 이력은 [`data/daily_checks.json`](data/daily_checks.json)에 있습니다.
 
 확인한 회차의 JSON은 `runs[0]`과 같은 구조를 사용합니다. `checked_at`에는 `+09:00`을 포함하고, TVCF·유튜브·뉴스에 각각 확인 상태, 범위, 행을 기록합니다. 새 회차를 검증하고 기존 기록에 병합하려면 다음 명령을 실행합니다.
 
