@@ -770,7 +770,7 @@ const adLinks = (ad, reaction) => {
   const youtube = reaction?.video_id ? ytLink(reaction.video_id, reaction.short) : null;
   const archive = publicHttps(ad.archive_url);
   const links = el$('div', 'tv-ad-links');
-  [[tvcf, 'TVCF 원본'], [youtube, '유튜브 원본'], [archive, ad.archive_label || '광고 원본']].forEach(([href, label]) => {
+  [[tvcf, 'TVCF 원본·댓글 보기'], [youtube, '유튜브 원본'], [archive, ad.archive_label || '광고 원본']].forEach(([href, label]) => {
     if (!href) return;
     const link = extLink(href, label);
     link.appendChild(galleryIcon('external'));

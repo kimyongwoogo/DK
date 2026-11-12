@@ -122,8 +122,10 @@ body:has(.tv-page:is([data-active-pane="creatives"], [data-active-pane="caritopo
   border-radius: .9rem;
   background: #fff;
 }
-.tv-gallery-toolbar-top, .tv-gallery-controls, .tv-gallery-periods, .tv-gallery-summary { display: flex; align-items: center; flex-wrap: wrap; gap: .45rem; }
+.tv-gallery-toolbar-top, .tv-gallery-actions, .tv-gallery-controls, .tv-gallery-periods, .tv-gallery-summary { display: flex; align-items: center; flex-wrap: wrap; gap: .45rem; }
 .tv-gallery-toolbar-top, .tv-gallery-summary { justify-content: space-between; }
+.tv-tvcf-login { color: #1748a5; background: #edf4ff; border-color: #cddcf6; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.tv-tvcf-login:hover { background: #e2edff; }
 .tv-creative-pane :is(h2, h3) { font-family: inherit; letter-spacing: -.035em; }
 .tv-creative-pane h2 { font-size: clamp(1.05rem, 1.6vw, 1.3rem); }
 .tv-gallery-layout { display: inline-flex; gap: .125rem; padding: .15rem; background: #edf2f8; border-radius: .55rem; }
