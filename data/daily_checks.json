@@ -1,6 +1,612 @@
 {
   "runs": [
     {
+      "checked_at": "2026-11-14T09:06:43+09:00",
+      "tvcf": {
+        "status": "partial",
+        "scope": "동국제약과 경쟁사 10곳의 국내 영상 등록순·온에어순 첫 페이지 및 주요 브랜드를 검색했습니다. 확인 범위 내 신규 소재는 0편입니다. 최근 온에어·등록 소재 24편 중 공개 상세 원본 23편의 날짜를 재확인했습니다. 동아제약 마그랑비 피돌샷 직장인편(1033719)의 등록일은 직전 11월 12일에서 현재 상세 원본 11월 13일로 확인됐습니다. 온에어일은 11월 12일입니다. 종근당 케펨겔 1편은 상세 열람이 제한됐습니다.",
+        "records": [
+          {
+            "company": "동아제약",
+            "brand": "마그랑비",
+            "product": "마그랑비 피돌샷액",
+            "title": "느껴보세요, 한 샷의 차이! 직장인",
+            "url": "https://tvcf.co.kr/play/bi1198-1033719",
+            "idx": "1033719",
+            "onair": "2026-11-12",
+            "registered": "2026-11-13"
+          },
+          {
+            "company": "동아제약",
+            "brand": "마그랑비",
+            "product": "마그랑비 피돌샷액",
+            "title": "느껴보세요, 한 샷의 차이! 여행",
+            "url": "https://tvcf.co.kr/play/ai1187-1033718",
+            "idx": "1033718",
+            "onair": "2026-11-12",
+            "registered": "2026-11-13"
+          },
+          {
+            "company": "동아제약",
+            "brand": "마그랑비",
+            "product": "마그랑비 피돌샷액",
+            "title": "느껴보세요, 한 샷의 차이! 러닝",
+            "url": "https://tvcf.co.kr/play/bi1176-1033717",
+            "idx": "1033717",
+            "onair": "2026-11-12",
+            "registered": "2026-11-12"
+          },
+          {
+            "company": "동아제약",
+            "brand": "마그랑비",
+            "product": "마그랑비 피돌샷액",
+            "title": "한 샷의 차이! 마그랑비 피돌샷 15's",
+            "url": "https://tvcf.co.kr/play/ai1165-1033716",
+            "idx": "1033716",
+            "onair": "2026-11-12",
+            "registered": "2026-11-12"
+          },
+          {
+            "company": "동아제약",
+            "brand": "마그랑비",
+            "product": "마그랑비 피돌샷액",
+            "title": "한 샷의 차이! 마그랑비 피돌샷 30's",
+            "url": "https://tvcf.co.kr/play/bi1154-1033715",
+            "idx": "1033715",
+            "onair": "2026-11-12",
+            "registered": "2026-11-12"
+          },
+          {
+            "company": "종근당",
+            "brand": "모드콜",
+            "product": "모드콜 코프 스트롱",
+            "title": "목감기엔 모드라? 모드콜 코프 스트롱! 6s",
+            "url": "https://tvcf.co.kr/play/ai1722-1033272",
+            "idx": "1033272",
+            "onair": "2026-11-06",
+            "registered": "2026-11-08"
+          },
+          {
+            "company": "종근당",
+            "brand": "모드콜",
+            "product": "모드콜 노즈 스트롱",
+            "title": "코감기엔 모드라? 모드콜 노즈 스트롱! 6s",
+            "url": "https://tvcf.co.kr/play/bi1711-1033271",
+            "idx": "1033271",
+            "onair": "2026-11-06",
+            "registered": "2026-11-08"
+          },
+          {
+            "company": "종근당",
+            "brand": "모드콜",
+            "product": "모드콜 콜드 스트롱",
+            "title": "감기엔 모드라? 모드콜 콜드 스트롱! 6s",
+            "url": "https://tvcf.co.kr/play/ai2709-1033270",
+            "idx": "1033270",
+            "onair": "2026-11-06",
+            "registered": "2026-11-08"
+          },
+          {
+            "company": "GSK",
+            "brand": "대상포진 캠페인",
+            "product": "",
+            "title": "대상포진이 [날 잡기 전에] 의사와 상담하세요 건강검진",
+            "url": "https://tvcf.co.kr/play/bi1314-1032931",
+            "idx": "1032931",
+            "onair": "2026-11-04",
+            "registered": "2026-11-06"
+          },
+          {
+            "company": "한국존슨앤드존슨",
+            "brand": "타이레놀",
+            "product": "타이레놀 콜드",
+            "title": "타이레놀에서 나오는 감기약 주세요",
+            "url": "https://tvcf.co.kr/play/ai284-1032508",
+            "idx": "1032508",
+            "onair": "2026-11-01",
+            "registered": "2026-11-02"
+          },
+          {
+            "company": "동아제약",
+            "brand": "판피린",
+            "product": "판피린 타임",
+            "title": "나의 판타스틱 감기약_이부펜 스틱(15s)",
+            "url": "https://tvcf.co.kr/play/ai226-1032402",
+            "idx": "1032402",
+            "onair": "2026-10-28",
+            "registered": "2026-10-30"
+          },
+          {
+            "company": "명인제약",
+            "brand": "이가탄",
+            "product": "이가탄 에프",
+            "title": "늦기 전에 이가탄 (배종옥 15s)",
+            "url": "https://tvcf.co.kr/play/ai1169-1032216",
+            "idx": "1032216",
+            "onair": "2026-10-28",
+            "registered": "2026-10-30"
+          },
+          {
+            "company": "명인제약",
+            "brand": "이가탄",
+            "product": "이가탄 에프",
+            "title": "늦기 전에 이가탄 (지진희 15s)",
+            "url": "https://tvcf.co.kr/play/ai2966-1032096",
+            "idx": "1032096",
+            "onair": "2026-10-27",
+            "registered": "2026-10-30"
+          },
+          {
+            "company": "동화약품",
+            "brand": "알보칠",
+            "product": "알보칠",
+            "title": "구내염 칠트키 칠칠칠 알보칠_라면(Full)",
+            "url": "https://tvcf.co.kr/play/ai2325-1032032",
+            "idx": "1032032",
+            "onair": "2026-10-27",
+            "registered": "2026-10-27"
+          },
+          {
+            "company": "동화약품",
+            "brand": "알보칠",
+            "product": "알보칠",
+            "title": "구내염 칠트키 칠칠칠 알보칠_여기어때(Full)",
+            "url": "https://tvcf.co.kr/play/bi2314-1032031",
+            "idx": "1032031",
+            "onair": "2026-10-27",
+            "registered": "2026-10-27"
+          },
+          {
+            "company": "대웅제약",
+            "brand": "우루사",
+            "product": "우루사",
+            "title": "시대가 변해도 당신 곁엔 우루사",
+            "url": "https://tvcf.co.kr/play/ai1168-1032116",
+            "idx": "1032116",
+            "onair": "2026-10-26",
+            "registered": "2026-10-29"
+          },
+          {
+            "company": "대웅제약",
+            "brand": "우루사",
+            "product": "우루사",
+            "title": "시대가 변해도 당신 곁엔 우루사",
+            "url": "https://tvcf.co.kr/play/bi311-1032001",
+            "idx": "1032001",
+            "onair": "2026-10-26",
+            "registered": "2026-10-28"
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "아로나민 골드",
+            "title": "아로나민골드 X 100일의 거짓말",
+            "url": "https://tvcf.co.kr/play/bi1154-1032715",
+            "idx": "1032715",
+            "onair": "2026-10-24",
+            "registered": "2026-11-03"
+          },
+          {
+            "company": "동국제약",
+            "brand": "판시딜",
+            "product": "판시딜",
+            "title": "탈모엔 시작부터 판시딜",
+            "url": "https://tvcf.co.kr/play/ai1763-1031876",
+            "idx": "1031876",
+            "onair": "2026-10-24",
+            "registered": "2026-10-26"
+          },
+          {
+            "company": "동아제약",
+            "brand": "판피린",
+            "product": "판피린 타임",
+            "title": "나의 판타스틱 감기약_건조시럽(15s)",
+            "url": "https://tvcf.co.kr/play/ai1684-1031868",
+            "idx": "1031868",
+            "onair": "2026-10-23",
+            "registered": "2026-10-26"
+          },
+          {
+            "company": "동국제약",
+            "brand": "카리토포텐",
+            "product": "카리토포텐",
+            "title": "남자들의 자신감, 카리토포텐!",
+            "url": "https://tvcf.co.kr/play/ai1149-1031414",
+            "idx": "1031414",
+            "onair": "2026-10-20",
+            "registered": "2026-10-21"
+          },
+          {
+            "company": "동국제약",
+            "brand": "인사돌",
+            "product": "인사돌",
+            "title": "잇몸에 좋은 선택, 인사돌",
+            "url": "https://tvcf.co.kr/play/bi1138-1031413",
+            "idx": "1031413",
+            "onair": "2026-10-20",
+            "registered": "2026-10-21"
+          },
+          {
+            "company": "대원제약",
+            "brand": "콜대원",
+            "product": "콜대원",
+            "title": "콜대원 감기의 소리를 찾아서 - 할머니 15",
+            "url": "https://tvcf.co.kr/play/ai1326-1029132",
+            "idx": "1029132",
+            "onair": "2026-10-17",
+            "registered": "2026-09-21"
+          }
+        ]
+      },
+      "youtube": {
+        "status": "partial",
+        "scope": "최근 30일(10월 16일~11월 14일) 온에어·등록 또는 영상 게시 기준으로 기존 연결 13편과 피돌샷 5편을 확인했습니다. 18편 중 17편의 정확한 공개 조회수를 수록했습니다. 알보칠 여기어때편 1편은 이번 점검에서 공개 지표를 확인할 수 없었습니다. 명시된 댓글 비활성과 수치 미확인을 구분했습니다. 직전 점검의 동일 영상과 비교해 카리토포텐은 2,014회에서 2,118회(+104), 마그랑비 피돌샷 15초편은 289,394회에서 1,183,710회(+894,316)였습니다.",
+        "records": [
+          {
+            "company": "동국제약",
+            "brand": "카리토포텐",
+            "product": "카리토포텐",
+            "title": "[카리토포텐 2026 신규 TV-CF] 남자들의 자신감, 카리토포텐! (강호동&이경규)",
+            "url": "https://www.youtube.com/watch?v=hbt0f_wzKfY",
+            "video_id": "hbt0f_wzKfY",
+            "views": 2118,
+            "likes": 7,
+            "comments": 1
+          },
+          {
+            "company": "동국제약",
+            "brand": "인사돌",
+            "product": "인사돌",
+            "title": "[인사돌 2026 신규 TV-CF] 잇몸에 좋은 선택, 인사돌 (윤종신)",
+            "url": "https://www.youtube.com/watch?v=0I76RRnwcU0",
+            "video_id": "0I76RRnwcU0",
+            "views": 541107,
+            "likes": 16,
+            "comments": null
+          },
+          {
+            "company": "동화약품",
+            "brand": "알보칠",
+            "product": "알보칠",
+            "title": "알보칠_구내염칠트키 칠칠칠 알보칠_라면편(Full)",
+            "url": "https://www.youtube.com/watch?v=FxKkU9RwoBg",
+            "video_id": "FxKkU9RwoBg",
+            "views": 20432781,
+            "likes": 149,
+            "comments": 49
+          },
+          {
+            "company": "동아제약",
+            "brand": "판피린",
+            "product": "판피린 타임",
+            "title": "[판피린 타임] 나의 판타스틱 감기약_건조시럽 편(15s)",
+            "url": "https://www.youtube.com/watch?v=DMrg5xElA4E",
+            "video_id": "DMrg5xElA4E",
+            "views": 5223,
+            "likes": 35,
+            "comments": 2
+          },
+          {
+            "company": "동아제약",
+            "brand": "판피린",
+            "product": "판피린 타임",
+            "title": "[판피린 타임] 나의 판타스틱 감기약_이부펜 스틱 편(15s)",
+            "url": "https://www.youtube.com/watch?v=rCboq5Z_mTk",
+            "video_id": "rCboq5Z_mTk",
+            "views": 5033,
+            "likes": 18,
+            "comments": 7
+          },
+          {
+            "company": "동아제약",
+            "brand": "판피린",
+            "product": "판피린 타임",
+            "title": "[판피린] 이찬원과 함께한 TVCF와 촬영콘티 비교",
+            "url": "https://www.youtube.com/watch?v=DMUTm2tvS08",
+            "video_id": "DMUTm2tvS08",
+            "views": 14942,
+            "likes": 1985,
+            "comments": 89
+          },
+          {
+            "company": "대웅제약",
+            "brand": "우루사",
+            "product": "우루사",
+            "title": "[우루사] 대웅제약 X 최대훈 2026 TV-CF 시대가 변해도 당신 곁엔 우루사 15S",
+            "url": "https://www.youtube.com/watch?v=hVQ3HdjRWDA",
+            "video_id": "hVQ3HdjRWDA",
+            "views": 3217106,
+            "likes": 60,
+            "comments": 25
+          },
+          {
+            "company": "대웅제약",
+            "brand": "우루사",
+            "product": "우루사",
+            "title": "[우루사] 대웅제약 X 최대훈 2026 TV-CF 시대가 변해도 당신 곁엔 우루사 FULL 30S",
+            "url": "https://www.youtube.com/watch?v=A-jW76bc9X8",
+            "video_id": "A-jW76bc9X8",
+            "views": 1085098,
+            "likes": 62,
+            "comments": 12
+          },
+          {
+            "company": "대원제약",
+            "brand": "콜대원",
+            "product": "콜대원",
+            "title": "[감기의 소리를 찾아서]",
+            "url": "https://www.youtube.com/watch?v=Ws8scTJ1UOY",
+            "video_id": "Ws8scTJ1UOY",
+            "views": 652316,
+            "likes": 4,
+            "comments": null,
+            "comments_label": "댓글 비활성"
+          },
+          {
+            "company": "대원제약",
+            "brand": "콜대원",
+            "product": "콜대원",
+            "title": "[감기의 소리를 찾아서] 밤 들려오는 소리 (겨울 15s)",
+            "url": "https://www.youtube.com/watch?v=6d_Kl4z8AWw",
+            "video_id": "6d_Kl4z8AWw",
+            "views": 2047187,
+            "likes": 5,
+            "comments": null,
+            "comments_label": "댓글 비활성"
+          },
+          {
+            "company": "한국존슨앤드존슨",
+            "brand": "아큐브",
+            "product": "아큐브 오아시스 원데이",
+            "title": "[아큐브 with 코르티스] 내가 보는 세상은 본다는 것 그 이상! – 건호편",
+            "url": "https://www.youtube.com/watch?v=toDWvdPpbfs",
+            "video_id": "toDWvdPpbfs",
+            "views": 7536,
+            "likes": 864,
+            "comments": 35
+          },
+          {
+            "company": "한국존슨앤드존슨",
+            "brand": "타이레놀",
+            "product": "타이레놀 콜드",
+            "title": "타이레놀에서 나오는 감기약 주세요_타이레놀 콜드_15s",
+            "url": "https://www.youtube.com/watch?v=oKghSROHn1g",
+            "video_id": "oKghSROHn1g",
+            "views": 3758056,
+            "likes": 11,
+            "comments": null,
+            "comments_label": "댓글 비활성"
+          },
+          {
+            "company": "동아제약",
+            "brand": "마그랑비",
+            "product": "마그랑비 피돌샷액",
+            "title": "한 샷의 차이! 마그랑비 피돌샷 15's",
+            "url": "https://www.youtube.com/watch?v=BeRANzAIOgY",
+            "video_id": "BeRANzAIOgY",
+            "views": 1183710,
+            "likes": 10,
+            "comments": 6
+          },
+          {
+            "company": "동아제약",
+            "brand": "마그랑비",
+            "product": "마그랑비 피돌샷액",
+            "title": "한 샷의 차이! 마그랑비 피돌샷 30's",
+            "url": "https://www.youtube.com/watch?v=rdHSHHSGQlI",
+            "video_id": "rdHSHHSGQlI",
+            "views": 552925,
+            "likes": 12,
+            "comments": 11
+          },
+          {
+            "company": "동아제약",
+            "brand": "마그랑비",
+            "product": "마그랑비 피돌샷액",
+            "title": "느껴보세요, 한 샷의 차이! 직장인편",
+            "url": "https://www.youtube.com/watch?v=-dKT2nmHjp4",
+            "video_id": "-dKT2nmHjp4",
+            "views": 436014,
+            "likes": 8,
+            "comments": 1
+          },
+          {
+            "company": "동아제약",
+            "brand": "마그랑비",
+            "product": "마그랑비 피돌샷액",
+            "title": "느껴보세요, 한 샷의 차이! 여행편",
+            "url": "https://www.youtube.com/watch?v=FiZeQysUXVk",
+            "video_id": "FiZeQysUXVk",
+            "views": 245370,
+            "likes": 6,
+            "comments": 2
+          },
+          {
+            "company": "동아제약",
+            "brand": "마그랑비",
+            "product": "마그랑비 피돌샷액",
+            "title": "느껴보세요, 한 샷의 차이! 러닝편",
+            "url": "https://www.youtube.com/watch?v=x84z0EhcsfI",
+            "video_id": "x84z0EhcsfI",
+            "views": 213672,
+            "likes": 10,
+            "comments": 2
+          }
+        ]
+      },
+      "news": {
+        "status": "partial",
+        "scope": "직전 점검(11월 13일 09:34) 이후 발행분을 대상으로 11개사 브랜드·제품 검색어 33개를 두 포털에서 조회했습니다. 원문과 발행일을 대조해 13건을 수록했습니다. 네이버 13건, 구글 9건, 양쪽 공통 9건입니다. 네이버에서 우루사·이지듀·콜대원 3개 검색은 요청 제한으로 확인하지 못했습니다. 기사별로 확인된 검색 경로만 기록했습니다.",
+        "records": [
+          {
+            "company": "동국제약",
+            "brand": "센텔리안24",
+            "product": "",
+            "title": "센텔리안24, ‘컬리뷰티페스타 2026’→센트트레이, 롯데百 영등포서 오픈 프로모션",
+            "url": "https://www.slist.kr/news/articleView.html?idxno=781583",
+            "outlet": "싱글리스트",
+            "published_on": "2026-11-13",
+            "providers": [
+              "naver",
+              "google"
+            ]
+          },
+          {
+            "company": "동국제약",
+            "brand": "센텔리안24",
+            "product": "마데카 스타톡 세럼 듀오 세트",
+            "title": "[현장] 동국제약 센텔리안24, 컬리뷰티페스타 참가…피부 고민별 제품 추천·체험",
+            "url": "https://www.onews.tv/news/articleView.html?idxno=291648",
+            "outlet": "열린뉴스통신",
+            "published_on": "2026-11-13",
+            "providers": [
+              "naver",
+              "google"
+            ]
+          },
+          {
+            "company": "동국제약",
+            "brand": "센텔리안24",
+            "product": "",
+            "title": "동국제약 센텔리안24, ‘컬리뷰티페스타’서 단독부스 운영",
+            "url": "https://www.bizwnews.com/news/articleView.html?idxno=151830",
+            "outlet": "비즈월드",
+            "published_on": "2026-11-13",
+            "providers": [
+              "naver",
+              "google"
+            ]
+          },
+          {
+            "company": "동국제약",
+            "brand": "센텔리안24",
+            "product": "마데카 스타톡 세럼 듀오 세트",
+            "title": "동국제약 센텔리안24, 컬리와 ′뷰티 동맹′…체험·판매 시너지 공략",
+            "url": "https://www.megaeconomy.co.kr/news/newsview.php?ncode=1065603281943019",
+            "outlet": "메가경제",
+            "published_on": "2026-11-13",
+            "providers": [
+              "naver",
+              "google"
+            ]
+          },
+          {
+            "company": "동국제약",
+            "brand": "센텔리안24",
+            "product": "",
+            "title": "동아쏘시오그룹 동국제약 外(제약보국)",
+            "url": "https://www.newsclaim.co.kr/news/articleView.html?idxno=3082603",
+            "outlet": "뉴스클레임",
+            "published_on": "2026-11-13",
+            "providers": [
+              "naver",
+              "google"
+            ]
+          },
+          {
+            "company": "동국제약",
+            "brand": "센텔리안24",
+            "product": "마데카 스타톡 세럼 듀오 세트",
+            "title": "동국제약 센텔리안24, 컬리뷰티페스타 참가…오프라인 접점 확대",
+            "url": "https://www.ezyeconomy.com/news/articleView.html?idxno=241835",
+            "outlet": "이지경제",
+            "published_on": "2026-11-13",
+            "providers": [
+              "naver",
+              "google"
+            ]
+          },
+          {
+            "company": "동국제약",
+            "brand": "센텔리안24",
+            "product": "",
+            "title": "동국제약 센텔리안24, ′컬리뷰티페스타′ 참가...피부 진단·제품 체험 운영",
+            "url": "https://hbnpress.com/news/view/1065595060341479",
+            "outlet": "HBN뉴스",
+            "published_on": "2026-11-13",
+            "providers": [
+              "naver"
+            ]
+          },
+          {
+            "company": "동국제약",
+            "brand": "센텔리안24",
+            "product": "마데카 스타톡 세럼 듀오 세트",
+            "title": "센텔리안24, DDP 컬리뷰티페스타에 '밤 존' 부스…온라인 기획전에선 4만원 이상 20% 쿠폰",
+            "url": "https://www.dailypop.kr/news/articleView.html?idxno=104560",
+            "outlet": "데일리팝",
+            "published_on": "2026-11-13",
+            "providers": [
+              "naver",
+              "google"
+            ]
+          },
+          {
+            "company": "동국제약",
+            "brand": "센텔리안24",
+            "product": "",
+            "title": "동국제약 센텔리안24, 컬리뷰티페스타 참가...피부 진단·제품 체험 운영",
+            "url": "https://www.womentimes.co.kr/news/articleView.html?idxno=107907",
+            "outlet": "우먼타임스",
+            "published_on": "2026-11-13",
+            "providers": [
+              "naver",
+              "google"
+            ]
+          },
+          {
+            "company": "동국제약",
+            "brand": "카리토포텐",
+            "product": "카리토포텐",
+            "title": "[동국제약=종합] 감기약 선택법 안내 ··· 카리토포텐 새 광고 론칭",
+            "url": "https://www.datasom.co.kr/news/articleView.html?idxno=210797",
+            "outlet": "데이터솜",
+            "published_on": "2026-11-13",
+            "providers": [
+              "naver"
+            ]
+          },
+          {
+            "company": "현대약품",
+            "brand": "마이녹실",
+            "product": "",
+            "title": "현대약품 마이녹실, 제형별 제품군 확대 추진",
+            "url": "https://www.vegannews.co.kr/news/article.html?no=404448",
+            "outlet": "비건뉴스",
+            "published_on": "2026-11-13",
+            "providers": [
+              "naver",
+              "google"
+            ]
+          },
+          {
+            "company": "동아제약",
+            "brand": "판피린",
+            "product": "",
+            "title": "박카스 다음은 가그린·판피린…동아제약의 해외 승부수",
+            "url": "https://www.issuenbiz.com/news/articleView.html?idxno=81585",
+            "outlet": "이슈앤비즈",
+            "published_on": "2026-11-13",
+            "providers": [
+              "naver"
+            ]
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "",
+            "title": "제약사 ‘수능 마케팅’ 달라졌다 … 집중력 개선→굿 컨디션 지속",
+            "url": "https://www.medisobizanews.com/news/articleView.html?idxno=144351",
+            "outlet": "메디소비자뉴스",
+            "published_on": "2026-11-14",
+            "providers": [
+              "naver"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "checked_at": "2026-11-13T09:34:04+09:00",
       "tvcf": {
         "status": "partial",
