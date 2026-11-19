@@ -215,7 +215,7 @@ dash.draw('company-rows', (tb) => {
       tdText(show(r.avg_sec, fmtDec1), 'tv-r tv-col-sec'),
       tdText(show(r.model_share, fmtPct), 'tv-r tv-col-sec'),
       tdText(show(r.top_models, String), 'tv-col-sec tv-small'),
-      tdText(show(r.last_onair, fmtMd), 'tv-nowrap'),
+      tdText(show(r.last_onair, fmtFull), 'tv-nowrap'),
     );
     return tr;
   }));
@@ -393,7 +393,7 @@ dash.draw('recent-rows', (tb) => {
     if (href) link.appendChild(extLink(href, '영상 보기'));
     else link.textContent = '—';
     tr.append(
-      tdText(fmtMd(a.onair), 'tv-nowrap'),
+      tdText(fmtFull(a.onair), 'tv-nowrap'),
       nameCell(a.company),
       tdText(a.brand, 'tv-nowrap'),
       tdText(a.copy),
@@ -449,7 +449,7 @@ dash.draw('brand-rows', (tb) => {
       tdText(r.category, 'tv-col-sec tv-nowrap'),
       tdText(fmtInt(Number(r.oct_ads)), 'tv-r'),
       barCell(r.ytd_ads, maxY, coColor(r.company), fmtInt(Number(r.ytd_ads)), 3),
-      tdText(fmtMd(r.last_onair), 'tv-nowrap'),
+      tdText(fmtFull(r.last_onair), 'tv-nowrap'),
       tdText(show(r.tv_share, fmtPct), 'tv-r tv-col-sec'),
       tdText(show(r.models, String), 'tv-col-sec tv-small'),
       tdText(show(r.agency, String), 'tv-col-sec tv-small'),
@@ -660,8 +660,17 @@ const recentStart = (end, days) => {
 };
 const adTitle = (ad) => ad.copy || ad.product || ad.brand || '제목 없는 소재';
 const adLength = (ad) => ad.seconds ? `${fmtDec1(Number(ad.seconds))}초` : '';
-const adDate = (ad) => ad.onair || ad.published || ad.registered;
-const adDateLabel = (ad) => ad.onair ? '온에어' : ad.published ? '게시' : '등록';
+// On-air filtering must never substitute upload or registration dates.
+const adDate = (ad) => {
+  const value = ad.onair;
+  if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return '';
+  const parsed = toDate(value);
+  return Number.isFinite(parsed.getTime()) && parsed.toISOString().slice(0, 10) === value ? value : '';
+};
+const matchesOnairPeriod = (ad, since, until, includeUnknown = false) => {
+  const date = adDate(ad);
+  return date ? date >= since && date <= until : includeUnknown;
+};
 const compareDates = (a, b) => adDate(a).localeCompare(adDate(b));
 const compareIds = (a, b) => String(a.idx).localeCompare(String(b.idx));
 const newestFirst = (a, b) => compareDates(b, a) || compareIds(a, b);
@@ -683,7 +692,7 @@ const activateGallery = (mode) => {
   document.getElementById('gallery-title').textContent = comparison ? '카리토포텐+경쟁사' : '동국제약+경쟁사';
   document.getElementById('gallery-company-label').textContent = comparison ? '제품 선택' : '회사 선택';
   document.querySelector('[data-gallery-layout="company"]').textContent = comparison ? '제품별' : '회사별';
-  document.querySelector('[data-gallery-period="all"]').textContent = comparison ? '확인된 전체 기간' : '2026년 전체';
+  document.querySelector('[data-gallery-period="all"]').textContent = comparison ? '전체 소재' : '2026년 전체';
   document.querySelector('[data-gallery-period="from"]').hidden = comparison;
   document.querySelector('[data-gallery-period="h2"]').hidden = comparison;
   ['period', 'layout'].forEach((key) => {
@@ -1136,7 +1145,10 @@ const showCreativeDetail = (ad, src, { youtube, tvcf }) => {
   title.id = 'tv-detail-title';
   const meta = el$('dl', 'tv-detail-meta');
   [
-    [adDateLabel(ad), adDate(ad) && fmtFull(adDate(ad))], ['제품', ad.product], ['제품군', ad.category],
+    ['온에어일', adDate(ad) ? fmtFull(adDate(ad)) : '미확인'],
+    ['유튜브 게시일', ad.published && fmtFull(ad.published)],
+    ['등록일', ad.registered && fmtFull(ad.registered)],
+    ['제품', ad.product], ['제품군', ad.category],
     ['매체', ad.media], ['길이', adLength(ad)], ['광고주', ad.advertiser],
     ['형식', ad.vertical === undefined ? '' : Number(ad.vertical) ? '세로형' : '가로형'],
     ['모델', ad.models], ['유튜브 채널', youtube?.channel], ['유튜브 반응률', show(youtube?.eng, fmtPct2)],
@@ -1176,10 +1188,9 @@ const adCard = (ad, src, reactions, maxima, grouped, isNew) => {
     : [ad.company, ad.brand].filter(Boolean).join(' · '));
   const tags = el$('div', 'tv-tags');
   const date = adDate(ad);
-  if (date) {
-    const label = comparisonMode() ? fmtFull(date) : fmtMd(date);
-    tags.appendChild(el$('span', 'tv-tag tv-tag-date', `${label} ${adDateLabel(ad)}`));
-  }
+  tags.appendChild(el$('span', 'tv-tag tv-tag-date', date ? `온에어 ${fmtFull(date)}` : '온에어일 미확인'));
+  if (ad.published) tags.appendChild(el$('span', 'tv-tag', `게시 ${fmtFull(ad.published)}`));
+  if (ad.registered) tags.appendChild(el$('span', 'tv-tag', `등록 ${fmtFull(ad.registered)}`));
   [ad.media, ad.category, Number(ad.vertical) ? '세로형' : ''].filter(Boolean).forEach((tag) => { tags.appendChild(el$('span', 'tv-tag', tag)); });
   body.append(who, title, tags, adReaction(youtube, maxima.youtube), adComments(ad, youtube),
     adTvcfReaction(ad, tvcf, maxima.tvcf), adLinks(ad, youtube));
@@ -1244,7 +1255,7 @@ const drawGallery = (el) => {
   });
   const term = currentTerm();
   const until = galleryToday();
-  const first = comparison ? d3.min(rows, adDate) : period.year_from;
+  const first = comparison ? d3.min(rows.map(adDate).filter(Boolean)) || period.year_from : period.year_from;
   const periods = { from: period.from, h2: GALLERY_H2_FROM, all: first };
   const since = periods[galleryState.period] || recentStart(until, Number(galleryState.period));
   const newSince = recentStart(until, 7);
@@ -1256,7 +1267,7 @@ const drawGallery = (el) => {
   const sorter = GALLERY_SORTS[sort] || ((a, b) => sortValue(b) - sortValue(a) || newestFirst(a, b));
   const eligible = rows
     .filter((a) => adMatches(a, term))
-    .filter((a) => adDate(a) >= since && adDate(a) <= until)
+    .filter((a) => matchesOnairPeriod(a, since, until, comparison && galleryState.period === 'all'))
     .filter((a) => !galleryState.media || a.media_group === galleryState.media)
     .filter((a) => !galleryState.linked || youtube.get(String(a.idx))?.video_id);
   renderCompanyTabs(eligible, groupNames, comparison ? '전체 제품' : '전체 회사');
@@ -1275,13 +1286,14 @@ const drawGallery = (el) => {
   const coverage = comparison ? '수록 자료 기준'
     : latestCheck?.tvcf?.status === 'complete' ? '확인 완료'
     : latestCheck?.tvcf?.status === 'partial' ? '일부 확인' : '전체 확인 미완료';
-  galleryRange.textContent = `${comparison ? '온에어·게시·등록' : '온에어'} ${fmtFull(since)}–${fmtFull(until)} · 오늘 기준(KST, 오늘 포함) · 수록 소재 기준 · 소재 확인 ${fmtMd(checkedDay)} ${coverage}`;
-  galleryRange.title = `${comparison ? '제품 비교 자료 기준일: ' + competition.captured_on : latestCheck?.tvcf?.scope || '기본 소재 목록 수집일: ' + period.collected}\n기간은 카드의 온에어·게시·등록일 기준이며, 조회수·좋아요·댓글은 각 확인일의 누적 수치입니다.`;
-  galleryCoverage.hidden = !comparison;
-  if (comparison) {
-    const confirmed = new Set(rows.map((a) => a.brand)).size;
-    galleryCoverage.textContent = `조사 대상 ${competition.products.length}개 제품 · 공개 영상 소재 확인 ${confirmed}개`;
-  }
+  galleryRange.textContent = `온에어 ${fmtFull(since)}–${fmtFull(until)} · 오늘 기준(KST, 오늘 포함) · 수록 소재 기준 · 소재 확인 ${fmtMd(checkedDay)} ${coverage}`;
+  galleryRange.title = `${comparison ? '제품 비교 자료 기준일: ' + competition.captured_on : latestCheck?.tvcf?.scope || '기본 소재 목록 수집일: ' + period.collected}\n기간·정렬·NEW는 온에어일만 기준으로 합니다. 게시일·등록일로 대체하지 않습니다. 조회수·좋아요·댓글은 각 확인일의 누적 수치입니다.`;
+  const unknownCount = rows.filter((ad) => !adDate(ad)).length;
+  galleryCoverage.hidden = !comparison && !unknownCount;
+  const coverageParts = [];
+  if (comparison) coverageParts.push(`조사 대상 ${competition.products.length}개 제품 · 공개 영상 소재 확인 ${new Set(rows.map((a) => a.brand)).size}개`);
+  if (unknownCount) coverageParts.push(`온에어일 미확인 ${unknownCount}편 · 기간 필터에서 제외${comparison ? ' · 전체 소재에서 확인 가능' : ''}`);
+  galleryCoverage.textContent = coverageParts.join(' · ');
   galleryReactionNote.replaceChildren(
     el$('span', 'tv-gallery-refresh-schedule', '매일 오전 9시(한국시간) 갱신 예약'),
     el$('span', null, metricSummary('유튜브', '수집', metrics.youtube, comparison ? competition.captured_on : period.collected)),
