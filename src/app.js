@@ -650,6 +650,9 @@ const galleryIcon = (name) => {
   svg.appendChild(path);
   return svg;
 };
+const galleryToday = (now = new Date()) => new Intl.DateTimeFormat('sv-SE', {
+  timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit',
+}).format(now);
 const recentStart = (end, days) => {
   const date = toDate(end);
   date.setUTCDate(date.getUTCDate() - days + 1);
@@ -1240,7 +1243,7 @@ const drawGallery = (el) => {
     tvcf.set(idx, { ...tvcf.get(idx), ...observed, status: 'checked' });
   });
   const term = currentTerm();
-  const until = comparison ? competition.captured_on : period.collected;
+  const until = galleryToday();
   const first = comparison ? d3.min(rows, adDate) : period.year_from;
   const periods = { from: period.from, h2: GALLERY_H2_FROM, all: first };
   const since = periods[galleryState.period] || recentStart(until, Number(galleryState.period));
@@ -1266,8 +1269,14 @@ const drawGallery = (el) => {
   const selection = galleryState.selection || `${fmtInt(groups.size)}개 ${comparison ? '제품' : '회사'}`;
   const summary = `${selection} · 소재 ${fmtInt(list.length)}편 · 유튜브 연결 ${fmtInt(youtubeCount)}편 · TVCF 수치 ${fmtInt(tvcfCount)}편`;
   if (galleryCount.textContent !== summary) galleryCount.textContent = summary;
-  const formatDate = comparison ? fmtFull : fmtMd;
-  galleryRange.textContent = `${comparison ? '온에어·게시·등록' : '온에어'} ${formatDate(since)}–${formatDate(until)}`;
+  const latestCheck = (okData('daily_checks')?.runs || [])
+    .filter((run) => run.tvcf).slice().sort((a, b) => b.checked_at.localeCompare(a.checked_at))[0];
+  const checkedDay = comparison ? competition.captured_on : latestCheck?.checked_at?.slice(0, 10) || period.collected;
+  const coverage = comparison ? '수록 자료 기준'
+    : latestCheck?.tvcf?.status === 'complete' ? '확인 완료'
+    : latestCheck?.tvcf?.status === 'partial' ? '일부 확인' : '전체 확인 미완료';
+  galleryRange.textContent = `${comparison ? '온에어·게시·등록' : '온에어'} ${fmtFull(since)}–${fmtFull(until)} · 오늘 기준(KST, 오늘 포함) · 수록 소재 기준 · 소재 확인 ${fmtMd(checkedDay)} ${coverage}`;
+  galleryRange.title = `${comparison ? '제품 비교 자료 기준일: ' + competition.captured_on : latestCheck?.tvcf?.scope || '기본 소재 목록 수집일: ' + period.collected}\n기간은 카드의 온에어·게시·등록일 기준이며, 조회수·좋아요·댓글은 각 확인일의 누적 수치입니다.`;
   galleryCoverage.hidden = !comparison;
   if (comparison) {
     const confirmed = new Set(rows.map((a) => a.brand)).size;
@@ -1283,7 +1292,7 @@ const drawGallery = (el) => {
   renderGalleryProduct(comparison ? competition.products : []);
   if (!list.length) {
     const noCreative = comparison && galleryState.selection && !rows.some((ad) => ad.brand === galleryState.selection);
-    el.replaceChildren(el$('p', 'tv-empty', noCreative ? '조사한 공개 채널에서 광고 영상을 확인하지 못했습니다.' : '조건에 맞는 소재가 없습니다.'));
+    el.replaceChildren(el$('p', 'tv-empty', noCreative ? '조사한 공개 채널에서 광고 영상을 확인하지 못했습니다.' : '선택 기간에 해당하는 수록 소재가 없습니다. 전체 신규 소재 유무는 최신 확인 범위를 참고해 주세요.'));
     return;
   }
   const srcOf = new Map((okData('creatives') || [])
@@ -1676,4 +1685,17 @@ dash.draw('ig-post-rows', (tb) => {
     );
     return tr;
   }));
+});
+
+let galleryRenderedDay = galleryToday();
+const refreshGalleryDay = () => {
+  const today = galleryToday();
+  if (today !== galleryRenderedDay) {
+    galleryRenderedDay = today;
+    dash.draw('gallery');
+  }
+};
+setInterval(refreshGalleryDay, 60000);
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) refreshGalleryDay();
 });
