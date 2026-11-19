@@ -611,7 +611,7 @@ dash.calc('competition_ads', {
   ],
 });
 const galleryStates = {
-  creatives: { period: '30', selection: '', media: '', sort: 'new', linked: false, layout: 'company', term: '' },
+  creatives: { period: 'all', selection: '', media: '', sort: 'new', linked: false, layout: 'company', term: '' },
   caritopoten: { period: 'all', selection: '', media: '', sort: 'new', linked: false, layout: 'company', term: '' },
 };
 let galleryMode = 'creatives';
