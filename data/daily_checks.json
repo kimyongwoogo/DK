@@ -1,6 +1,1152 @@
 {
   "runs": [
     {
+      "checked_at": "2026-11-20T09:11:43+09:00",
+      "tvcf": {
+        "status": "partial",
+        "scope": "11개사 회사명 검색 등록순 첫 페이지와 온에어순 상위 4편을 확인. 신규 발견 2편(알보칠 15초 2종, 11월19일 등록), 기존 최근 소재 21편 날짜 재확인, 이 범위 날짜 변경 없음. 기업회원 전용 소재가 나타난 회사 6곳(동국제약·동화약품·GSK·동아제약·종근당·일동제약)은 제한 소재 상세·ID 확인에서 제외. 나머지 5곳도 첫 페이지 밖 전수 검증은 미완료. 판시딜 가상광고는 제한 목록으로 이번 날짜 재확인 행에서 제외. 타이레놀 콜드는 공개 상세 온에어일만 확인, 등록일 미확인.",
+        "records": [
+          {
+            "company": "동국제약",
+            "brand": "카리토포텐",
+            "product": "카리토포텐",
+            "title": "남자들의 자신감, 카리토포텐!",
+            "url": "https://tvcf.co.kr/play/ai1149-1031414",
+            "idx": "1031414",
+            "onair": "2026-10-20",
+            "registered": "2026-10-21"
+          },
+          {
+            "company": "동국제약",
+            "brand": "인사돌",
+            "product": "인사돌",
+            "title": "잇몸에 좋은 선택, 인사돌",
+            "url": "https://tvcf.co.kr/play/bi1138-1031413",
+            "idx": "1031413",
+            "onair": "2026-10-20",
+            "registered": "2026-10-21"
+          },
+          {
+            "company": "한국존슨앤드존슨",
+            "brand": "타이레놀",
+            "product": "타이레놀 콜드",
+            "title": "타이레놀에서 나오는 감기약 주세요",
+            "url": "https://tvcf.co.kr/play/ai284-1032508",
+            "idx": "1032508",
+            "onair": "2026-11-01",
+            "registered": null
+          },
+          {
+            "company": "동아제약",
+            "brand": "판피린",
+            "product": "판피린 타임",
+            "title": "나의 판타스틱 감기약_이부펜 스틱(15s)",
+            "url": "https://tvcf.co.kr/play/ai226-1032402",
+            "idx": "1032402",
+            "onair": "2026-10-28",
+            "registered": "2026-10-30"
+          },
+          {
+            "company": "명인제약",
+            "brand": "이가탄",
+            "product": "이가탄 에프",
+            "title": "늦기 전에 이가탄 (배종옥 15s)",
+            "url": "https://tvcf.co.kr/play/ai1169-1032216",
+            "idx": "1032216",
+            "onair": "2026-10-28",
+            "registered": "2026-10-30"
+          },
+          {
+            "company": "명인제약",
+            "brand": "이가탄",
+            "product": "이가탄 에프",
+            "title": "늦기 전에 이가탄 (지진희 15s)",
+            "url": "https://tvcf.co.kr/play/ai2966-1032096",
+            "idx": "1032096",
+            "onair": "2026-10-27",
+            "registered": "2026-10-30"
+          },
+          {
+            "company": "동화약품",
+            "brand": "알보칠",
+            "product": "알보칠",
+            "title": "구내염 칠트키 칠칠칠 알보칠_라면(Full)",
+            "url": "https://tvcf.co.kr/play/ai2325-1032032",
+            "idx": "1032032",
+            "onair": "2026-10-27",
+            "registered": "2026-10-27"
+          },
+          {
+            "company": "동화약품",
+            "brand": "알보칠",
+            "product": "알보칠",
+            "title": "구내염 칠트키 칠칠칠 알보칠_여기어때(Full)",
+            "url": "https://tvcf.co.kr/play/bi2314-1032031",
+            "idx": "1032031",
+            "onair": "2026-10-27",
+            "registered": "2026-10-27"
+          },
+          {
+            "company": "대웅제약",
+            "brand": "우루사",
+            "product": "우루사",
+            "title": "시대가 변해도 당신 곁엔 우루사",
+            "url": "https://tvcf.co.kr/play/ai1168-1032116",
+            "idx": "1032116",
+            "onair": "2026-10-26",
+            "registered": "2026-10-29"
+          },
+          {
+            "company": "대웅제약",
+            "brand": "우루사",
+            "product": "우루사",
+            "title": "시대가 변해도 당신 곁엔 우루사",
+            "url": "https://tvcf.co.kr/play/bi311-1032001",
+            "idx": "1032001",
+            "onair": "2026-10-26",
+            "registered": "2026-10-28"
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "아로나민 골드",
+            "title": "아로나민골드 X 100일의 거짓말",
+            "url": "https://tvcf.co.kr/play/bi1154-1032715",
+            "idx": "1032715",
+            "onair": "2026-10-24",
+            "registered": "2026-11-03"
+          },
+          {
+            "company": "동아제약",
+            "brand": "판피린",
+            "product": "판피린 타임",
+            "title": "나의 판타스틱 감기약_건조시럽(15s)",
+            "url": "https://tvcf.co.kr/play/ai1684-1031868",
+            "idx": "1031868",
+            "onair": "2026-10-23",
+            "registered": "2026-10-26"
+          },
+          {
+            "company": "동아제약",
+            "brand": "마그랑비",
+            "product": "마그랑비 피돌샷액",
+            "title": "느껴보세요, 한 샷의 차이! 직장인",
+            "url": "https://tvcf.co.kr/play/bi1198-1033719",
+            "idx": "1033719",
+            "onair": "2026-11-12",
+            "registered": "2026-11-13"
+          },
+          {
+            "company": "동아제약",
+            "brand": "마그랑비",
+            "product": "마그랑비 피돌샷액",
+            "title": "느껴보세요, 한 샷의 차이! 여행",
+            "url": "https://tvcf.co.kr/play/ai1187-1033718",
+            "idx": "1033718",
+            "onair": "2026-11-12",
+            "registered": "2026-11-13"
+          },
+          {
+            "company": "동아제약",
+            "brand": "마그랑비",
+            "product": "마그랑비 피돌샷액",
+            "title": "한 샷의 차이! 마그랑비 피돌샷 15's",
+            "url": "https://tvcf.co.kr/play/ai1165-1033716",
+            "idx": "1033716",
+            "onair": "2026-11-12",
+            "registered": "2026-11-12"
+          },
+          {
+            "company": "동아제약",
+            "brand": "마그랑비",
+            "product": "마그랑비 피돌샷액",
+            "title": "느껴보세요, 한 샷의 차이! 러닝",
+            "url": "https://tvcf.co.kr/play/bi1176-1033717",
+            "idx": "1033717",
+            "onair": "2026-11-12",
+            "registered": "2026-11-12"
+          },
+          {
+            "company": "동아제약",
+            "brand": "마그랑비",
+            "product": "마그랑비 피돌샷액",
+            "title": "한 샷의 차이! 마그랑비 피돌샷 30's",
+            "url": "https://tvcf.co.kr/play/bi1154-1033715",
+            "idx": "1033715",
+            "onair": "2026-11-12",
+            "registered": "2026-11-12"
+          },
+          {
+            "company": "종근당",
+            "brand": "모드콜",
+            "product": "모드콜 콜드 스트롱",
+            "title": "감기엔 모드라? 모드콜 콜드 스트롱! 6s",
+            "url": "https://tvcf.co.kr/play/ai2709-1033270",
+            "idx": "1033270",
+            "onair": "2026-11-06",
+            "registered": "2026-11-08"
+          },
+          {
+            "company": "종근당",
+            "brand": "모드콜",
+            "product": "모드콜 노즈 스트롱",
+            "title": "코감기엔 모드라? 모드콜 노즈 스트롱! 6s",
+            "url": "https://tvcf.co.kr/play/bi1711-1033271",
+            "idx": "1033271",
+            "onair": "2026-11-06",
+            "registered": "2026-11-08"
+          },
+          {
+            "company": "종근당",
+            "brand": "모드콜",
+            "product": "모드콜 코프 스트롱",
+            "title": "목감기엔 모드라? 모드콜 코프 스트롱! 6s",
+            "url": "https://tvcf.co.kr/play/ai1722-1033272",
+            "idx": "1033272",
+            "onair": "2026-11-06",
+            "registered": "2026-11-08"
+          },
+          {
+            "company": "GSK",
+            "brand": "대상포진 캠페인",
+            "product": "",
+            "title": "대상포진이 [날 잡기 전에] 의사와 상담하세요 건강검진",
+            "url": "https://tvcf.co.kr/play/bi1314-1032931",
+            "idx": "1032931",
+            "onair": "2026-11-04",
+            "registered": "2026-11-06"
+          },
+          {
+            "company": "동화약품",
+            "brand": "알보칠",
+            "product": "알보칠",
+            "title": "구내염 칠트키 칠칠칠 알보칠_여기어때(15s)",
+            "url": "https://tvcf.co.kr/play/bi1231-1034523",
+            "idx": "1034523",
+            "onair": "2026-11-01",
+            "registered": "2026-11-19"
+          },
+          {
+            "company": "동화약품",
+            "brand": "알보칠",
+            "product": "알보칠",
+            "title": "구내염 칠트키 칠칠칠 알보칠_라면(15s)",
+            "url": "https://tvcf.co.kr/play/ai1229-1034522",
+            "idx": "1034522",
+            "onair": "2026-11-01",
+            "registered": "2026-11-19"
+          }
+        ]
+      },
+      "youtube": {
+        "status": "partial",
+        "scope": "공식 API 연결이 없어 공개 원본 수집을 120초 실행. 라이브 대상 157개 영상 중 정확한 수치 확인 89편(확인 2026-11-20T09:05:25+09:00); 이 중 11개사 기존 공식 영상 매핑과 일치하는 75편을 이력에 반영. 최근·카리토포텐 비교 소재 우선. 확인 실패·미확인 값은 0으로 대체하지 않음. 신규 알보칠 2편의 공식 유튜브 영상 ID 연결은 미확인. TVCF에 표시된 유튜브 수치는 대체 사용하지 않음.",
+        "records": [
+          {
+            "company": "동국제약",
+            "brand": "카리토포텐",
+            "product": "카리토포텐",
+            "title": "[카리토포텐 2026 신규 TV-CF] 남자들의 자신감, 카리토포텐! (강호동&이경규)",
+            "url": "https://www.youtube.com/watch?v=hbt0f_wzKfY",
+            "video_id": "hbt0f_wzKfY",
+            "views": 3155,
+            "likes": 7,
+            "comments": 1
+          },
+          {
+            "company": "동국제약",
+            "brand": "인사돌",
+            "product": "인사돌",
+            "title": "[인사돌 2026 신규 TV-CF] 잇몸에 좋은 선택, 인사돌 (윤종신)",
+            "url": "https://www.youtube.com/watch?v=0I76RRnwcU0",
+            "video_id": "0I76RRnwcU0",
+            "views": 890430,
+            "likes": 17,
+            "comments": 2
+          },
+          {
+            "company": "동국제약",
+            "brand": "카리토포텐",
+            "product": "카리토포텐",
+            "title": "전입선 - 2026 봄맞이 열린 트롯",
+            "url": "https://www.youtube.com/watch?v=ZcKd2jf6_Yc",
+            "video_id": "ZcKd2jf6_Yc",
+            "views": 1828537,
+            "likes": 2548,
+            "comments": 16
+          },
+          {
+            "company": "동국제약",
+            "brand": "카리토포텐",
+            "product": "카리토포텐",
+            "title": "전입선 – 포텐터졌다",
+            "url": "https://www.youtube.com/watch?v=noUuUrJu4xc",
+            "video_id": "noUuUrJu4xc",
+            "views": 5446647,
+            "likes": 2079,
+            "comments": 42
+          },
+          {
+            "company": "동화약품",
+            "brand": "알보칠",
+            "product": "알보칠",
+            "title": "알보칠_구내염칠트키 칠칠칠 알보칠_라면편(Full)",
+            "url": "https://www.youtube.com/watch?v=FxKkU9RwoBg",
+            "video_id": "FxKkU9RwoBg",
+            "views": 25955747,
+            "likes": 166,
+            "comments": 52
+          },
+          {
+            "company": "동아제약",
+            "brand": "판피린",
+            "product": "판피린",
+            "title": "[판피린 타임] 나의 판타스틱 감기약_건조시럽 편(15s)",
+            "url": "https://www.youtube.com/watch?v=DMrg5xElA4E",
+            "video_id": "DMrg5xElA4E",
+            "views": 5850,
+            "likes": 36,
+            "comments": 2
+          },
+          {
+            "company": "동아제약",
+            "brand": "판피린",
+            "product": "판피린",
+            "title": "[판피린 타임] 나의 판타스틱 감기약_이부펜 스틱 편(15s)",
+            "url": "https://www.youtube.com/watch?v=rCboq5Z_mTk",
+            "video_id": "rCboq5Z_mTk",
+            "views": 5702,
+            "likes": 18,
+            "comments": 8
+          },
+          {
+            "company": "동아제약",
+            "brand": "판피린",
+            "product": "판피린",
+            "title": "[판피린] 이찬원과 함께한 TVCF와 촬영콘티 비교",
+            "url": "https://www.youtube.com/watch?v=DMUTm2tvS08",
+            "video_id": "DMUTm2tvS08",
+            "views": 15437,
+            "likes": 2023,
+            "comments": 91
+          },
+          {
+            "company": "대웅제약",
+            "brand": "우루사",
+            "product": "우루사",
+            "title": "[우루사] 대웅제약 X 최대훈 2026 TV-CF 시대가 변해도 당신 곁엔 우루사 15S",
+            "url": "https://www.youtube.com/watch?v=hVQ3HdjRWDA",
+            "video_id": "hVQ3HdjRWDA",
+            "views": 4026521,
+            "likes": 63,
+            "comments": 27
+          },
+          {
+            "company": "대웅제약",
+            "brand": "우루사",
+            "product": "우루사",
+            "title": "[우루사] 대웅제약 X 최대훈 2026 TV-CF 시대가 변해도 당신 곁엔 우루사 FULL 30S",
+            "url": "https://www.youtube.com/watch?v=A-jW76bc9X8",
+            "video_id": "A-jW76bc9X8",
+            "views": 1759332,
+            "likes": 62,
+            "comments": 12
+          },
+          {
+            "company": "대원제약",
+            "brand": "콜대원",
+            "product": "콜대원",
+            "title": "[감기의 소리를 찾아서] 밤 들려오는 소리 (겨울 15s)",
+            "url": "https://www.youtube.com/watch?v=6d_Kl4z8AWw",
+            "video_id": "6d_Kl4z8AWw",
+            "views": 3093785,
+            "likes": 6,
+            "comments": null,
+            "comments_label": "댓글 비활성"
+          },
+          {
+            "company": "한국존슨앤드존슨",
+            "brand": "타이레놀",
+            "product": "타이레놀",
+            "title": "타이레놀에서 나오는 감기약 주세요_타이레놀 콜드_15s",
+            "url": "https://www.youtube.com/watch?v=oKghSROHn1g",
+            "video_id": "oKghSROHn1g",
+            "views": 5701260,
+            "likes": 10,
+            "comments": null,
+            "comments_label": "댓글 비활성"
+          },
+          {
+            "company": "동국제약",
+            "brand": "판시딜",
+            "product": "판시딜",
+            "title": "[판시딜 2026 신규 TV-CF] 탈모엔 시작부터 판시딜! (하석진&김성주)",
+            "url": "https://www.youtube.com/watch?v=RYw6aXu-cwg",
+            "video_id": "RYw6aXu-cwg",
+            "views": 1915761,
+            "likes": 27,
+            "comments": 9
+          },
+          {
+            "company": "동국제약",
+            "brand": "치센",
+            "product": "치센",
+            "title": "[치센 2026 신규 TV-CF] 치질! 아무도 모르게 편해지세요 (이성민)",
+            "url": "https://www.youtube.com/watch?v=PODiOm9KGj0",
+            "video_id": "PODiOm9KGj0",
+            "views": 2185148,
+            "likes": 52,
+            "comments": 11
+          },
+          {
+            "company": "동국제약",
+            "brand": "마데카솔",
+            "product": "마데카솔",
+            "title": "[마데카솔 2026 신규 TV-CF] 대한민국 상처치료 솔메이트, 마데카솔! (태연)",
+            "url": "https://www.youtube.com/watch?v=0XvC4JNiXyw",
+            "video_id": "0XvC4JNiXyw",
+            "views": 36006,
+            "likes": 260,
+            "comments": 41
+          },
+          {
+            "company": "동국제약",
+            "brand": "센시아",
+            "product": "센시아",
+            "title": "[센시아 2026 신규 TV-CF] 다리가 편하니까 하루가 정말 편해져요, 센시아! (강지영)",
+            "url": "https://www.youtube.com/watch?v=vus7asHjnGs",
+            "video_id": "vus7asHjnGs",
+            "views": 6740291,
+            "likes": 108,
+            "comments": 20
+          },
+          {
+            "company": "동국제약",
+            "brand": "인사돌",
+            "product": "인사돌",
+            "title": "[인사돌 2026 TV-CF] '시작하길 잘했어요, 인사돌' 편 (윤종신&이보영&김승우)",
+            "url": "https://www.youtube.com/watch?v=5sCQor6TyBI",
+            "video_id": "5sCQor6TyBI",
+            "views": 57389,
+            "likes": 33,
+            "comments": 1
+          },
+          {
+            "company": "동국제약",
+            "brand": "센시아",
+            "product": "센시아",
+            "title": "Dari - 센스만점 뮤직비디오 #동국제약",
+            "url": "https://www.youtube.com/watch?v=B6CyKfP74Q4",
+            "video_id": "B6CyKfP74Q4",
+            "views": 1868837,
+            "likes": 396,
+            "comments": 20
+          },
+          {
+            "company": "동국제약",
+            "brand": "판시딜",
+            "product": "판시딜",
+            "title": "탈모주의보-약국으로(Official Music Video)",
+            "url": "https://www.youtube.com/watch?v=dR4THqVxfXo",
+            "video_id": "dR4THqVxfXo",
+            "views": 1581867,
+            "likes": 593,
+            "comments": 34
+          },
+          {
+            "company": "동국제약",
+            "brand": "센시아",
+            "product": "센시아",
+            "title": "Dari – 센스만점 무대직캠⠀#동국제약",
+            "url": "https://www.youtube.com/watch?v=NDDHfY8Ir74",
+            "video_id": "NDDHfY8Ir74",
+            "views": 1914606,
+            "likes": 594,
+            "comments": 24
+          },
+          {
+            "company": "동국제약",
+            "brand": "센시아",
+            "product": "센시아",
+            "title": "[센시아 X 강지영 아나운서] 문제는 정맥순환!",
+            "url": "https://www.youtube.com/watch?v=DalexiNyUsU",
+            "video_id": "DalexiNyUsU",
+            "views": 4948932,
+            "likes": 46,
+            "comments": 1
+          },
+          {
+            "company": "동국제약",
+            "brand": "센시아",
+            "product": "센시아",
+            "title": "[센시아 X 강지영 아나운서] 다리가 편하니까 하루가 정말 편해져요",
+            "url": "https://www.youtube.com/watch?v=3SXvrZKx8sQ",
+            "video_id": "3SXvrZKx8sQ",
+            "views": 22578875,
+            "likes": 50,
+            "comments": 5
+          },
+          {
+            "company": "동화약품",
+            "brand": "활명수",
+            "product": "활명수",
+            "title": "[활명수1897 KOD] 브랜드필름 with CORTIS(6s)",
+            "url": "https://www.youtube.com/watch?v=saoZ6E-QFLg",
+            "video_id": "saoZ6E-QFLg",
+            "views": 12471032,
+            "likes": 408,
+            "comments": 9
+          },
+          {
+            "company": "동화약품",
+            "brand": "활명수",
+            "product": "활명수",
+            "title": "[활명수1897 KOD] 브랜드필름 with CORTIS(15B)",
+            "url": "https://www.youtube.com/watch?v=MNEl1uN7Kr0",
+            "video_id": "MNEl1uN7Kr0",
+            "views": 5352670,
+            "likes": 445,
+            "comments": 13
+          },
+          {
+            "company": "동화약품",
+            "brand": "활명수",
+            "product": "활명수",
+            "title": "[활명수1897 KOD] 브랜드필름 with CORTIS(15A)",
+            "url": "https://www.youtube.com/watch?v=vkJdY3LASA8",
+            "video_id": "vkJdY3LASA8",
+            "views": 3580108,
+            "likes": 461,
+            "comments": 7
+          },
+          {
+            "company": "동화약품",
+            "brand": "활명수",
+            "product": "활명수",
+            "title": "[활명수1897 KOD] 브랜드필름 with CORTIS(30s)",
+            "url": "https://www.youtube.com/watch?v=MEu5NnGzkIw",
+            "video_id": "MEu5NnGzkIw",
+            "views": 1607126,
+            "likes": 1384,
+            "comments": 38
+          },
+          {
+            "company": "동화약품",
+            "brand": "활명수",
+            "product": "활명수",
+            "title": "[활명수1897 KOD] 브랜드필름 with CORTIS(Full)",
+            "url": "https://www.youtube.com/watch?v=eroTbXC8NOU",
+            "video_id": "eroTbXC8NOU",
+            "views": 102993,
+            "likes": 8149,
+            "comments": 184
+          },
+          {
+            "company": "동화약품",
+            "brand": "활명수",
+            "product": "활명수",
+            "title": "[활명수1897 KOD] CORTIS 주훈의 최애 K-FOOD는?",
+            "url": "https://www.youtube.com/watch?v=EDmIGozjq5I",
+            "video_id": "EDmIGozjq5I",
+            "views": 426646,
+            "likes": 9518,
+            "comments": 117
+          },
+          {
+            "company": "동아제약",
+            "brand": "챔큐",
+            "product": "챔큐",
+            "title": "[챔큐]체력도 영양도 어린이 영양제 챔큐에게 맡겨!_6s(챔큐)",
+            "url": "https://www.youtube.com/watch?v=sudr8hcfAS8",
+            "video_id": "sudr8hcfAS8",
+            "views": 14967034,
+            "likes": 14,
+            "comments": 24
+          },
+          {
+            "company": "동아제약",
+            "brand": "가그린",
+            "product": "가그린",
+            "title": "[가그린] 우리의 첫 가글은 가그린이었다_가그린 어드밴스드 제로",
+            "url": "https://www.youtube.com/watch?v=uLea2jbms4o",
+            "video_id": "uLea2jbms4o",
+            "views": 5908302,
+            "likes": 22,
+            "comments": 3
+          },
+          {
+            "company": "동아제약",
+            "brand": "가그린",
+            "product": "가그린",
+            "title": "[가그린] 에탄올은 제로, 효과는 제대로! 가그린 어드밴스드 제로",
+            "url": "https://www.youtube.com/watch?v=XXfdgk9hiBw",
+            "video_id": "XXfdgk9hiBw",
+            "views": 7831677,
+            "likes": 15,
+            "comments": 1
+          },
+          {
+            "company": "동아제약",
+            "brand": "베나치오",
+            "product": "베나치오",
+            "title": "[베나치오] 이것이 프로의 소화력! 베나치오 프로 30s",
+            "url": "https://www.youtube.com/watch?v=tlaTIMFWLTY",
+            "video_id": "tlaTIMFWLTY",
+            "views": 4357,
+            "likes": 23,
+            "comments": 4
+          },
+          {
+            "company": "동아제약",
+            "brand": "베나치오",
+            "product": "베나치오",
+            "title": "[베나치오] 이것이 프로의 소화력! 베나치오 프로 15s",
+            "url": "https://www.youtube.com/watch?v=Q0b036_r1lk",
+            "video_id": "Q0b036_r1lk",
+            "views": 5662,
+            "likes": 18,
+            "comments": 9
+          },
+          {
+            "company": "동아제약",
+            "brand": "베나치오",
+            "product": "베나치오",
+            "title": "[베나치오] 대한민국 위력발산! 베나치오 프로",
+            "url": "https://www.youtube.com/watch?v=v3OQtS8k2fA",
+            "video_id": "v3OQtS8k2fA",
+            "views": 23198892,
+            "likes": 36,
+            "comments": 7
+          },
+          {
+            "company": "동아제약",
+            "brand": "박카스",
+            "product": "박카스",
+            "title": "O늘 나를 부탁해! ✨박카스 O!",
+            "url": "https://www.youtube.com/watch?v=N8KWIEHOsd8",
+            "video_id": "N8KWIEHOsd8",
+            "views": 32309656,
+            "likes": 1047,
+            "comments": 65
+          },
+          {
+            "company": "동아제약",
+            "brand": "얼박사",
+            "product": "얼박사",
+            "title": "⚡🧊오늘따라 얼박사! _ Brand Film 🎧",
+            "url": "https://www.youtube.com/watch?v=zCGhOgomB6c",
+            "video_id": "zCGhOgomB6c",
+            "views": 92442,
+            "likes": 971,
+            "comments": 111
+          },
+          {
+            "company": "동아제약",
+            "brand": "얼박사",
+            "product": "얼박사",
+            "title": "⚡🧊오늘따라 얼박사! _ 은석&원빈편 Song ver. 🎧(15초)",
+            "url": "https://www.youtube.com/watch?v=oKwOFLMeCj8",
+            "video_id": "oKwOFLMeCj8",
+            "views": 15157604,
+            "likes": 2313,
+            "comments": 108
+          },
+          {
+            "company": "동아제약",
+            "brand": "얼박사",
+            "product": "얼박사",
+            "title": "⚡🧊오늘따라 얼박사! _ 윤호&민호편 Song ver. 🎧(15초)",
+            "url": "https://www.youtube.com/watch?v=teRaooO-sFI",
+            "video_id": "teRaooO-sFI",
+            "views": 12169610,
+            "likes": 699,
+            "comments": 38
+          },
+          {
+            "company": "동아제약",
+            "brand": "얼박사",
+            "product": "얼박사",
+            "title": "⚡🧊오늘따라 얼박사!_ 윤호&민호편(15초)",
+            "url": "https://www.youtube.com/watch?v=w6GeEKZ0IFQ",
+            "video_id": "w6GeEKZ0IFQ",
+            "views": 33651,
+            "likes": 2595,
+            "comments": 216
+          },
+          {
+            "company": "동아제약",
+            "brand": "얼박사",
+            "product": "얼박사",
+            "title": "⚡🧊오늘따라 얼박사!_ 은석&원빈편(15초)",
+            "url": "https://www.youtube.com/watch?v=utX32d14Mwk",
+            "video_id": "utX32d14Mwk",
+            "views": 35465,
+            "likes": 3082,
+            "comments": 244
+          },
+          {
+            "company": "동아제약",
+            "brand": "노스카나",
+            "product": "노스카나",
+            "title": "아일릿 원희의 관리 꿀팁, 노스카나! (원희 브이로그 30초편)",
+            "url": "https://www.youtube.com/watch?v=gLrUtAaIt40",
+            "video_id": "gLrUtAaIt40",
+            "views": 12865543,
+            "likes": 402,
+            "comments": 10
+          },
+          {
+            "company": "동아제약",
+            "brand": "가그린",
+            "product": "가그린",
+            "title": "[가그린] 에탄올은 제로, 효과는 제대로! 가그린 어드밴스드 제로_착각 편",
+            "url": "https://www.youtube.com/watch?v=-Po5P2K9_N8",
+            "video_id": "-Po5P2K9_N8",
+            "views": 3643617,
+            "likes": 692,
+            "comments": 5
+          },
+          {
+            "company": "동아제약",
+            "brand": "가그린",
+            "product": "가그린",
+            "title": "[가그린] 에탄올은 제로, 효과는 제대로! 가그린 어드밴스드 제로_성분검증 편",
+            "url": "https://www.youtube.com/watch?v=1dnHq4WcTkI",
+            "video_id": "1dnHq4WcTkI",
+            "views": 3697125,
+            "likes": 736,
+            "comments": 4
+          },
+          {
+            "company": "동아제약",
+            "brand": "가그린",
+            "product": "가그린",
+            "title": "[가그린] 에탄올은 제로, 효과는 제대로! 가그린 어드밴스드 제로_자신감 편",
+            "url": "https://www.youtube.com/watch?v=bm6_a4j_vDs",
+            "video_id": "bm6_a4j_vDs",
+            "views": 3529114,
+            "likes": 1003,
+            "comments": 6
+          },
+          {
+            "company": "동아제약",
+            "brand": "가그린",
+            "product": "가그린",
+            "title": "[가그린] 에탄올은 제로, 효과는 제대로! 가그린 어드밴스드 제로_가족루틴 편",
+            "url": "https://www.youtube.com/watch?v=-ZNwei5Lwtk",
+            "video_id": "-ZNwei5Lwtk",
+            "views": 3912361,
+            "likes": 973,
+            "comments": 11
+          },
+          {
+            "company": "동아제약",
+            "brand": "가그린",
+            "product": "가그린",
+            "title": "[가그린] 에탄올은 제로, 효과는 제대로! 가그린 어드밴스드 제로_텁텁함 편",
+            "url": "https://www.youtube.com/watch?v=MjxYCslAFqU",
+            "video_id": "MjxYCslAFqU",
+            "views": 3495544,
+            "likes": 1218,
+            "comments": 18
+          },
+          {
+            "company": "동아제약",
+            "brand": "가그린",
+            "product": "가그린",
+            "title": "[가그린] 에탄올은 제로, 효과는 제대로! 가그린 어드밴스드 제로_자기관리 편",
+            "url": "https://www.youtube.com/watch?v=JnrEKLonhAU",
+            "video_id": "JnrEKLonhAU",
+            "views": 2899969,
+            "likes": 1181,
+            "comments": 15
+          },
+          {
+            "company": "동아제약",
+            "brand": "베나치오",
+            "product": "베나치오",
+            "title": "[베나치오]우리 아이 배 아플 때 베나치오 키즈",
+            "url": "https://www.youtube.com/watch?v=YRk17nQn4HA",
+            "video_id": "YRk17nQn4HA",
+            "views": 17397995,
+            "likes": 10977,
+            "comments": null,
+            "comments_label": "댓글 비활성"
+          },
+          {
+            "company": "동아제약",
+            "brand": "베나치오",
+            "product": "베나치오",
+            "title": "[베나치오]일본어 소화 안될 때, 일본여행 꿀팁",
+            "url": "https://www.youtube.com/watch?v=1LD7KLnotp8",
+            "video_id": "1LD7KLnotp8",
+            "views": 18539738,
+            "likes": 12073,
+            "comments": null,
+            "comments_label": "댓글 비활성"
+          },
+          {
+            "company": "동아제약",
+            "brand": "베나치오",
+            "product": "베나치오",
+            "title": "[베나치오] 영어가 꽉 막혔을 때, 영어 꿀팁",
+            "url": "https://www.youtube.com/watch?v=6y9Q6P1Z4n0",
+            "video_id": "6y9Q6P1Z4n0",
+            "views": 6786853,
+            "likes": 3784,
+            "comments": null,
+            "comments_label": "댓글 비활성"
+          },
+          {
+            "company": "동아제약",
+            "brand": "노스카나",
+            "product": "노스카나",
+            "title": "지금도 누군가는 좋아지고 있다, 노스카나",
+            "url": "https://www.youtube.com/watch?v=T34YkYqZkN0",
+            "video_id": "T34YkYqZkN0",
+            "views": 12710958,
+            "likes": 1991,
+            "comments": 39
+          },
+          {
+            "company": "동아제약",
+            "brand": "노스카나",
+            "product": "노스카나",
+            "title": "아일릿 원희의 관리 꿀팁, 노스카나! (원희 게임 편)",
+            "url": "https://www.youtube.com/watch?v=gODdyxD5SWs",
+            "video_id": "gODdyxD5SWs",
+            "views": 32108934,
+            "likes": 8697,
+            "comments": 127
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "아로나민",
+            "title": "[아로나민 골드 원X류승룡] 먹은 날과 안 먹은 날의 차이! 피로회복엔 아로나민 골드 원",
+            "url": "https://www.youtube.com/watch?v=cHHs595kNl8",
+            "video_id": "cHHs595kNl8",
+            "views": 120217,
+            "likes": 54,
+            "comments": 30
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "아로나민",
+            "title": "[아로나민 골드 원X류승룡] 피로회복이 부족하다면? 아로나민 골드 원!",
+            "url": "https://www.youtube.com/watch?v=M-1NSpX03kI",
+            "video_id": "M-1NSpX03kI",
+            "views": 118952,
+            "likes": 31,
+            "comments": 8
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "아로나민",
+            "title": "[아로나민골드X 류승룡] 대한민국 피로엔 아로나민 골드가 간다! (출근 편)",
+            "url": "https://www.youtube.com/watch?v=f06yYhHbguU",
+            "video_id": "f06yYhHbguU",
+            "views": 959,
+            "likes": 7,
+            "comments": null,
+            "comments_label": "미확인"
+          },
+          {
+            "company": "일동제약",
+            "brand": "로이히츠보코",
+            "product": "로이히츠보코",
+            "title": "[로이히츠보코 동전파스] 한국 약국 입국! 통증에 뜨거운 한 수🔥_6A",
+            "url": "https://www.youtube.com/watch?v=pmmJpRNoA-U",
+            "video_id": "pmmJpRNoA-U",
+            "views": 6774777,
+            "likes": 7,
+            "comments": 1
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "아로나민",
+            "title": "[아로나민 골드 원X류승룡] 먹은 날과 안 먹은 날의 차이! 피로회복엔 아로나민 골드 원",
+            "url": "https://www.youtube.com/watch?v=8KIFKe-GmPQ",
+            "video_id": "8KIFKe-GmPQ",
+            "views": 1546530,
+            "likes": 22,
+            "comments": 6
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "아로나민",
+            "title": "[아로나민 골드 원X류승룡] 피로가 있는 곳 어디든, 아로나민 골드 원!",
+            "url": "https://www.youtube.com/watch?v=kWrHGkslS_8",
+            "video_id": "kWrHGkslS_8",
+            "views": 1610270,
+            "likes": 16,
+            "comments": null,
+            "comments_label": "미확인"
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "아로나민",
+            "title": "[아로나민 골드 원X류승룡] 일상 속 피로, 아로나민 골드 원으로!",
+            "url": "https://www.youtube.com/watch?v=001V7G_6ZTU",
+            "video_id": "001V7G_6ZTU",
+            "views": 2701715,
+            "likes": 10,
+            "comments": 1
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "아로나민",
+            "title": "[아로나민 골드 원X류승룡] 매일 반복되는 피로, 아로나민 골드 원과 함께 해요!",
+            "url": "https://www.youtube.com/watch?v=WWgHJ7zp2sI",
+            "video_id": "WWgHJ7zp2sI",
+            "views": 2662182,
+            "likes": 11,
+            "comments": null,
+            "comments_label": "미확인"
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "아로나민",
+            "title": "[아로나민 골드 원X류승룡] 피로회복이 부족하다면? 아로나민 골드 원!",
+            "url": "https://www.youtube.com/watch?v=Kkktjl6lc_I",
+            "video_id": "Kkktjl6lc_I",
+            "views": 1753199,
+            "likes": 109,
+            "comments": 69
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "아로나민",
+            "title": "피로가 쌓이는 일상, 활력 Switch On! | 아로나민 골드 액티브",
+            "url": "https://www.youtube.com/watch?v=ML7p47cKy5g",
+            "video_id": "ML7p47cKy5g",
+            "views": 5435184,
+            "likes": 36,
+            "comments": 5
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "아로나민",
+            "title": "[아로나민 씨플러스] 피로회복 부터 기미,주근깨 완화까지! 해결도 한번에",
+            "url": "https://www.youtube.com/watch?v=IIv-L9wEChw",
+            "video_id": "IIv-L9wEChw",
+            "views": 5834541,
+            "likes": 22,
+            "comments": 6
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "아로나민",
+            "title": "피로가 몰려오는 순간, 활력 Switch On! | 아로나민골드 액티브",
+            "url": "https://www.youtube.com/watch?v=US7Nwtjp2vE",
+            "video_id": "US7Nwtjp2vE",
+            "views": 3516611,
+            "likes": 34,
+            "comments": 11
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "아로나민",
+            "title": "[아로나민골드X 류승룡] 대한민국 피로엔 아로나민 골드가 간다! (사장님 편)",
+            "url": "https://www.youtube.com/watch?v=LUM6KTiFZ0U",
+            "video_id": "LUM6KTiFZ0U",
+            "views": 577262,
+            "likes": 1,
+            "comments": null,
+            "comments_label": "미확인"
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "아로나민",
+            "title": "[아로나민골드X 류승룡] 대한민국 피로엔 아로나민 골드가 간다! (출근 편)",
+            "url": "https://www.youtube.com/watch?v=1qn4Sg4yZEQ",
+            "video_id": "1qn4Sg4yZEQ",
+            "views": 563931,
+            "likes": 1,
+            "comments": null,
+            "comments_label": "미확인"
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "아로나민",
+            "title": "[아로나민골드X 류승룡] 대한민국 피로엔 아로나민 골드가 간다! (가정의달편)",
+            "url": "https://www.youtube.com/watch?v=JK-GAIF0khA",
+            "video_id": "JK-GAIF0khA",
+            "views": 1371499,
+            "likes": 2,
+            "comments": null,
+            "comments_label": "미확인"
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "아로나민",
+            "title": "[아로나민골드X 류승룡] 대한민국 피로엔 아로나민 골드가 간다!",
+            "url": "https://www.youtube.com/watch?v=I-gVupZyI-0",
+            "video_id": "I-gVupZyI-0",
+            "views": 1002,
+            "likes": 6,
+            "comments": null,
+            "comments_label": "미확인"
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "아로나민",
+            "title": "[아로나민골드X 류승룡] 대한민국 피로엔 아로나민 골드가 간다! (식당편)",
+            "url": "https://www.youtube.com/watch?v=n4GVeUGEfoo",
+            "video_id": "n4GVeUGEfoo",
+            "views": 1698730,
+            "likes": 2,
+            "comments": null,
+            "comments_label": "미확인"
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "아로나민",
+            "title": "[아로나민골드X 류승룡] 대한민국 피로엔 아로나민 골드가 간다! (사무실편)",
+            "url": "https://www.youtube.com/watch?v=iSB4kxlys1o",
+            "video_id": "iSB4kxlys1o",
+            "views": 1835585,
+            "likes": 2,
+            "comments": null,
+            "comments_label": "미확인"
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "아로나민",
+            "title": "[아로나민골드X 류승룡] 대한민국 피로엔 아로나민 골드가 간다! (송과장 피로회복 편)",
+            "url": "https://www.youtube.com/watch?v=WR9Ds25tJ-Y",
+            "video_id": "WR9Ds25tJ-Y",
+            "views": 2655346,
+            "likes": 3,
+            "comments": 1
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "아로나민",
+            "title": "[아로나민골드X 류승룡] 대한민국 피로엔 아로나민 골드가 간다! (김부장 피로회복 편)",
+            "url": "https://www.youtube.com/watch?v=GmKBb01-29Q",
+            "video_id": "GmKBb01-29Q",
+            "views": 2753731,
+            "likes": 5,
+            "comments": null,
+            "comments_label": "미확인"
+          },
+          {
+            "company": "일동제약",
+            "brand": "아로나민",
+            "product": "아로나민",
+            "title": "[아로나민골드X 류승룡] 대한민국 피로엔 아로나민 골드가 간다! (종합편)",
+            "url": "https://www.youtube.com/watch?v=teskYfeLZZ4",
+            "video_id": "teskYfeLZZ4",
+            "views": 11034361,
+            "likes": 5,
+            "comments": 1
+          },
+          {
+            "company": "대원제약",
+            "brand": "콜대원",
+            "product": "콜대원",
+            "title": "[감기의 소리를 찾아서]",
+            "url": "https://www.youtube.com/watch?v=Ws8scTJ1UOY",
+            "video_id": "Ws8scTJ1UOY",
+            "views": 1006301,
+            "likes": 4,
+            "comments": null,
+            "comments_label": "댓글 비활성"
+          },
+          {
+            "company": "대원제약",
+            "brand": "콜대원",
+            "product": "콜대원",
+            "title": "[감기의 소리를 찾아서] 한여름에 들려오는 소리 (30s)",
+            "url": "https://www.youtube.com/watch?v=LXwjCbGx2v0",
+            "video_id": "LXwjCbGx2v0",
+            "views": 2194035,
+            "likes": 33,
+            "comments": null,
+            "comments_label": "댓글 비활성"
+          }
+        ]
+      },
+      "news": {
+        "status": "partial",
+        "scope": "이전 점검 2026-11-19 09:08:30+09:00 이후 기사를 대상으로 11개사 브랜드·제품 검색을 네이버 뉴스와 구글 뉴스 RSS에서 수행. 네이버는 OR 복합검색 결과 부족으로 회사·주요 브랜드 단순검색도 추가. 실제 포털 결과와 원문 발행일을 대조한 기사 4건 반영; 비즈트리뷴 동일 기사의 네이버·구글 경로 통합. 나머지 검색 결과의 전수 원문 검증은 미완료. 회사 일반 재무·투자 기사와 확인되지 않은 제품 연결은 제외. 콜대원 1억뷰는 보도된 캠페인 합산 실적으로 뉴스에만 기록.",
+        "records": [
+          {
+            "company": "동국제약",
+            "brand": "센텔리안24",
+            "product": "",
+            "title": "[K더마가 간다①] ‘마데카솔’이 쏘아 올린 K더마 붐",
+            "url": "https://www.insightkorea.co.kr/news/articleView.html?idxno=259318",
+            "outlet": "인사이트코리아",
+            "published_on": "2026-11-19",
+            "providers": [
+              "naver",
+              "publisher"
+            ]
+          },
+          {
+            "company": "동국제약",
+            "brand": "센텔리안24",
+            "product": "",
+            "title": "‘제약’ 벗고 ‘뷰티’ 입는다…동국제약 권병훈, ‘DK센텔리안’ 연착륙 시험대",
+            "url": "https://www.fntimes.com/html/view.php?ud=2026111910402037647fd637f543_18",
+            "outlet": "한국금융신문",
+            "published_on": "2026-11-19",
+            "providers": [
+              "naver",
+              "publisher"
+            ]
+          },
+          {
+            "company": "대원제약",
+            "brand": "콜대원",
+            "product": "콜대원",
+            "title": "대원제약 ‘콜대원’, 연중 광고 캠페인 누적 조회수 1억뷰 돌파",
+            "url": "https://www.ziksir.com/news/articleView.html?idxno=153993",
+            "outlet": "직썰",
+            "published_on": "2026-11-19",
+            "providers": [
+              "naver",
+              "publisher"
+            ]
+          },
+          {
+            "company": "대원제약",
+            "brand": "콜대원",
+            "product": "콜대원",
+            "title": "대원제약 콜대원, ‘감기의 소리를 찾아서’ 캠페인 누적 조회수 1억뷰 돌파",
+            "url": "https://m.biztribune.co.kr/news/articleView.html?idxno=362844",
+            "outlet": "비즈트리뷴",
+            "published_on": "2026-11-19",
+            "providers": [
+              "naver",
+              "google",
+              "publisher"
+            ]
+          }
+        ]
+      }
+    },
+    {
       "checked_at": "2026-11-19T09:08:30+09:00",
       "tvcf": {
         "status": "partial",
